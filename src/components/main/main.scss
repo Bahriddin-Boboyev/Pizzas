@@ -1,0 +1,105 @@
+.mainPizza__top_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    color: #191919;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px;
+    margin-bottom: 32px;
+  }
+  button {
+    cursor: pointer;
+    display: inline-flex;
+    padding: 9px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--line-gray, #f0f0f0);
+    background: #fff;
+  }
+  button::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../img/filter.svg");
+    vertical-align: middle;
+  }
+}
+.mainPizza__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.mainPizza__item {
+  width: 300px;
+  height: 440px;
+  padding-bottom: 0px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  background: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
+
+  h3 {
+    color: #191919;
+    font-family: SF Pro Text;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+  p {
+    color: #191919;
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
+}
+.mainPizza__img-box {
+  margin-bottom: 16px;
+}
+.mainPizza__down-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  button {
+    display: inline-flex;
+    padding: 13px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background: var(--primary, #ff7010);
+    border: none;
+    color: var(--white, #fff);
+    text-align: center;
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    cursor: pointer;
+  }
+  span {
+    color: var(--primary, #ff7010);
+    text-align: right;
+    font-family: SF Pro Text;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+}
