@@ -1,12 +1,13 @@
-import { HIDDEN_BASKET, SHOW_BASKET } from "./actions";
+import { SHOW_LOGIN, SHOW_BASKET } from "./actions";
 
 const reducer = (state, action) => {
   switch (action.type) {
     case SHOW_BASKET:
-      const at = { basket: action.payload };
-      return (state = at);
-    case HIDDEN_BASKET:
-      return {};
+      const basket = { basket: action.payload };
+      return (state = basket);
+    case SHOW_LOGIN:
+      const login = { login: action.payload };
+      return (state = login);
     default:
       return state;
   }

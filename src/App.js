@@ -9,13 +9,14 @@ import Basket from "./components/main/basket";
 const App = () => {
   const { context, showBasket } = useContext(DataContext);
 
+  const exists = context.basket || context.login;
   useEffect(() => {
-    if (context.basket) {
+    if (exists) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "visible ";
     }
-  }, [context.basket]);
+  }, [exists]);
 
   return (
     <div className="App">
@@ -28,7 +29,7 @@ const App = () => {
       </div>
       <div
         onClick={() => showBasket(false)}
-        className={`${context.basket ? "blur" : "none"}`}
+        className={`${exists ? "blur" : "none"}`}
       ></div>
       <Basket basket={context.basket} showBasket={showBasket} />
     </div>

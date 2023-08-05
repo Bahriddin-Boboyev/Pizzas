@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import reducer from "./reducers";
-import { SHOW_BASKET, HIDDEN_BASKET } from "./actions";
+import { SHOW_BASKET, SHOW_LOGIN } from "./actions";
 
 export const DataContext = createContext();
 
@@ -14,10 +14,10 @@ const DataProvider = ({ children }) => {
       payload: basket,
     });
   };
-  const hiddenBasket = (basket) => {
+  const showLogin = (login) => {
     dispatch({
-      type: HIDDEN_BASKET,
-      payload: basket,
+      type: SHOW_LOGIN,
+      payload: login,
     });
   };
 
@@ -26,7 +26,7 @@ const DataProvider = ({ children }) => {
       value={{
         context: state,
         showBasket,
-        hiddenBasket,
+        showLogin,
       }}
     >
       {children}

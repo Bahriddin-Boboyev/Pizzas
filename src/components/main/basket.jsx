@@ -22,7 +22,25 @@ const Basket = ({ basket, showBasket }) => {
           </g>
         </svg>
       </div>
-      <div className="basket__content"></div>
+      <ul className="basket__content">
+        <li className="basket__item">
+          <img
+            src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg"
+            alt="Pizza"
+          />
+          <div className="basket__info">
+            <h6>Цыпленок барбекю</h6>
+            <p>Традиционное тесто, 23 см</p>
+            <div style={{ flex: "1 1 0%" }}></div>
+            <div className="basket__btn-box">
+              <button>-</button>
+              <span className="basket__input">1</span>
+              <button>+</button>
+            </div>
+            <span>295 ₽</span>
+          </div>
+        </li>
+      </ul>
       <div className="basket__footer">
         <span>Итого: 0 ₽</span>
         <button className="on">Оформить заказ</button>
