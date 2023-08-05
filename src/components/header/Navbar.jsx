@@ -10,7 +10,6 @@ import { DataContext } from "../../context";
 const Navbar = () => {
   const [fixed, setFixed] = useState(false);
   const { showBasket } = useContext(DataContext);
-
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 60) {
