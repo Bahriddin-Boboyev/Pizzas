@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import locationIcon from "../../img/location.svg";
@@ -7,6 +7,18 @@ import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 
 const Navbar = () => {
+  const [fixed, setFixed] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 60) {
+        setFixed(true);
+      } else {
+        setFixed(false);
+      }
+    });
+  });
+
   return (
     <nav className="navbar">
       <div className="navbar__main">
@@ -36,10 +48,20 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__line"></div>
-      <div className="navbar__down">
-        <div className="navbar__down-img-block">
+      <div className={`navbar__down  ${fixed ? "fixed" : ""}`}>
+        <Link to={"/"} className="navbar__down-img-block">
           <img src={pizza} alt="pizza" />
           <img src={logo} alt="logo" />
+        </Link>
+        <div className={`navbar__down__category  ${!fixed ? "none" : ""}`}>
+          <Link to="/menu/fire">Акции</Link>
+          <Link to="/menu/pizzas">Пицца</Link>
+          <Link to="/menu/sushi">Суши</Link>
+          <Link to="/menu/drink">Напитки</Link>
+          <Link to="/menu/snacks">Закуски</Link>
+          <Link to="/menu/combo">Комбо</Link>
+          <Link to="/menu/desserts">Десерты</Link>
+          <Link to="/menu/sauce">Соусы</Link>
         </div>
         <div className="navbar__down-korzinka-block">
           <button>
