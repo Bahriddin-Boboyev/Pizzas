@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import locationIcon from "../../img/location.svg";
 import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
+import { DataContext } from "../../context";
 
 const Navbar = () => {
   const [fixed, setFixed] = useState(false);
+  const { showBasket } = useContext(DataContext);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -64,7 +66,7 @@ const Navbar = () => {
           <Link to="/menu/sauce">Соусы</Link>
         </div>
         <div className="navbar__down-korzinka-block">
-          <button>
+          <button onClick={() => showBasket(true)}>
             <img src={korzinka} alt="korzinka" />
             <span>0 ₽</span>
           </button>

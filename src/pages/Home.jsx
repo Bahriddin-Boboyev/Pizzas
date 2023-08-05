@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import CartDown from "../components/header/cart-down";
 import CartUp from "../components/header/cart-up";
 import MainPizzaCart from "../components/main/main-pizza-cart";
+import Basket from "../components/main/basket";
+import { DataContext } from "../context/context";
 
 const Home = () => {
   const [descShow, setDescShow] = useState(true);
+  const { context, showBasket } = useContext(DataContext);
+
+  console.log(context);
+
+  useEffect(() => {
+    if (context.basket) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible ";
+    }
+  }, [context.basket]);
+
   return (
     <div>
       <CartUp />
@@ -47,7 +61,7 @@ const Home = () => {
             из ближайшей пиццерии Domino’s. И не забудьте оплатить заказ
             курьеру!
           </p>
-          <div class={descShow ? "overlay" : ""}></div>
+          <div className={descShow ? "overlay" : ""}></div>
         </div>
         <button
           onClick={() => setDescShow((prev) => (prev = !prev))}
@@ -56,6 +70,11 @@ const Home = () => {
           Показать полностью
         </button>
       </div>
+      <div
+        onClick={() => showBasket(false)}
+        className={`${context.basket ? "blur" : "none"}`}
+      ></div>
+      <Basket basket={context.basket} showBasket={showBasket} />
     </div>
   );
 };
