@@ -2,10 +2,18 @@ import { Routes, Route } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import Footer from "./components/footer/footer";
 import Navbar from "./components/header/Navbar";
-import { Home } from "./pages";
+import {
+  Combo,
+  Desserts,
+  Drink,
+  Home,
+  Pizzas,
+  Sauce,
+  Snacks,
+  Sushi,
+} from "./pages";
 import { DataContext } from "./context/context";
 import Basket from "./components/main/basket";
-import Pizzas from "./pages/Pizzas";
 
 const App = () => {
   const { context, showBasket } = useContext(DataContext);
@@ -26,6 +34,12 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu/pizzas" element={<Pizzas />} />
+          <Route path="/menu/sushi" element={<Sushi />} />
+          <Route path="/menu/drink" element={<Drink />} />
+          <Route path="/menu/snacks" element={<Snacks />} />
+          <Route path="/menu/combo" element={<Combo />} />
+          <Route path="/menu/desserts" element={<Desserts />} />
+          <Route path="/menu/sauce" element={<Sauce />} />
         </Routes>
         <Footer />
       </div>

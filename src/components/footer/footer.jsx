@@ -51,19 +51,27 @@ const Footer = () => {
             <h2>Контакты</h2>
             <ul className="footer__inner-list">
               <li className="footer__inner-item">
-                <Link className="footer__phone" to={"#"}>
+                <Link className="footer__phone" to={"tel:+79262231011"}>
                   +7 (926) 223-10-11
                 </Link>
               </li>
               <li className="footer__inner-item">
-                <Link className="footer__location" to={"#"}>
+                <Link
+                  className="footer__location"
+                  target={"_blank"}
+                  to={"https://goo.gl/maps/Ch9Ebbks4FVrYnFWA"}
+                >
                   Москва, ул. Юных Ленинцев, д.99
                 </Link>
               </li>
               <li className="footer__inner-item ">
                 <div className="footer__social_media">
-                  <Link to={"#"}>Facebok</Link>
-                  <Link to={"#"}>Instagram</Link>
+                  <Link target={"_blank"} to={"https://www.facebook.com/"}>
+                    Facebok
+                  </Link>
+                  <Link target={"_blank"} to={"https://www.instagram.com/"}>
+                    Instagram
+                  </Link>
                 </div>
               </li>
             </ul>

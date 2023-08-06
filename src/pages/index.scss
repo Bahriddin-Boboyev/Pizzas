@@ -120,6 +120,15 @@
 /* PIZZAS */
 
 .pizzas {
+  h1 {
+    color: var(--black, #191919);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px;
+    margin-bottom: 32px;
+  }
   .pizzas__list {
     display: flex;
     align-items: center;

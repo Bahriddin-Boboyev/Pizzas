@@ -1,10 +1,10 @@
 import React from "react";
 import cart1 from "../img/main-pizza-cart-1.png";
 
-const Pizzas = () => {
+const Sauce = () => {
   return (
     <div className="pizzas">
-      <h1>Пицца</h1>
+      <h1>Соусы</h1>
       <ul className="pizzas__list">
         <li className="pizzas__item">
           <div className="pizzas__img-box">
@@ -88,4 +88,4 @@ const Pizzas = () => {
   );
 };
 
-export default Pizzas;
+export default Sauce;
