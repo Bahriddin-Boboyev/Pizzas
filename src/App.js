@@ -5,6 +5,7 @@ import Navbar from "./components/header/Navbar";
 import { Home } from "./pages";
 import { DataContext } from "./context/context";
 import Basket from "./components/main/basket";
+import Pizzas from "./pages/Pizzas";
 
 const App = () => {
   const { context, showBasket } = useContext(DataContext);
@@ -24,6 +25,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/menu/pizzas" element={<Pizzas />} />
         </Routes>
         <Footer />
       </div>
