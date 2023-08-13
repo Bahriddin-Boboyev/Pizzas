@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import CartDown from "../components/header/cart-down";
 import CartUp from "../components/header/cart-up";
 import MainPizzaCart from "../components/main/main-pizza-cart";
 
-const Home = () => {
+const Home = ({ setCategory }) => {
   const [descShow, setDescShow] = useState(true);
+
+  //
+
+  useEffect(() => {
+    setCategory("all");
+  }, [setCategory]);
+
   return (
     <div>
       <CartUp />

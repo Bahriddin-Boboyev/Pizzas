@@ -1,46 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./main.scss";
-import axios from "../../apis/api";
-import useAxiosFunction from "../../hooks/useAxiosFunction";
+/* import axios from "../../apis/api";
+import useAxiosFunction from "../../hooks/useAxiosFunction"; */
+import { DataContext } from "../../context";
 
 const MainPizzaCart = ({ title }) => {
-  const [data, error, loading, axiosFetch] = useAxiosFunction();
-
-  const getData = () => {
-    axiosFetch({
-      axiosInstance: axios({ page: { limit: 100, offset: 0 } }),
-      method: "GET",
-      url: "/product",
-      requestConfig: {
-        headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRjZmQxNTcyMWZiNmFmZDk0OWY2NzI3IiwiYWRtaW4iOnRydWV9LCJpYXQiOjE2OTE1MDE2MTIsImV4cCI6MTY5MTU4ODAxMn0.X2RsUeAkbIc1ug0N3ZXMU8eDC9DAxt6HMtkc_fBHtc4",
-        },
-      },
-    });
-  };
+  const { context } = useContext(DataContext);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getData();
-    // eslint-disable-next-line
-  }, []);
-
-  const products = data.data?.products;
+    if (context?.prod) {
+      setProducts({ ...context.prod });
+    }
+  }, [context]);
 
   return (
     <div className="mainPizza">
-      {error ? (
-        <p>{error.toString()}</p>
+      {products?.error ? (
+        <p>{products?.error.toString()}</p>
       ) : (
         <>
-          {loading || !products ? <p>Loading....</p> : ""}
+          {products?.loading || !products ? <p>Loading....</p> : ""}
           <div className="mainPizza__top_box">
             <h2>{title}</h2>
             <button>Фильтры</button>
           </div>
 
           <ul className="mainPizza__list">
-            {products?.map((prod) => (
+            {products.prod?.map((prod) => (
               <li key={prod._id} className="mainPizza__item">
                 <div className="mainPizza__img-box">
                   <img src={prod.image} alt="img" />

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import locationIcon from "../../img/location.svg";
@@ -6,20 +6,12 @@ import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 import { DataContext } from "../../context";
+import useScrollFixed from "../../helpers/scroll-fixed";
 
 const Navbar = () => {
-  const [fixed, setFixed] = useState(false);
   const { context, showBasket, showLogin } = useContext(DataContext);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 60) {
-        setFixed(true);
-      } else {
-        setFixed(false);
-      }
-    });
-  });
+  //
+  const fixed = useScrollFixed(60);
 
   return (
     <nav className="navbar">
@@ -50,7 +42,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar__line"></div>
-      <div className={`navbar__down  ${fixed ? "fixed" : ""}`}>
+      <div className={`navbar__down ${fixed ? "fixed" : ""}`}>
         <Link to={"/"} className="navbar__down-img-block">
           <img src={pizza} alt="pizza" />
           <img src={logo} alt="logo" />
