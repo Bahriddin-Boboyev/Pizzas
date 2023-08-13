@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import reducer from "./reducers";
-import { SHOW_BASKET, SHOW_LOGIN } from "./actions";
+import { API_PARAMS, SHOW_BASKET, SHOW_LOGIN } from "./actions";
 
 export const DataContext = createContext();
 
@@ -20,6 +20,12 @@ const DataProvider = ({ children }) => {
       payload: login,
     });
   };
+  const apiParams = (params) => {
+    dispatch({
+      type: API_PARAMS,
+      payload: params,
+    });
+  };
 
   return (
     <DataContext.Provider
@@ -27,6 +33,7 @@ const DataProvider = ({ children }) => {
         context: state,
         showBasket,
         showLogin,
+        apiParams,
       }}
     >
       {children}

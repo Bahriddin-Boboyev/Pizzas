@@ -18,8 +18,6 @@ const Home = () => {
         </div>
       </div>
       <MainPizzaCart title={"Пицца"} />
-      <MainPizzaCart title={"Суши"} />
-
       <div className="home__dostavki">
         <h2>Доставка пиццы в Москве</h2>
         <div
