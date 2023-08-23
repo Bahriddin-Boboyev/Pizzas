@@ -68,7 +68,12 @@ const App = () => {
       <div className="container">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home setCategory={setCategory} />} />
+          <Route
+            path="/"
+            element={
+              <Home setCategory={setCategory} data={data} key={"home"} />
+            }
+          />
           <Route
             path="/menu/pizzas"
             element={

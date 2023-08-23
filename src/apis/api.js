@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:5000";
 
 const axiosFunc = (params) => {
   return axios.create({

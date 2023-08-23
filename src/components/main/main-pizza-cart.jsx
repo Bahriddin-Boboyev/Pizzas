@@ -1,54 +1,49 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "./main.scss";
-/* import axios from "../../apis/api";
-import useAxiosFunction from "../../hooks/useAxiosFunction"; */
-import { DataContext } from "../../context";
 
-const MainPizzaCart = ({ title }) => {
-  const { context } = useContext(DataContext);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    if (context?.prod) {
-      setProducts({ ...context.prod });
-    }
-  }, [context]);
-
+const MainPizzaCart = ({ products, error, loading, maxItemsPerCategory }) => {
+  const categories = [...new Set(products?.map((item) => item.category.name))];
   return (
     <div className="mainPizza">
-      {products?.error ? (
-        <p>{products?.error.toString()}</p>
+      {error && <p>{JSON.stringify(error)}</p>}
+      {loading ? (
+        <p>Loading...</p>
       ) : (
         <>
-          {products?.loading || !products ? <p>Loading....</p> : ""}
-          <div className="mainPizza__top_box">
-            <h2>{title}</h2>
-            <button>Фильтры</button>
-          </div>
-
-          <ul className="mainPizza__list">
-            {products.prod?.map((prod) => (
-              <li key={prod._id} className="mainPizza__item">
-                <div className="mainPizza__img-box">
-                  <img src={prod.image} alt="img" />
-                </div>
-                <h3>
-                  {prod.name.length > 15
-                    ? `${prod.name.slice(0, 15)}...`
-                    : prod.name}
-                </h3>
-                <p>
-                  {prod.description.length > 15
-                    ? `${prod.description.slice(0, 30)}...`
-                    : prod.description}
-                </p>
-                <div className="mainPizza__down-block">
-                  <button>Выбрать</button>
-                  <span>от {prod.price} ₽</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {categories.map((category) => (
+            <div key={category} className="mainPizza__top_box">
+              <div className="mainPizza_head">
+                <h2>{category}</h2>
+                <button>Фильтры</button>
+              </div>
+              <ul className="mainPizza__list">
+                {products
+                  ?.filter((item) => item.category.name === category)
+                  .slice(0, maxItemsPerCategory)
+                  .map((product) => (
+                    <li key={product._id} className="mainPizza__item">
+                      <div className="mainPizza__img-box">
+                        <img src={product.image} alt="img" />
+                      </div>
+                      <h3>
+                        {product.name.length > 15
+                          ? `${product.name.slice(0, 15)}...`
+                          : product.name}
+                      </h3>
+                      <p>
+                        {product.description.length > 15
+                          ? `${product.description.slice(0, 30)}...`
+                          : product.description}
+                      </p>
+                      <div className="mainPizza__down-block">
+                        <button>Выбрать</button>
+                        <span>от {product.price} ₽</span>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
         </>
       )}
     </div>
@@ -56,3 +51,37 @@ const MainPizzaCart = ({ title }) => {
 };
 
 export default MainPizzaCart;
+/* {products?.loading || !products?.prod ? <p>Loading....</p> : ""} */
+
+/* <div className="mainPizza__top_box">
+            <h2>
+             
+            </h2>
+            <button>Фильтры</button>
+          </div>
+          <ul className="mainPizza__list">
+            {products.map((product) => (
+              <li key={product._id} className="mainPizza__item">
+                <div className="mainPizza__img-box">
+                  <img src={product.image} alt="img" />
+                </div>
+                <h3>
+                 
+                  {product.name.length > 15
+                    ? `${product.name.slice(0, 15)}...`
+                    : product.name}
+                </h3>
+                <p>
+                  {product.description.length > 15
+                    ? `${product.description.slice(0, 30)}...`
+                    : product.description}
+                </p>
+                <div className="mainPizza__down-block">
+                  <button>Выбрать</button>
+                  <span>от {product.price} ₽</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )} */

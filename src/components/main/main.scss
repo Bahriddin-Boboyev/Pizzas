@@ -1,35 +1,45 @@
 .mainPizza__top_box {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  h2 {
-    color: #191919;
-    font-family: Inter;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 48px;
-    margin-bottom: 32px;
-  }
-  button {
-    cursor: pointer;
-    display: inline-flex;
-    padding: 9px 16px;
+  .mainPizza_head {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    border-radius: 6px;
-    border: 1px solid var(--line-gray, #f0f0f0);
-    background: #fff;
-  }
-  button::before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-image: url("../../img/filter.svg");
-    vertical-align: middle;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    h2 {
+      color: #191919;
+      font-family: Inter;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 48px;
+    }
+    button {
+      cursor: pointer;
+      display: inline-flex;
+      padding: 9px 16px;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      border-radius: 6px;
+      border: 1px solid var(--line-gray, #f0f0f0);
+      background: #fff;
+    }
+    button::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url("../../img/filter.svg");
+      vertical-align: middle;
+    }
   }
 }
+
 .mainPizza__list {
   display: flex;
   align-items: center;

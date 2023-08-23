@@ -1,10 +1,4 @@
-import {
-  SHOW_LOGIN,
-  SHOW_BASKET,
-  API_PARAMS,
-  GET_PRODUCTS,
-
-} from "./actions";
+import { SHOW_LOGIN, SHOW_BASKET, API_PARAMS, GET_PRODUCTS } from "./actions";
 
 const reducer = (state, action) => {
   switch (action.type) {
