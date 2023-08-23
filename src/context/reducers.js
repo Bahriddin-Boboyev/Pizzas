@@ -1,19 +1,32 @@
-import { SHOW_LOGIN, SHOW_BASKET, API_PARAMS, GET_PRODUCTS } from "./actions";
+import {
+  SHOW_LOGIN,
+  SHOW_BASKET,
+  API_PARAMS,
+  GET_PRODUCTS,
+  GET_STORE_ITEM,
+} from "./actions";
 
 const reducer = (state, action) => {
   switch (action.type) {
     case SHOW_BASKET:
-      const basket = { ...state, basket: action.payload };
-      return (state = basket);
+      return (state = { ...state, basket: action.payload });
     case SHOW_LOGIN:
-      const login = { ...state, login: action.payload };
-      return (state = login);
+      return (state = { ...state, login: action.payload });
     case API_PARAMS:
-      const param = { ...state, params: action.payload };
-      return (state = param);
+      return (state = { ...state, params: action.payload });
     case GET_PRODUCTS:
-      const prod = { ...state, prod: action.payload };
-      return (state = prod);
+      return (state = { ...state, prod: action.payload });
+    case GET_STORE_ITEM:
+      const items = localStorage.getItem("cart");
+      if (state?.store) {
+        return (state = { ...state, store: [...state?.store, action.payload] });
+      } else if (JSON.parse(items)?.length) {
+        return (state = {
+          ...state,
+          store: [...JSON.parse(items), action.payload],
+        });
+      }
+      return (state = { ...state, store: [action.payload] });
     default:
       return state;
   }

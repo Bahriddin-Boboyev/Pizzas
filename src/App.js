@@ -16,12 +16,16 @@ import {
 } from "./pages";
 import axios from "./apis/api";
 import useAxiosFunction from "./hooks/useAxiosFunction";
+import useLocalStorageState from "use-local-storage-state";
 
 const App = () => {
   const { context, showBasket, getProducts } = useContext(DataContext);
   const [data, error, loading, axiosFetch] = useAxiosFunction();
   const [category, setCategory] = useState("all");
+  // store
+  const [cart, setCart] = useLocalStorageState("cart", []);
 
+  //
   const exists = context.basket || context.login;
   useEffect(() => {
     if (exists) {
@@ -63,10 +67,17 @@ const App = () => {
     // eslint-disable-next-line
   }, [data, error, loading]);
 
+  useEffect(() => {
+    if (context?.store) {
+      setCart(context.store);
+    }
+    // eslint-disable-next-line
+  }, [context]);
+
   return (
     <div className="App">
       <div className="container">
-        <Navbar />
+        <Navbar cart={cart} />
         <Routes>
           <Route
             path="/"

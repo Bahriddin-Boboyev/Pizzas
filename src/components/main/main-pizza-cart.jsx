@@ -1,8 +1,15 @@
 import React from "react";
 import "./main.scss";
 
-const MainPizzaCart = ({ products, error, loading, maxItemsPerCategory }) => {
+const MainPizzaCart = ({
+  products,
+  error,
+  loading,
+  maxItemsPerCategory,
+  getStoreItems,
+}) => {
   const categories = [...new Set(products?.map((item) => item.category.name))];
+
   return (
     <div className="mainPizza">
       {error && <p>{JSON.stringify(error)}</p>}
@@ -36,7 +43,9 @@ const MainPizzaCart = ({ products, error, loading, maxItemsPerCategory }) => {
                           : product.description}
                       </p>
                       <div className="mainPizza__down-block">
-                        <button>Выбрать</button>
+                        <button onClick={() => getStoreItems(product)}>
+                          Выбрать
+                        </button>
                         <span>от {product.price} ₽</span>
                       </div>
                     </li>

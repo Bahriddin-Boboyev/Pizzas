@@ -7,7 +7,7 @@ import { DataContext } from "../context";
 
 const Home = ({ setCategory }) => {
   const [descShow, setDescShow] = useState(true);
-  const { context } = useContext(DataContext);
+  const { context, getStoreItems } = useContext(DataContext);
   const [products, setProducts] = useState([]);
   const maxItemsPerCategory = 8;
 
@@ -20,8 +20,6 @@ const Home = ({ setCategory }) => {
       setProducts({ ...context.prod });
     }
   }, [context]);
-
-  console.log(products);
 
   return (
     <div>
@@ -40,6 +38,7 @@ const Home = ({ setCategory }) => {
         error={products.error}
         loading={products.loading}
         maxItems={maxItemsPerCategory}
+        getStoreItems={getStoreItems}
       />
 
       <div className="home__dostavki">

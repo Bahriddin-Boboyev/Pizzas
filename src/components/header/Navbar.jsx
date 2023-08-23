@@ -8,10 +8,18 @@ import korzinka from "../../img/navbar-korzinka.svg";
 import { DataContext } from "../../context";
 import useScrollFixed from "../../helpers/scroll-fixed";
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   const { context, showBasket, showLogin } = useContext(DataContext);
   //
   const fixed = useScrollFixed(60);
+
+  const storeTotalCost = (cart) => {
+    if (!cart?.length) {
+      return 0;
+    }
+    const items = JSON.parse(localStorage.getItem("cart"));
+    return items.reduce((total, item) => (total += item.price), 0);
+  };
 
   return (
     <nav className="navbar">
@@ -60,7 +68,7 @@ const Navbar = () => {
         <div className="navbar__down-korzinka-block">
           <button onClick={() => showBasket(true)}>
             <img src={korzinka} alt="korzinka" />
-            <span>0 ₽</span>
+            <span>{storeTotalCost(cart)} ₽</span>
           </button>
         </div>
       </div>
