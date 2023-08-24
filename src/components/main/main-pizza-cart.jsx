@@ -1,4 +1,5 @@
 import React from "react";
+import { ThreeDots } from "react-loader-spinner";
 import "./main.scss";
 
 const MainPizzaCart = ({
@@ -14,7 +15,20 @@ const MainPizzaCart = ({
     <div className="mainPizza">
       {error && <p>{JSON.stringify(error)}</p>}
       {loading ? (
-        <p>Loading...</p>
+        <>
+          <div className="loading__visible">
+            <ThreeDots
+              height="150"
+              width="150"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={products.loading}
+            />
+          </div>
+        </>
       ) : (
         <>
           {categories.map((category) => (

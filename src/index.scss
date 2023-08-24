@@ -166,3 +166,12 @@ img {
 .hidden {
   overflow: hidden;
 }
+
+/* Loading */
+
+.loading__visible {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

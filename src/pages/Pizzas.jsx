@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useGetCategory from "../helpers/get-category";
 import useAxiosFunction from "../hooks/useAxiosFunction";
 import useScrollFixed from "../helpers/scroll-fixed";
+import { ThreeDots } from "react-loader-spinner";
 
 const Pizzas = ({ setCategory, data }) => {
   const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();
@@ -12,7 +13,7 @@ const Pizzas = ({ setCategory, data }) => {
   useEffect(() => {
     if (!error && !loading && dataAxios?.data) {
       const result = dataAxios?.data.categories.find(
-        (item) => item.name === "Пицца"
+        (item) => item.name === "Пицца",
       );
       setCategory(result._id);
     }
@@ -24,35 +25,54 @@ const Pizzas = ({ setCategory, data }) => {
       setProduct(data?.data?.products);
     }
   }, [data]);
-
   const fixed = useScrollFixed(60);
+  const products = product.filter((item) => item.category.name === "Пицца");
 
   return (
     <div className={`pizzas ${fixed ? "pizzas-fixed" : ""}`}>
-      <h1>Пицца</h1>
-      <ul className="pizzas__list">
-        {product.map((prod) => (
-          <li className="pizzas__item" key={prod._id}>
-            <div className="pizzas__img-box">
-              <img src={prod.image} alt="img" />
-            </div>
-            <h3>
-              {prod.name.length > 15
-                ? `${prod.name.slice(0, 15)}...`
-                : prod.name}
-            </h3>
-            <p>
-              {prod.description.length > 15
-                ? `${prod.description.slice(0, 30)}...`
-                : prod.description}
-            </p>
-            <div className="pizzas__down-block">
-              <button>Выбрать</button>
-              <span>от {prod.price} ₽</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <>
+        {loading ? (
+          <div className="loading__visible">
+            <ThreeDots
+              height="150"
+              width="150"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={loading}
+            />
+          </div>
+        ) : (
+          <>
+            <h1>Комбо</h1>
+            <ul className="pizzas__list">
+              {products.map((prod) => (
+                <li className="pizzas__item" key={prod._id}>
+                  <div className="pizzas__img-box">
+                    <img src={prod.image} alt="img" />
+                  </div>
+                  <h3>
+                    {prod.name.length > 15
+                      ? `${prod.name.slice(0, 15)}...`
+                      : prod.name}
+                  </h3>
+                  <p>
+                    {prod.description.length > 15
+                      ? `${prod.description.slice(0, 30)}...`
+                      : prod.description}
+                  </p>
+                  <div className="pizzas__down-block">
+                    <button>Выбрать</button>
+                    <span>от {prod.price} ₽</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </>
     </div>
   );
 };
