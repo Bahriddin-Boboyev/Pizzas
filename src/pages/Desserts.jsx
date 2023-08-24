@@ -4,7 +4,7 @@ import useGetCategory from "../helpers/get-category";
 import useScrollFixed from "../helpers/scroll-fixed";
 import useAxiosFunction from "../hooks/useAxiosFunction";
 
-const Desserts = ({ setCategory, data }) => {
+const Desserts = ({ setCategory, getStoreItems, data }) => {
   const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();
   const [product, setProduct] = useState([]);
   //
@@ -63,7 +63,7 @@ const Desserts = ({ setCategory, data }) => {
                       : prod.description}
                   </p>
                   <div className="pizzas__down-block">
-                    <button>Выбрать</button>
+                    <button onClick={() => getStoreItems(prod)}>Выбрать</button>
                     <span>от {prod.price} ₽</span>
                   </div>
                 </li>

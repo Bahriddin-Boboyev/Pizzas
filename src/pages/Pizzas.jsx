@@ -4,10 +4,9 @@ import useAxiosFunction from "../hooks/useAxiosFunction";
 import useScrollFixed from "../helpers/scroll-fixed";
 import { ThreeDots } from "react-loader-spinner";
 
-const Pizzas = ({ setCategory, data }) => {
+const Pizzas = ({ setCategory, getStoreItems, data }) => {
   const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();
   const [product, setProduct] = useState([]);
-
   useGetCategory(axiosFetch);
 
   useEffect(() => {
@@ -64,7 +63,7 @@ const Pizzas = ({ setCategory, data }) => {
                       : prod.description}
                   </p>
                   <div className="pizzas__down-block">
-                    <button>Выбрать</button>
+                    <button onClick={() => getStoreItems(prod)}>Выбрать</button>
                     <span>от {prod.price} ₽</span>
                   </div>
                 </li>

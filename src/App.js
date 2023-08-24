@@ -19,7 +19,8 @@ import useAxiosFunction from "./hooks/useAxiosFunction";
 import useLocalStorageState from "use-local-storage-state";
 
 const App = () => {
-  const { context, showBasket, getProducts } = useContext(DataContext);
+  const { context, showBasket, getProducts, getStoreItems } =
+    useContext(DataContext);
   const [data, error, loading, axiosFetch] = useAxiosFunction();
   const [category, setCategory] = useState("all");
   // store
@@ -82,37 +83,67 @@ const App = () => {
           <Route
             path="/"
             element={
-              <Home setCategory={setCategory} data={data} key={"home"} />
+              <Home
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"home"}
+              />
             }
           />
           <Route
             path="/menu/pizzas"
             element={
-              <Pizzas setCategory={setCategory} data={data} key={"pizzas"} />
+              <Pizzas
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"pizzas"}
+              />
             }
           />
           <Route
             path="/menu/sushi"
             element={
-              <Sushi setCategory={setCategory} data={data} key={"sushi"} />
+              <Sushi
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"sushi"}
+              />
             }
           />
           <Route
             path="/menu/drink"
             element={
-              <Drink setCategory={setCategory} data={data} key={"drink"} />
+              <Drink
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"drink"}
+              />
             }
           />
           <Route
             path="/menu/snacks"
             element={
-              <Snacks setCategory={setCategory} data={data} key={"snacks"} />
+              <Snacks
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"snacks"}
+              />
             }
           />
           <Route
             path="/menu/combo"
             element={
-              <Combo setCategory={setCategory} data={data} key={"combo"} />
+              <Combo
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"combo"}
+              />
             }
           />
           <Route
@@ -128,7 +159,12 @@ const App = () => {
           <Route
             path="/menu/sauce"
             element={
-              <Sauce setCategory={setCategory} data={data} key={"sauce"} />
+              <Sauce
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"sauce"}
+              />
             }
           />
         </Routes>
