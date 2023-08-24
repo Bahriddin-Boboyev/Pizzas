@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { DataContext } from "../../context";
+import EmptyBasketIcon from "../../ui/empty-basket-icon";
+import "./main.scss";
 
 const Basket = ({ basket, showBasket }) => {
+  const prods = JSON.parse(localStorage.getItem("cart"));
+  const { context } = useContext(DataContext);
+  const [products, setProducts] = useState(prods ? [...prods] : []);
+
+  useEffect(() => {
+    if (context?.store) {
+      setProducts(context.store);
+    }
+  }, [context]);
+
   return (
     <div className={`basket ${basket ? "flex" : ""}`}>
       <div className="basket__box">
@@ -23,23 +38,47 @@ const Basket = ({ basket, showBasket }) => {
         </svg>
       </div>
       <ul className="basket__content">
-        <li className="basket__item">
-          <img
-            src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg"
-            alt="Pizza"
-          />
-          <div className="basket__info">
-            <h6>Цыпленок барбекю</h6>
-            <p>Традиционное тесто, 23 см</p>
-            <div style={{ flex: "1 1 0%" }}></div>
-            <div className="basket__btn-box">
-              <button>-</button>
-              <span className="basket__input">1</span>
-              <button>+</button>
-            </div>
-            <span>295 ₽</span>
-          </div>
-        </li>
+        {!products.length ? (
+          <lottie-player
+            class="anime_father"
+            src="https://lottie.host/19d8ab04-73aa-4591-b3ce-5452e0e9f640/9lJD396bxj.json"
+            background="transparent"
+            speed="1"
+            style={{
+              marginTop: "50%",
+              width: "100%",
+
+              /*             width: "300px",
+              height: "300px", */
+            }}
+            loop
+            autoplay
+          ></lottie-player>
+        ) : (
+          products?.map((prod) => (
+            <li className="basket__item" key={prod._id}>
+              <img src={prod.image} alt={prod.name} />
+              <div className="basket__info">
+                <h6>
+                  {prod.name.length > 15
+                    ? `${prod.name.slice(0, 15)}...`
+                    : prod.name}
+                </h6>
+                <p>
+                  {prod.description.length > 15
+                    ? `${prod.description.slice(0, 20)}...`
+                    : prod.description}
+                </p>
+                <div className="basket__btn-box">
+                  <button>-</button>
+                  <span className="basket__input">1</span>
+                  <button>+</button>
+                </div>
+                <span>{prod.price} ₽</span>
+              </div>
+            </li>
+          ))
+        )}
       </ul>
       <div className="basket__footer">
         <span>Итого: 0 ₽</span>

@@ -7,6 +7,7 @@ import {
 } from "./actions";
 
 const reducer = (state, action) => {
+  const items = localStorage.getItem("cart");
   switch (action.type) {
     case SHOW_BASKET:
       return (state = { ...state, basket: action.payload });
@@ -17,7 +18,6 @@ const reducer = (state, action) => {
     case GET_PRODUCTS:
       return (state = { ...state, prod: action.payload });
     case GET_STORE_ITEM:
-      const items = localStorage.getItem("cart");
       if (state?.store) {
         return (state = { ...state, store: [...state?.store, action.payload] });
       } else if (JSON.parse(items)?.length) {
