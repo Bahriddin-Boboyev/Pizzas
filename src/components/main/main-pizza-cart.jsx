@@ -1,5 +1,6 @@
 import React from "react";
 import { ThreeDots } from "react-loader-spinner";
+import { cartSlice } from "../../helpers/cart-length-slice";
 import "./main.scss";
 
 const MainPizzaCart = ({
@@ -46,16 +47,8 @@ const MainPizzaCart = ({
                       <div className="mainPizza__img-box">
                         <img src={product.image} alt="img" />
                       </div>
-                      <h3>
-                        {product.name.length > 15
-                          ? `${product.name.slice(0, 15)}...`
-                          : product.name}
-                      </h3>
-                      <p>
-                        {product.description.length > 15
-                          ? `${product.description.slice(0, 30)}...`
-                          : product.description}
-                      </p>
+                      <h3>{cartSlice(product.name, 15, 0, 15)}</h3>
+                      <p>{cartSlice(product.description, 30, 0, 30)}</p>
                       <div className="mainPizza__down-block">
                         <button onClick={() => getStoreItems(product)}>
                           Выбрать

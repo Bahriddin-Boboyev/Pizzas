@@ -24,7 +24,7 @@ const App = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
   const [category, setCategory] = useState("all");
   // store
-  const [cart, setCart] = useLocalStorageState("cart", []);
+  const [cart, setCart, { removeItem }] = useLocalStorageState("cart", []);
 
   //
   const exists = context.basket || context.login;
@@ -174,7 +174,13 @@ const App = () => {
         onClick={() => showBasket(false)}
         className={`${exists ? "blur" : "none"}`}
       ></div>
-      <Basket basket={context.basket} showBasket={showBasket} />
+      <Basket
+        basket={context.basket}
+        showBasket={showBasket}
+        getStoreItems={getStoreItems}
+        setCart={setCart}
+        removeItem={removeItem}
+      />
     </div>
   );
 };

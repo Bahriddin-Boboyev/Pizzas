@@ -6,27 +6,29 @@ import {
   GET_STORE_ITEM,
 } from "./actions";
 
+const items = localStorage.getItem("cart");
 const reducer = (state, action) => {
-  const items = localStorage.getItem("cart");
   switch (action.type) {
     case SHOW_BASKET:
-      return (state = { ...state, basket: action.payload });
+      return { ...state, basket: action.payload };
     case SHOW_LOGIN:
-      return (state = { ...state, login: action.payload });
+      return { ...state, login: action.payload };
     case API_PARAMS:
-      return (state = { ...state, params: action.payload });
+      return { ...state, params: action.payload };
     case GET_PRODUCTS:
-      return (state = { ...state, prod: action.payload });
+      return { ...state, prod: action.payload };
     case GET_STORE_ITEM:
-      if (state?.store) {
-        return (state = { ...state, store: [...state?.store, action.payload] });
+      if (action?.payload?.second) {
+        return { ...state, store: action.payload.second };
+      } else if (state?.store) {
+        return { ...state, store: [...state?.store, action.payload] };
       } else if (JSON.parse(items)?.length) {
-        return (state = {
+        return {
           ...state,
           store: [...JSON.parse(items), action.payload],
-        });
+        };
       }
-      return (state = { ...state, store: [action.payload] });
+      return { ...state, store: [action.payload] };
     default:
       return state;
   }

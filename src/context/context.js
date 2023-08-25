@@ -39,10 +39,10 @@ const DataProvider = ({ children }) => {
       payload: product,
     });
   };
-  const getStoreItems = (product) => {
+  const getStoreItems = (product, second) => {
     dispatch({
       type: GET_STORE_ITEM,
-      payload: product,
+      payload: second ? { product, second } : product,
     });
   };
 

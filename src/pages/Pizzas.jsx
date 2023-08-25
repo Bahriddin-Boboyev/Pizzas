@@ -3,6 +3,7 @@ import useGetCategory from "../helpers/get-category";
 import useAxiosFunction from "../hooks/useAxiosFunction";
 import useScrollFixed from "../helpers/scroll-fixed";
 import { ThreeDots } from "react-loader-spinner";
+import { cartSlice } from "../helpers/cart-length-slice";
 
 const Pizzas = ({ setCategory, getStoreItems, data }) => {
   const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();
@@ -52,16 +53,8 @@ const Pizzas = ({ setCategory, getStoreItems, data }) => {
                   <div className="pizzas__img-box">
                     <img src={prod.image} alt="img" />
                   </div>
-                  <h3>
-                    {prod.name.length > 15
-                      ? `${prod.name.slice(0, 15)}...`
-                      : prod.name}
-                  </h3>
-                  <p>
-                    {prod.description.length > 15
-                      ? `${prod.description.slice(0, 30)}...`
-                      : prod.description}
-                  </p>
+                  <h3>{cartSlice(prod.name, 15, 0, 15)}</h3>
+                  <p>{cartSlice(prod.description, 30, 0, 30)}</p>
                   <div className="pizzas__down-block">
                     <button onClick={() => getStoreItems(prod)}>Выбрать</button>
                     <span>от {prod.price} ₽</span>

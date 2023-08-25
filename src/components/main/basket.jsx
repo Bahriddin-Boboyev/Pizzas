@@ -1,20 +1,49 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { DataContext } from "../../context";
-import EmptyBasketIcon from "../../ui/empty-basket-icon";
+import React, { useState, useEffect, useContext } from "react";
 import "./main.scss";
+import { DataContext } from "../../context";
+import { cartSlice } from "../../helpers/cart-length-slice";
 
-const Basket = ({ basket, showBasket }) => {
-  const prods = JSON.parse(localStorage.getItem("cart"));
+const Basket = ({ basket, showBasket, getStoreItems }) => {
+  let prods = JSON.parse(localStorage.getItem("cart"));
   const { context } = useContext(DataContext);
-  const [products, setProducts] = useState(prods ? [...prods] : []);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if (context?.store) {
-      setProducts(context.store);
-    }
+    const uniqueProducts = Array.from(
+      new Set(prods?.map((prod) => prod._id)),
+    ).map((id) => prods?.find((prod) => prod._id === id));
+    setProducts(uniqueProducts);
+    // eslint-disable-next-line
   }, [context]);
+
+  //
+  const storeTotalCost = (cart) => {
+    if (!cart?.length) {
+      return 0;
+    }
+    return prods.reduce((total, item) => (total += item.price), 0);
+  };
+
+  // click function
+  const clickProductFunc = async (item, type) => {
+    let newProds = [...prods];
+    if (type === "increment") {
+      getStoreItems(item);
+    } else if (type === "decrement") {
+      const prodToDecrement = newProds.find((prod) => prod._id === item._id);
+      if (prodToDecrement) {
+        const index = newProds.indexOf(prodToDecrement);
+        newProds.splice(index, 1);
+        getStoreItems(item._id, newProds);
+      }
+    }
+  };
+
+  //
+  const itemsCount = (id) => {
+    const count = prods?.filter((item) => item._id === id).length;
+    return count;
+  };
 
   return (
     <div className={`basket ${basket ? "flex" : ""}`}>
@@ -38,7 +67,7 @@ const Basket = ({ basket, showBasket }) => {
         </svg>
       </div>
       <ul className="basket__content">
-        {!products.length ? (
+        {!prods.length ? (
           <lottie-player
             class="anime_father"
             src="https://lottie.host/19d8ab04-73aa-4591-b3ce-5452e0e9f640/9lJD396bxj.json"
@@ -47,41 +76,40 @@ const Basket = ({ basket, showBasket }) => {
             style={{
               marginTop: "50%",
               width: "100%",
-
-              /*             width: "300px",
-              height: "300px", */
             }}
             loop
             autoplay
           ></lottie-player>
         ) : (
-          products?.map((prod) => (
-            <li className="basket__item" key={prod._id}>
-              <img src={prod.image} alt={prod.name} />
-              <div className="basket__info">
-                <h6>
-                  {prod.name.length > 15
-                    ? `${prod.name.slice(0, 15)}...`
-                    : prod.name}
-                </h6>
-                <p>
-                  {prod.description.length > 15
-                    ? `${prod.description.slice(0, 20)}...`
-                    : prod.description}
-                </p>
-                <div className="basket__btn-box">
-                  <button>-</button>
-                  <span className="basket__input">1</span>
-                  <button>+</button>
+          products?.map((prod) =>
+            itemsCount(prod._id) > 0 ? (
+              <li className="basket__item" key={prod._id}>
+                <img src={prod.image} alt={prod.name} />
+                <div className="basket__info">
+                  <h6>{cartSlice(prod.description, 20, 0, 20)}</h6>
+                  <p>{cartSlice(prod.description, 25, 0, 25)}</p>
+                  <div className="basket__btn-box">
+                    <button onClick={() => clickProductFunc(prod, "decrement")}>
+                      -
+                    </button>
+                    <span className="basket__input">
+                      {itemsCount(prod._id)}
+                    </span>
+                    <button onClick={() => clickProductFunc(prod, "increment")}>
+                      +
+                    </button>
+                  </div>
+                  <span>{prod.price} ₽</span>
                 </div>
-                <span>{prod.price} ₽</span>
-              </div>
-            </li>
-          ))
+              </li>
+            ) : (
+              ""
+            ),
+          )
         )}
       </ul>
       <div className="basket__footer">
-        <span>Итого: 0 ₽</span>
+        <span>Итого: {storeTotalCost(prods)} ₽</span>
         <button className="on">Оформить заказ</button>
       </div>
     </div>
