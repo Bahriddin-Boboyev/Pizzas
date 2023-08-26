@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://pizza-v1ci.onrender.com/";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const axiosFunc = (params) => {
   return axios.create({
