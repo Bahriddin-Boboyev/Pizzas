@@ -146,6 +146,9 @@
 }
 
 .pizzas__item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   width: 300px;
   height: 440px;
   padding-bottom: 0px;
@@ -164,7 +167,6 @@
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
-    margin-bottom: 12px;
   }
   p {
     color: #191919;
@@ -173,18 +175,19 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
-    margin-bottom: 16px;
   }
 }
 
 .pizzas__img-box {
-  margin-bottom: 16px;
+  width: 250px;
+  height: 250px;
 }
 .pizzas__down-block {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   button {
     display: inline-flex;
     padding: 13px 32px;
