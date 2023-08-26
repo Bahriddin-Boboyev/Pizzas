@@ -213,3 +213,102 @@
     line-height: 24px;
   }
 }
+
+/* BASKET */
+
+.basket {
+  max-width: 900px;
+  &__title {
+    color: var(--black, #191919);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px;
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    width: 850px;
+    height: 152px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid var(--line-gray, #f0f0f0);
+    background: var(--white, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  &__img-desc--box {
+    width: 47%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__img--block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    padding: 10px;
+  }
+  &__description--block {
+    h3 {
+      color: var(--black, #191919);
+      font-family: Inter;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      margin-bottom: 5px;
+    }
+    p {
+      color: var(--black, #191919);
+      font-family: SF Pro Text;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  }
+  &__button-price--box {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      padding: 8px;
+      align-items: center;
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 6px;
+      background: var(--light-primary, #ffeee2);
+      width: 80px;
+      color: #ff7010;
+
+      button {
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        border: transparent;
+        background-color: transparent;
+        color: #ff7010;
+      }
+    }
+    h4 {
+      color: var(--primary, #ff7010);
+      text-align: right;
+      font-family: Inter;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px; /* 140% */
+    }
+  }
+}

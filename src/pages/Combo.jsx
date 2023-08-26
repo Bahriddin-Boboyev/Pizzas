@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { cartSlice } from "../helpers/cart-length-slice";
-import useGetCategory from "../helpers/get-category";
-import useScrollFixed from "../helpers/scroll-fixed";
 import useAxiosFunction from "../hooks/useAxiosFunction";
+import { cartSlice, useScrollFixed, useGetCategory } from "../helpers";
 
 const Combo = ({ setCategory, getStoreItems, data }) => {
   const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();

@@ -6,20 +6,12 @@ import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 import { DataContext } from "../../context";
-import useScrollFixed from "../../helpers/scroll-fixed";
+import { useScrollFixed, storeTotalCost } from "../../helpers";
 
 const Navbar = ({ cart }) => {
   const { context, showBasket, showLogin } = useContext(DataContext);
   //
   const fixed = useScrollFixed(60);
-
-  const storeTotalCost = (cart) => {
-    if (!cart?.length) {
-      return 0;
-    }
-    const items = JSON.parse(localStorage.getItem("cart"));
-    return items.reduce((total, item) => (total += item.price), 0);
-  };
 
   return (
     <nav className="navbar">

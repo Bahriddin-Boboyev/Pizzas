@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Footer from "./components/footer/footer";
 import Navbar from "./components/header/Navbar";
 import { DataContext } from "./context/context";
-import Basket from "./components/main/basket";
+import BasketRight from "./components/main/basket-right";
 import {
   Combo,
   Desserts,
@@ -13,6 +13,7 @@ import {
   Sauce,
   Snacks,
   Sushi,
+  Basket,
 } from "./pages";
 import axios from "./apis/api";
 import useAxiosFunction from "./hooks/useAxiosFunction";
@@ -167,6 +168,18 @@ const App = () => {
               />
             }
           />
+          <Route
+            path="/basket"
+            element={
+              <Basket
+                context={context}
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"basket"}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </div>
@@ -174,7 +187,8 @@ const App = () => {
         onClick={() => showBasket(false)}
         className={`${exists ? "blur" : "none"}`}
       ></div>
-      <Basket
+      <BasketRight
+        context={context}
         basket={context.basket}
         showBasket={showBasket}
         getStoreItems={getStoreItems}

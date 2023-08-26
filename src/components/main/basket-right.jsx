@@ -1,11 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./main.scss";
-import { DataContext } from "../../context";
-import { cartSlice } from "../../helpers/cart-length-slice";
+import { Link } from "react-router-dom";
 
-const Basket = ({ basket, showBasket, getStoreItems }) => {
+import {
+  cartSlice,
+  storeTotalCost,
+  clickStoreProduct,
+  storeItemsCount,
+} from "../../helpers";
+
+const BasketRight = ({ basket, context, showBasket, getStoreItems }) => {
   let prods = JSON.parse(localStorage.getItem("cart"));
-  const { context } = useContext(DataContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -16,38 +21,9 @@ const Basket = ({ basket, showBasket, getStoreItems }) => {
     // eslint-disable-next-line
   }, [context]);
 
-  //
-  const storeTotalCost = (cart) => {
-    if (!cart?.length) {
-      return 0;
-    }
-    return prods.reduce((total, item) => (total += item.price), 0);
-  };
-
-  // click function
-  const clickProductFunc = async (item, type) => {
-    let newProds = [...prods];
-    if (type === "increment") {
-      getStoreItems(item);
-    } else if (type === "decrement") {
-      const prodToDecrement = newProds.find((prod) => prod._id === item._id);
-      if (prodToDecrement) {
-        const index = newProds.indexOf(prodToDecrement);
-        newProds.splice(index, 1);
-        getStoreItems(item._id, newProds);
-      }
-    }
-  };
-
-  //
-  const itemsCount = (id) => {
-    const count = prods?.filter((item) => item._id === id).length;
-    return count;
-  };
-
   return (
-    <div className={`basket ${basket ? "flex" : ""}`}>
-      <div className="basket__box">
+    <div className={`basket-right ${basket ? "flex" : ""}`}>
+      <div className="basket-right__box">
         <h3>Ваш заказ</h3>
         <svg
           onClick={() => showBasket(false)}
@@ -66,8 +42,8 @@ const Basket = ({ basket, showBasket, getStoreItems }) => {
           </g>
         </svg>
       </div>
-      <ul className="basket__content">
-        {!prods.length ? (
+      <ul className="basket-right__content">
+        {!prods?.length ? (
           <lottie-player
             class="anime_father"
             src="https://lottie.host/19d8ab04-73aa-4591-b3ce-5452e0e9f640/9lJD396bxj.json"
@@ -82,20 +58,36 @@ const Basket = ({ basket, showBasket, getStoreItems }) => {
           ></lottie-player>
         ) : (
           products?.map((prod) =>
-            itemsCount(prod._id) > 0 ? (
-              <li className="basket__item" key={prod._id}>
+            storeItemsCount(prod._id, prods) > 0 ? (
+              <li className="basket-right__item" key={prod._id}>
                 <img src={prod.image} alt={prod.name} />
-                <div className="basket__info">
+                <div className="basket-right__info">
                   <h6>{cartSlice(prod.description, 20, 0, 20)}</h6>
                   <p>{cartSlice(prod.description, 25, 0, 25)}</p>
-                  <div className="basket__btn-box">
-                    <button onClick={() => clickProductFunc(prod, "decrement")}>
+                  <div className="basket-right__btn-box">
+                    <button
+                      onClick={() =>
+                        clickStoreProduct(
+                          { item: prod, type: "decrement" },
+                          prods,
+                          getStoreItems,
+                        )
+                      }
+                    >
                       -
                     </button>
-                    <span className="basket__input">
-                      {itemsCount(prod._id)}
+                    <span className="basket-right__input">
+                      {storeItemsCount(prod._id, prods)}
                     </span>
-                    <button onClick={() => clickProductFunc(prod, "increment")}>
+                    <button
+                      onClick={() =>
+                        clickStoreProduct(
+                          { item: prod, type: "increment" },
+                          prods,
+                          getStoreItems,
+                        )
+                      }
+                    >
                       +
                     </button>
                   </div>
@@ -108,12 +100,14 @@ const Basket = ({ basket, showBasket, getStoreItems }) => {
           )
         )}
       </ul>
-      <div className="basket__footer">
+      <div className="basket-right__footer">
         <span>Итого: {storeTotalCost(prods)} ₽</span>
-        <button className="on">Оформить заказ</button>
+        <Link className="on" to={"/basket"} onClick={() => showBasket(false)}>
+          Оформить заказ
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Basket;
+export default BasketRight;

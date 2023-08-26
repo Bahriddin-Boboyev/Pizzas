@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./header.scss";
-import { cart1 } from "../../helpers/cart-up";
+import {
+  cart1,
+  cart2,
+  cart3,
+  cart4,
+  cart5,
+  cart6,
+  cart7,
+  cart8,
+} from "../../helpers/cart-up";
 
 const CartUp = () => {
   const [fixed, setFixed] = useState(false);
@@ -28,7 +37,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart2} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>
@@ -36,7 +45,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart3} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>
@@ -44,7 +53,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart4} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>
@@ -52,7 +61,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart5} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>
@@ -60,7 +69,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart6} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>
@@ -68,7 +77,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart7} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>
@@ -76,7 +85,7 @@ const CartUp = () => {
         <li className="cartUp__item">
           <div className="cartUp__image-block">
             <div>
-              <img src={cart1} alt="cart1" />
+              <img src={cart8} alt="cart1" />
             </div>
             <h4>Акции</h4>
           </div>

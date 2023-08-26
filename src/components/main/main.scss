@@ -114,9 +114,9 @@
   }
 }
 
-/* BASKET */
+/* BASKET  RIGHT */
 
-.basket {
+.basket-right {
   height: 100vh;
   width: 420px;
   z-index: 30;
@@ -129,7 +129,7 @@
   display: none;
 }
 
-.basket__box {
+.basket-right__box {
   justify-content: space-between;
   align-items: center;
   padding: 32px 20px 20px;
@@ -144,7 +144,7 @@
     cursor: pointer;
   }
 }
-.basket__content {
+.basket-right__content {
   flex-direction: column;
   flex: 1;
   gap: 20px;
@@ -152,7 +152,7 @@
   display: flex;
   overflow-y: scroll;
 
-  .basket__item {
+  .basket-right__item {
     background: #fff;
     border: 1px solid #f0f0f0;
     border-radius: 12px;
@@ -165,7 +165,7 @@
       margin-right: 16px;
     }
 
-    .basket__info {
+    .basket-right__info {
       flex-flow: wrap;
       flex: 1;
       justify-content: space-between;
@@ -181,7 +181,7 @@
         font-weight: 400;
       }
 
-      .basket__btn-box {
+      .basket-right__btn-box {
         width: 92px;
         height: 36px;
         background: #ffeee2;
@@ -223,7 +223,7 @@
     }
   }
 }
-.basket__footer {
+.basket-right__footer {
   border-top: 1px solid #f0f0f0;
   justify-content: space-between;
   align-items: center;
@@ -235,7 +235,7 @@
     font-size: 20px;
     font-weight: 600;
   }
-  button {
+  a {
     color: #fff;
     cursor: pointer;
     background: #ff7010;

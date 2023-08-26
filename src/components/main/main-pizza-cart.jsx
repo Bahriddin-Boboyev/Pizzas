@@ -1,7 +1,7 @@
 import React from "react";
-import { ThreeDots } from "react-loader-spinner";
-import { cartSlice } from "../../helpers/cart-length-slice";
 import "./main.scss";
+import { ThreeDots } from "react-loader-spinner";
+import { cartSlice } from "../../helpers";
 
 const MainPizzaCart = ({
   products,
