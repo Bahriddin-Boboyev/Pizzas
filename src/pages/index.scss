@@ -306,7 +306,7 @@
       color: var(--primary, #ff7010);
       text-align: right;
       font-family: Inter;
-      font-size: 20px;
+      font-size: 18px;
       font-style: normal;
       font-weight: 600;
       line-height: 28px; /* 140% */
@@ -319,6 +319,73 @@
       justify-content: center;
       margin-top: 10%;
       color: #ff7010;
+    }
+  }
+
+  &__promo-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 850px;
+    height: 80px;
+    flex-shrink: 0;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--line-gray, #f0f0f0);
+    background: var(--white, #fff);
+    padding: 16px 24px;
+
+    h4 {
+      color: var(--primary, #ff7010);
+      text-align: right;
+      font-family: Inter;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+    }
+  }
+
+  &__form-box {
+    button {
+      border: none;
+      cursor: pointer;
+      content: "";
+      width: 48px;
+      height: 46px;
+      flex-shrink: 0;
+      display: inline-block;
+      border-radius: 6px;
+      background: var(--primary, #ff7010);
+      background-image: url("../img/send.svg");
+      background-size: 46px;
+      vertical-align: middle;
+      margin-left: -13%;
+      margin-top: -1%;
+    }
+  }
+  &__input {
+    width: 320px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid var(--line-gray, #f0f0f0);
+    background: #fff;
+    padding: 13px;
+    outline: none;
+    color: var(--gray-text, #4a4949);
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    ::placeholder {
+      color: var(--gray-text, #8c2e2e);
+      font-family: SF Pro Text;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
     }
   }
 }

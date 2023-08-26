@@ -78,8 +78,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="container">
-        <Navbar cart={cart} />
+      <Navbar cart={cart} />
+      <div className="container wrapper">
         <Routes>
           <Route
             path="/"
@@ -181,8 +181,8 @@ const App = () => {
             }
           />
         </Routes>
-        <Footer />
       </div>
+      <Footer />
       <div
         onClick={() => showBasket(false)}
         className={`${exists ? "blur" : "none"}`}

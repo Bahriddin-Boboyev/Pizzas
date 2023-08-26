@@ -90,10 +90,9 @@ html {
 }
 
 body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  // justify-content: space-between;
+  // height: 100vh;
+  // display: flex;
+  // flex-direction: column;
   font-family: "SF Pro Text", sans-serif;
   background: var(--background-gray, #fafafa);
 }
@@ -134,10 +133,15 @@ img {
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+.App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
+}
+
+.wrapper {
+  flex-grow: 1;
   font-family: "SF Pro Text", sans-serif;
   background: var(--background-gray, #fafafa);
 }

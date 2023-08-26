@@ -250,3 +250,117 @@
 .flex {
   display: flex;
 }
+
+/* BASKET ORDER */
+
+.basket-order {
+  h2 {
+    color: var(--black, #191919);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
+  &__list {
+    // overflow: unset !important;
+    width: 890px;
+    padding: 0 20px;
+  }
+  &__item {
+    margin-bottom: 50px;
+    height: 348px !important;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid var(--line-gray, #f0f0f0);
+    background: var(--white, #fff);
+  }
+
+  &__desc-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 200px;
+
+    h3 {
+      flex-grow: 0;
+      width: 150px;
+      color: var(--black, #191919);
+      text-align: center;
+      font-family: SF Pro Text;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      flex-grow: 0;
+      color: var(--black, #191919);
+      text-align: center;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+      margin-bottom: 12px;
+    }
+    button {
+      width: 158px;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      color: var(--white, #fff);
+      border-radius: 6px;
+      background: var(--primary, #ff7010);
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      border: none;
+      margin-bottom: 0px;
+      cursor: pointer;
+    }
+  }
+
+  &__img-box {
+    img {
+      width: 130px;
+      height: 130px;
+      flex-shrink: 0;
+    }
+    margin-bottom: 12px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+// .swiper-button-prev {
+//   position: relative;
+//   margin-left: -2%;
+// }
+.swiper-button-prev::after {
+  content: "" !important;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-image: url("../../img/left-prev.svg") !important;
+  border-radius: 41px;
+  background-size: contain;
+  // left: -10px;
+}
+
+.swiper-button-next::after {
+  content: "" !important;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-image: url("../../img/right-prev.svg") !important;
+  border-radius: 41px;
+  background-size: contain;
+}

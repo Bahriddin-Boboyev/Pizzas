@@ -14,7 +14,7 @@ const Navbar = ({ cart }) => {
   const fixed = useScrollFixed(60);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar container">
       <div className="navbar__main">
         <div className="navbar__section-1">
           <div className="navbar__section_1_block">
