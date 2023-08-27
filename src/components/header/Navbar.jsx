@@ -68,8 +68,7 @@ const Navbar = ({ cart }) => {
         <h2>Вход в аккаунт</h2>
         <p>Сможете быстро оформлять заказы, использовать бонусы </p>
         <form className="login__modal-box">
-          <h4>Номер телефона</h4>
-          <input type="number" placeholder="+998" />
+          <input type="" placeholder="+998" />
           <button>Войти</button>
           <p>
             Продолжая, вы соглашаетесь со сбором и обработкой персональных

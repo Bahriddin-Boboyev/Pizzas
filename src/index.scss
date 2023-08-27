@@ -184,3 +184,13 @@ img {
   align-items: center;
   justify-content: center;
 }
+
+/* error */
+.error_msg {
+  color: rgba(244, 75, 75, 0.99);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

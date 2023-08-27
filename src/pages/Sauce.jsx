@@ -27,6 +27,9 @@ const Sauce = ({ setCategory, getStoreItems, data }) => {
 
   return (
     <div className={`pizzas ${fixed ? "pizzas-fixed" : ""}`}>
+            {error ? (
+        <h2 className="error_msg">{JSON.stringify(error)}</h2>
+      ) : (
       <>
         {loading ? (
           <div className="loading__visible">
@@ -61,7 +64,7 @@ const Sauce = ({ setCategory, getStoreItems, data }) => {
             </ul>
           </>
         )}
-      </>
+      </>)}
     </div>
   );
 };

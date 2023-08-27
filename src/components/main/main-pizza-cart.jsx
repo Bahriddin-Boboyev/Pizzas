@@ -14,7 +14,7 @@ const MainPizzaCart = ({
 
   return (
     <div className="mainPizza">
-      {error && <p>{JSON.stringify(error)}</p>}
+      {error && <h2 className="error_msg">{JSON.stringify(error)}</h2>}
       {loading ? (
         <>
           <div className="loading__visible">

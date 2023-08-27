@@ -27,41 +27,47 @@ const Drink = ({ setCategory, getStoreItems, data }) => {
 
   return (
     <div className={`pizzas ${fixed ? "pizzas-fixed" : ""}`}>
-      <>
-        {loading ? (
-          <div className="loading__visible">
-            <ThreeDots
-              height="150"
-              width="150"
-              radius="9"
-              color="#4fa94d"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
-              visible={loading}
-            />
-          </div>
-        ) : (
-          <>
-            <h1>Напитки</h1>
-            <ul className="pizzas__list">
-              {products.map((prod) => (
-                <li className="pizzas__item" key={prod._id}>
-                  <div className="pizzas__img-box">
-                    <img src={prod.image} alt="img" />
-                  </div>
-                  <h3>{cartSlice(prod.name, 15, 0, 15)}</h3>
-                  <p>{cartSlice(prod.description, 30, 0, 30)}</p>
-                  <div className="pizzas__down-block">
-                    <button onClick={() => getStoreItems(prod)}>Выбрать</button>
-                    <span>от {prod.price} ₽</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </>
+      {error ? (
+        <h2 className="error_msg">{JSON.stringify(error)}</h2>
+      ) : (
+        <>
+          {loading ? (
+            <div className="loading__visible">
+              <ThreeDots
+                height="150"
+                width="150"
+                radius="9"
+                color="#4fa94d"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={loading}
+              />
+            </div>
+          ) : (
+            <>
+              <h1>Напитки</h1>
+              <ul className="pizzas__list">
+                {products.map((prod) => (
+                  <li className="pizzas__item" key={prod._id}>
+                    <div className="pizzas__img-box">
+                      <img src={prod.image} alt="img" />
+                    </div>
+                    <h3>{cartSlice(prod.name, 15, 0, 15)}</h3>
+                    <p>{cartSlice(prod.description, 30, 0, 30)}</p>
+                    <div className="pizzas__down-block">
+                      <button onClick={() => getStoreItems(prod)}>
+                        Выбрать
+                      </button>
+                      <span>от {prod.price} ₽</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 };

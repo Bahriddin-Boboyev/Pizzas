@@ -225,6 +225,15 @@
     }
   }
 }
+.basket__right--error {
+  margin-top: 60% !important;
+}
+
+/* flex */
+.flex {
+  display: flex;
+}
+
 .basket-right__footer {
   border-top: 1px solid #f0f0f0;
   justify-content: space-between;
@@ -248,9 +257,6 @@
     font-size: 16px;
     font-weight: 400;
   }
-}
-.flex {
-  display: flex;
 }
 
 /* BASKET ORDER */

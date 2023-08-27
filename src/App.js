@@ -175,6 +175,7 @@ const App = () => {
                 context={context}
                 setCategory={setCategory}
                 data={data}
+                error={error}
                 getStoreItems={getStoreItems}
                 key={"basket"}
               />
@@ -190,6 +191,7 @@ const App = () => {
       <BasketRight
         context={context}
         basket={context.basket}
+        error={error}
         showBasket={showBasket}
         getStoreItems={getStoreItems}
         setCart={setCart}
