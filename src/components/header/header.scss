@@ -51,13 +51,15 @@
     line-height: 18px;
 
     span {
+      display: inline-block;
+      width: 40px;
+      height: auto;
       color: #191919;
       text-align: right;
       font-family: Inter;
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
-      line-height: 18px;
     }
   }
 }
@@ -225,15 +227,18 @@
   div {
     margin: 0 auto;
     display: flex;
-    width: 32px;
-    height: 32px;
     padding: 0px 4px;
     margin-top: 20px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    img {
+      width: 35px;
+      height: 35px;
+    }
   }
   h4 {
+    display: block;
     color: var(--red, #e23535);
     text-align: center;
     font-family: SF Pro Text;
@@ -280,139 +285,6 @@
   background-color: #e23535;
   img {
     margin-top: 76px;
-  }
-}
-
-/* LOGIN MODAL */
-.login__modal--sign {
-  padding: 50px 0 !important;
-}
-.login__modal {
-  padding: 20px 0;
-  position: fixed;
-  width: 850px;
-  height: 480 px;
-  flex-shrink: 0;
-  border-radius: 24px;
-  background: var(--background-gray, #f9f9f9);
-  z-index: 33;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  h2 {
-    color: var(--black, #191919);
-    text-align: center;
-    font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 40px;
-    margin-bottom: 10px;
-  }
-  p {
-    margin: 0 auto;
-    width: 380px;
-    color: var(--black, #191919);
-    text-align: center;
-    font-family: SF Pro Text;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    margin-bottom: 10px;
-  }
-  .login-modal__est-acc {
-    margin-top: 10px !important;
-    opacity: 1 !important;
-    span {
-      cursor: pointer;
-      color: #ff7010;
-      opacity: 1 !important;
-    }
-  }
-
-  /* register */
-  .login__modal-box {
-    position: relative;
-    width: 300px;
-    margin: 0 auto;
-    h4 {
-      color: var(--gray-text, #a5a5a5);
-      font-family: Inter;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 18px;
-      margin-bottom: 8px;
-    }
-    input {
-      width: 320px;
-      height: 48px;
-      border-radius: 6px;
-      border: 1px solid var(--line-gray, #f0f0f0);
-      background: #fff;
-      flex-shrink: 0;
-      color: var(--gray-text, #a5a5a5);
-      font-family: SF Pro Text;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22px;
-      margin-bottom: 8px;
-      outline: none;
-      padding-left: 30px;
-    }
-    button {
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      width: 320px;
-      padding: 13px 40px;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      border-radius: 6px;
-      background: var(--primary, #ff7010);
-      color: var(--white, #fff);
-      text-align: center;
-      font-family: SF Pro Text;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22px;
-      border: none;
-      cursor: pointer;
-      margin-bottom: 5px;
-    }
-    p {
-      width: 100%;
-      margin: 0 auto;
-      text-align: center;
-      width: 320px;
-      color: var(--black, #191919);
-      text-align: center;
-      font-family: Inter;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 18px;
-      opacity: 0.4;
-    }
-  }
-}
-
-.btn__login-modal {
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  right: -60px;
-  svg {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
   }
 }
 

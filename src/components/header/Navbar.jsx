@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import locationIcon from "../../img/location.svg";
@@ -6,14 +6,31 @@ import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 import { DataContext } from "../../context";
-import { useScrollFixed, storeTotalCost } from "../../helpers";
 import Register from "../auth/register";
 import Login from "../auth/login";
+import { useScrollFixed, storeTotalCost } from "../../helpers";
 
 const Navbar = ({ cart }) => {
   const { context, showBasket, showLogin } = useContext(DataContext);
   //
   const fixed = useScrollFixed(60);
+
+  // timer
+  const [seconds, setSeconds] = useState(35 * 60);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((seconds) => {
+        if (seconds === 0) {
+          return 35 * 60;
+        } else {
+          return seconds - 1;
+        }
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
 
   return (
     <nav className="navbar container">
@@ -30,7 +47,10 @@ const Navbar = ({ cart }) => {
           </div>
           <div className="navbar__item">
             <Link to={"#"}>
-              Среднее время доставки*: <span>00:24:19</span>
+              Среднее время доставки*:{" "}
+              <span>{`${minutes}:${
+                remainingSeconds < 10 ? "0" : ""
+              }${remainingSeconds}`}</span>
             </Link>
           </div>
         </div>

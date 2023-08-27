@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./style.scss";
 import axios from "../../apis/api";
 import useAxiosFunction from "../../hooks/useAxiosFunction";
 import { toast } from "react-toastify";
