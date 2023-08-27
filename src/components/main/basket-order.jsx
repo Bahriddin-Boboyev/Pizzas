@@ -47,7 +47,7 @@ const BasketOrder = ({ data, title, category, getStoreItems }) => {
             }}
           >
             {product?.map((prod) => (
-              <SwiperSlide className="basket-order__item">
+              <SwiperSlide className="basket-order__item" key={prod._id}>
                 <div className="basket-order__img-box">
                   <img src={prod.image} alt={prod.name} />
                 </div>

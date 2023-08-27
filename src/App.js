@@ -18,6 +18,7 @@ import {
 import axios from "./apis/api";
 import useAxiosFunction from "./hooks/useAxiosFunction";
 import useLocalStorageState from "use-local-storage-state";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const { context, showBasket, getProducts, getStoreItems } =
@@ -28,7 +29,7 @@ const App = () => {
   const [cart, setCart, { removeItem }] = useLocalStorageState("cart", []);
 
   //
-  const exists = context.basket || context.login;
+  const exists = context?.basket || context?.login?.hidden;
   useEffect(() => {
     if (exists) {
       document.body.style.overflow = "hidden";
@@ -196,6 +197,18 @@ const App = () => {
         getStoreItems={getStoreItems}
         setCart={setCart}
         removeItem={removeItem}
+      />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
       />
     </div>
   );

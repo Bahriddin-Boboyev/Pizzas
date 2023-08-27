@@ -20,10 +20,10 @@ const DataProvider = ({ children }) => {
       payload: basket,
     });
   };
-  const showLogin = (login) => {
+  const showLogin = ({ hidden, type }) => {
     dispatch({
       type: SHOW_LOGIN,
-      payload: login,
+      payload: { hidden, type },
     });
   };
   const apiParams = (params) => {

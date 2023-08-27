@@ -284,11 +284,14 @@
 }
 
 /* LOGIN MODAL */
+.login__modal--sign {
+  padding: 50px 0 !important;
+}
 .login__modal {
-  padding: 60px 0;
+  padding: 20px 0;
   position: fixed;
   width: 850px;
-  height: 444px;
+  height: 480 px;
   flex-shrink: 0;
   border-radius: 24px;
   background: var(--background-gray, #f9f9f9);
@@ -305,7 +308,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 40px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
   }
   p {
     margin: 0 auto;
@@ -317,8 +320,19 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+    margin-bottom: 10px;
+  }
+  .login-modal__est-acc {
+    margin-top: 10px !important;
+    opacity: 1 !important;
+    span {
+      cursor: pointer;
+      color: #ff7010;
+      opacity: 1 !important;
+    }
   }
 
+  /* register */
   .login__modal-box {
     position: relative;
     width: 300px;
@@ -345,7 +359,7 @@
       font-style: normal;
       font-weight: 400;
       line-height: 22px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       outline: none;
       padding-left: 30px;
     }
@@ -369,7 +383,7 @@
       line-height: 22px;
       border: none;
       cursor: pointer;
-      margin-bottom: 12px;
+      margin-bottom: 5px;
     }
     p {
       width: 100%;
@@ -387,6 +401,7 @@
     }
   }
 }
+
 .btn__login-modal {
   cursor: pointer;
   border: none;

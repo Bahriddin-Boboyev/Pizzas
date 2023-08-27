@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
+import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { DataProvider } from "./context";
@@ -11,5 +12,5 @@ root.render(
     <DataProvider>
       <App />
     </DataProvider>
-  </BrowserRouter>
+  </BrowserRouter>,
 );
