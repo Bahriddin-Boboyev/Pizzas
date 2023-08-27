@@ -40,7 +40,22 @@ const Navbar = ({ cart }) => {
             <div className="navbar__img_block">
               <img src={locationIcon} alt="location" />
             </div>
-            <p className="navbar__location">Москва</p>
+            <select name="city" id="city">
+              <option
+                className="options"
+                value="moscow"
+                defaultValue={"moscow"}
+              >
+                Москва
+              </option>
+              s
+              <option className="options" value="tomsk">
+                Томск
+              </option>
+              <option className="options" value="kazan">
+                Казань
+              </option>
+            </select>
           </div>
           <div className="navbar__item">
             <Link to={"#"}>Проверить адрес</Link>

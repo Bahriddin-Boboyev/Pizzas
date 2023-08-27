@@ -7,6 +7,9 @@ import {
   storeTotalCost,
 } from "../helpers";
 import BasketOrder from "../components/main/basket-order";
+import About from "../components/main/about";
+import Delivery from "../components/main/delivery";
+
 const Basket = ({ context, getStoreItems, error }) => {
   let prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState([]);
@@ -107,6 +110,8 @@ const Basket = ({ context, getStoreItems, error }) => {
                 category={"Соусы"}
                 getStoreItems={getStoreItems}
               />
+              <About />
+              <Delivery />
             </>
           )}
         </div>

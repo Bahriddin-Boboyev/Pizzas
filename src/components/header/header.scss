@@ -30,14 +30,31 @@
   line-height: 18px;
   margin-left: 8px;
 }
-.navbar__location::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  display: inline-block;
+/* custome */
+select {
+  outline: none;
+  width: 80px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Remove default arrow */
+  background-repeat: no-repeat;
   background-image: url("../../img/arrow-down.svg");
-  vertical-align: middle;
-  margin-left: 8px;
+  /* Add custom arrow */
+  background-position-x: 93%;
+  background-position-y: 1px;
+  padding: 0 5px;
+  margin-left: 5px;
+  border: none;
+  background-color: transparent;
+
+  option {
+    border: none;
+    outline: none;
+    -webkit-appearance: none; /* for Safari */
+    margin: 0;
+    border-radius: 0;
+  }
 }
 
 .navbar__item {
