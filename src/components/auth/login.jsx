@@ -1,6 +1,46 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import axios from "../../apis/api";
+import useAxiosFunction from "../../hooks/useAxiosFunction";
 
 const Login = ({ context, showLogin }) => {
+  // eslint-disable-next-line
+  const [response, error, loading, axiosFetch] = useAxiosFunction();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // post login
+  const postLogin = (data) => {
+    toast.loading("Loading...", { toastId: 2 });
+    axiosFetch({
+      axiosInstance: axios(),
+      method: "POST",
+      url: "/login",
+      requestConfig: {
+        data,
+      },
+    });
+  };
+
+  // submit func
+  const handlerLogin = (event) => {
+    event.preventDefault();
+    if (email && password) {
+      postLogin({ email, password });
+    }
+  };
+
+  useEffect(() => {
+    // set token
+    if (response?.data) {
+      localStorage.setItem("token", JSON.stringify(response?.data));
+      showLogin({ hidden: false });
+    }
+    // eslint-disable-next-line
+  }, [response?.data]);
+
   return (
     <div
       className={`${
@@ -11,10 +51,25 @@ const Login = ({ context, showLogin }) => {
     >
       <h2>Вход в аккаунт</h2>
       <p>Сможете быстро оформлять заказы, использовать бонусы </p>
-      <form className="login__modal-box ">
-        <input required type="email" placeholder="электронная почта" />
-        <input required type="password" placeholder="пароль" />
-        <button>Войти</button>
+      <form
+        className="login__modal-box"
+        onSubmit={(event) => handlerLogin(event)}
+      >
+        <input
+          value={email}
+          required
+          type="email"
+          placeholder="электронная почта"
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <input
+          value={password}
+          required
+          type="password"
+          placeholder="пароль"
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <button onClick={(event) => handlerLogin(event)}>Войти</button>
         <p>
           Продолжая, вы соглашаетесь со сбором и обработкой персональных данных
           и пользовательским соглашением

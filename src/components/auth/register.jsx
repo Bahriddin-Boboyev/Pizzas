@@ -5,10 +5,11 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 
 const Register = ({ context, showLogin }) => {
+  // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("998");
   const [password, setPassword] = useState("");
   // post register
   const postRegister = (data) => {
@@ -20,10 +21,6 @@ const Register = ({ context, showLogin }) => {
       method: "POST",
       url: "/users",
       requestConfig: {
-        headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRjZmQxNTcyMWZiNmFmZDk0OWY2NzI3IiwiYWRtaW4iOnRydWV9LCJpYXQiOjE2OTE1MDE2MTIsImV4cCI6MTY5MTU4ODAxMn0.X2RsUeAkbIc1ug0N3ZXMU8eDC9DAxt6HMtkc_fBHtc4",
-        },
         data,
       },
     });

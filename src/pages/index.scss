@@ -392,3 +392,18 @@
     }
   }
 }
+
+/* Stock */
+
+.open__soong {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  h1 {
+    color: #ff7010;
+  }
+}

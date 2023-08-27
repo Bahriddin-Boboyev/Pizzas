@@ -13,6 +13,7 @@ import {
   Sauce,
   Snacks,
   Sushi,
+  Stock,
   Basket,
 } from "./pages";
 import axios from "./apis/api";
@@ -166,6 +167,17 @@ const App = () => {
                 data={data}
                 getStoreItems={getStoreItems}
                 key={"sauce"}
+              />
+            }
+          />
+          <Route
+            path="/menu/fire"
+            element={
+              <Stock
+                setCategory={setCategory}
+                data={data}
+                getStoreItems={getStoreItems}
+                key={"stock"}
               />
             }
           />

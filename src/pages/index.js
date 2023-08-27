@@ -7,5 +7,17 @@ import Desserts from "./Desserts";
 import Snacks from "./Snacks";
 import Sauce from "./Sauce";
 import Basket from "./Basket";
+import Stock from "./Stock";
 
-export { Home, Pizzas, Sushi, Combo, Drink, Snacks, Desserts, Sauce, Basket };
+export {
+  Home,
+  Pizzas,
+  Sushi,
+  Combo,
+  Drink,
+  Snacks,
+  Desserts,
+  Sauce,
+  Basket,
+  Stock,
+};

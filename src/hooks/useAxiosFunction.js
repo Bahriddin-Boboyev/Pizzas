@@ -4,6 +4,7 @@ const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [controller, setController] = useState(0);
 
   const axiosFetch = async (configObj) => {
