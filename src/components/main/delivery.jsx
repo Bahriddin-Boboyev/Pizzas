@@ -1,9 +1,12 @@
 import React from "react";
+import { storeTotalCost } from "../../helpers";
 import Comment from "./comment";
 import Lease from "./lease";
 import Payment from "./payment";
 
 const Delivery = () => {
+  const prods = storeTotalCost(JSON.parse(localStorage.getItem("cart")));
+
   return (
     <div className="container delivery">
       <div className="delivery__hero">
@@ -116,7 +119,7 @@ const Delivery = () => {
         <div className="line"></div>
 
         <div className="delivery__checkout">
-          <h3>Итого: 2 379 ₽</h3>
+          <h3>Итого: {prods} ₽</h3>
           <button className="btn">Оформить заказ</button>
         </div>
       </div>

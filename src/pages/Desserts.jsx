@@ -47,7 +47,7 @@ const Desserts = ({ setCategory, getStoreItems, data }) => {
             </div>
           ) : (
             <>
-              <h1>Комбо</h1>
+              <h1>Десерты</h1>
               <ul className="pizzas__list">
                 {products.map((prod) => (
                   <li className="pizzas__item" key={prod._id}>
