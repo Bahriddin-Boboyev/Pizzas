@@ -1,4 +1,7 @@
 import React from "react";
+import Comment from "./comment";
+import Lease from "./lease";
+import Payment from "./payment";
 
 const Delivery = () => {
   return (
@@ -11,7 +14,7 @@ const Delivery = () => {
             id="delivery"
             name="delivery_type"
             value={"delivery"}
-            checked
+            defaultChecked
           />
           <label htmlFor="delivery">Доставка</label>
           <input
@@ -80,10 +83,10 @@ const Delivery = () => {
         </div>
         <div className="delivery__order-box">
           <h4>Когда выполнить заказ?</h4>
-
           <div className="delivery__order-time-box">
             <div>
               <input
+                className="input__custom"
                 type="radio"
                 id="soon"
                 name="delivery-time"
@@ -94,6 +97,7 @@ const Delivery = () => {
             </div>
             <div>
               <input
+                className="input__custom"
                 type="radio"
                 id="byTime"
                 name="delivery-time"
@@ -102,6 +106,18 @@ const Delivery = () => {
               <label htmlFor="byTime">По времени</label>
             </div>
           </div>
+        </div>
+        <div className="line"></div>
+        <Payment />
+        <div className="line"></div>
+        <Lease />
+        <div className="line"></div>
+        <Comment />
+        <div className="line"></div>
+
+        <div className="delivery__checkout">
+          <h3>Итого: 2 379 ₽</h3>
+          <button className="btn">Оформить заказ</button>
         </div>
       </div>
     </div>

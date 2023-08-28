@@ -419,6 +419,7 @@
 
 /* delivery */
 .delivery {
+  margin-bottom: 50px;
   &__hero {
     display: flex;
     align-items: center;
@@ -497,6 +498,7 @@
     }
   }
   &__order-box {
+    margin-bottom: 20px;
     h4 {
       color: var(--gray-text, #a5a5a5);
       font-family: SF Pro Text;
@@ -507,35 +509,9 @@
       margin-bottom: 12px;
     }
     label {
+      cursor: pointer;
       display: inline-block;
       margin-left: 5px;
-    }
-
-    input[type="radio"]:after {
-      width: 15px;
-      height: 15px;
-      border-radius: 15px;
-      position: relative;
-      background-color: #fff;
-      content: "";
-      top: -1px;
-      left: -1px;
-      display: inline-block;
-      visibility: visible;
-      border: 1px solid var(--gray-text, #a5a5a5);
-    }
-    input[type="radio"]:checked:after {
-      width: 15px;
-      height: 15px;
-      top: -1px;
-      left: -1px;
-      border-radius: 15px;
-      position: relative;
-      background-color: #ff7010;
-      content: "";
-      display: inline-block;
-      visibility: visible;
-      border: 1px solid #ff7010;
     }
   }
   &__order-time-box {
@@ -544,4 +520,155 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__checkout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      color: var(--primary, #ff7010);
+      font-family: Inter;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+    }
+    button {
+      cursor: pointer;
+      color: var(--white, #fff);
+      text-align: center;
+      font-family: SF Pro Text;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      display: inline-flex;
+      padding: 13px 24px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 6px;
+      background: var(--primary, #ff7010);
+      border: none;
+    }
+  }
+}
+
+/* payment */
+.payment {
+  margin-bottom: 20px;
+  &__box {
+    h2 {
+      color: var(--black, #191919);
+      font-family: Inter;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 32px;
+      margin-bottom: 16px;
+    }
+  }
+  &__payment-box {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    label {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+
+/* lease */
+
+.lease {
+  &__box {
+    margin-bottom: 20px;
+    h2 {
+      color: var(--black, #191919);
+      font-family: Inter;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 32px;
+      margin-bottom: 16px;
+    }
+  }
+  &__lease-box {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    label {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+  &__input {
+    width: 160px;
+    height: 48px;
+    flex-shrink: 0;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+  }
+  &__fix {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .input__custom {
+      margin-top: -8px;
+    }
+  }
+  &__ps {
+    margin-left: 5px;
+    position: relative;
+    span {
+      position: absolute;
+      right: 15px;
+      top: 25%;
+      opacity: 0.6;
+    }
+  }
+}
+
+/* comment */
+
+.comment {
+  margin-bottom: 20px;
+  h2 {
+    color: var(--black, #191919);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+  &__box {
+    textarea {
+      width: 850px;
+      height: 200px;
+      flex-shrink: 0;
+      outline: none;
+      padding: 16px 13px;
+      border-radius: 6px;
+      border: 1px solid var(--line-gray, #f0f0f0);
+      background: #fff;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+.line {
+  max-width: 850px;
+  width: 100%;
+  height: 1px;
+  flex-shrink: 0;
+  background: var(--line-gray, #f0f0f0);
+  margin-bottom: 20px;
 }

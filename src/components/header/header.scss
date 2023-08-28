@@ -130,14 +130,16 @@ select {
   background: var(--line-gray, #f0f0f0);
 }
 .navbar__down {
-  width: 1290px;
+  max-width: 1290px;
+  width: auto;
   background: var(--background-gray, #fafafa);
   display: flex;
-  padding-top: 20px;
-  padding-bottom: 20px;
   align-items: center;
   justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 10;
+  gap: 30px;
 }
 .fixed {
   margin-top: -60px;
@@ -150,7 +152,8 @@ select {
 .navbar__down-img-block {
   display: flex;
   align-items: center;
-  gap: 12px;
+  column-gap: 20px;
+  margin-right: 80px;
   :nth-child(1) {
     width: 30px;
     height: 30px;
@@ -163,7 +166,9 @@ select {
 }
 .navbar__down-korzinka-block {
   cursor: pointer;
+  margin-left: 160px;
   button {
+    width: max-content;
     cursor: pointer;
     display: inline-flex;
     padding: 8px 16px;
@@ -201,6 +206,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 42px;
   a {
     color: var(--black, #191919);
     text-align: center;
