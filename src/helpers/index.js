@@ -4,6 +4,7 @@ import useScrollFixed from "./scroll-fixed";
 import { storeItemsCount } from "./store-items-count";
 import { storeTotalCost } from "./store-total-cost";
 import { toastNotification } from "./toast-notification";
+import { storeTotalCount } from "./store-total-count";
 
 //
 export {
@@ -11,6 +12,7 @@ export {
   clickStoreProduct,
   useScrollFixed,
   storeItemsCount,
+  storeTotalCount,
   storeTotalCost,
   toastNotification,
 };
