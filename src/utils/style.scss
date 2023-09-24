@@ -1,0 +1,33 @@
+.network_err {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+
+  &__box {
+    max-width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  &__btn {
+    margin-top: 20px;
+    color: #fff;
+    font-family: SF Pro Text;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    width: 150px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #ff7010;
+    border: none;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}

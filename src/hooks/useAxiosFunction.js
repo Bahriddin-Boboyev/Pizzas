@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { useState } from "react";
+import { toastNotification } from "../helpers";
+import { useNavigate } from "react-router-dom";
+
 const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line
-  const [controller, setController] = useState(0);
+
+  const navigate = useNavigate();
 
   const axiosFetch = async (configObj) => {
     const { axiosInstance, method, url, requestConfig = {} } = configObj;
@@ -27,35 +29,24 @@ const useAxiosFunction = () => {
         setResponse(res.data);
       }
       // toast success
-      toast.update(2, {
-        render: "done",
-        type: "success",
-        hideProgressBar: true,
-        autoClose: 1500,
-        isLoading: false,
-      });
+      toastNotification(2, "success", "done");
+
+      setError(null);
     } catch (error) {
       const error_msg = error?.response?.data?.error;
       setError(error_msg ? error_msg : error.message);
 
+      console.log(error);
+
+      if (error?.code === "ERR_NETWORK" || error.code === "ERR_BAD_REQUEST") {
+        navigate("/network-error");
+      }
       // toast error
-      toast.update(2, {
-        render: error_msg ? error_msg : error,
-        type: "error",
-        hideProgressBar: true,
-        autoClose: 1500,
-        isLoading: false,
-      });
+      toastNotification(2, "error", `error: ${error_msg}`);
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    // useEffect cleanup function
-    return () => controller && controller.abort();
-  }, [controller]);
-
   return [response, error, loading, axiosFetch];
 };
 

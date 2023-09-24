@@ -1,9 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import Footer from "./components/footer/footer";
-import Navbar from "./components/header/Navbar";
+import { useContext, useEffect } from "react";
 import { DataContext } from "./context/context";
 import BasketRight from "./components/main/basket-right";
+import useAxiosFunction from "./hooks/useAxiosFunction";
+import useLocalStorageState from "use-local-storage-state";
+import { NetworkErrorRoutes, ProtectedRoutes } from "./utils";
+import { ToastCustomContainer } from "./components";
 import {
   Combo,
   Desserts,
@@ -15,19 +17,13 @@ import {
   Sushi,
   Stock,
   Basket,
+  PageNotFound,
 } from "./pages";
-import axios from "./apis/api";
-import useAxiosFunction from "./hooks/useAxiosFunction";
-import useLocalStorageState from "use-local-storage-state";
-import { ToastContainer } from "react-toastify";
 
 const App = () => {
-  const { context, showBasket, getProducts, getStoreItems } =
-    useContext(DataContext);
+  const { context, showBasket, getProducts } = useContext(DataContext);
   const [data, error, loading, axiosFetch] = useAxiosFunction();
-  const [category, setCategory] = useState("all");
-  // store
-  const [cart, setCart, { removeItem }] = useLocalStorageState("cart", []);
+  const [cart, setCart] = useLocalStorageState("cart", []);
 
   //
   const exists = context?.basket || context?.login?.hidden;
@@ -38,29 +34,6 @@ const App = () => {
       document.body.style.overflow = "visible ";
     }
   }, [exists]);
-
-  ///
-  const getData = () => {
-    axiosFetch({
-      axiosInstance: axios({
-        page: { limit: 100, offset: 0 },
-        filters: { category },
-      }),
-      method: "GET",
-      url: "/product",
-      requestConfig: {
-        headers: {
-          Authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRjZmQxNTcyMWZiNmFmZDk0OWY2NzI3IiwiYWRtaW4iOnRydWV9LCJpYXQiOjE2OTE1MDE2MTIsImV4cCI6MTY5MTU4ODAxMn0.X2RsUeAkbIc1ug0N3ZXMU8eDC9DAxt6HMtkc_fBHtc4",
-        },
-      },
-    });
-  };
-
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line
-  }, [category]);
 
   useEffect(() => {
     getProducts({
@@ -80,148 +53,30 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar cart={cart} />
-      <div className="container wrapper">
+      <div className="wrapper">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"home"}
-              />
-            }
-          />
-          <Route
-            path="/menu/pizzas"
-            element={
-              <Pizzas
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"pizzas"}
-              />
-            }
-          />
-          <Route
-            path="/menu/sushi"
-            element={
-              <Sushi
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"sushi"}
-              />
-            }
-          />
-          <Route
-            path="/menu/drink"
-            element={
-              <Drink
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"drink"}
-              />
-            }
-          />
-          <Route
-            path="/menu/snacks"
-            element={
-              <Snacks
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"snacks"}
-              />
-            }
-          />
-          <Route
-            path="/menu/combo"
-            element={
-              <Combo
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"combo"}
-              />
-            }
-          />
-          <Route
-            path="/menu/desserts"
-            element={
-              <Desserts
-                setCategory={setCategory}
-                data={data}
-                key={"desserts"}
-              />
-            }
-          />
-          <Route
-            path="/menu/sauce"
-            element={
-              <Sauce
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"sauce"}
-              />
-            }
-          />
-          <Route
-            path="/menu/fire"
-            element={
-              <Stock
-                setCategory={setCategory}
-                data={data}
-                getStoreItems={getStoreItems}
-                key={"stock"}
-              />
-            }
-          />
-          <Route
-            path="/basket"
-            element={
-              <Basket
-                context={context}
-                setCategory={setCategory}
-                data={data}
-                error={error}
-                getStoreItems={getStoreItems}
-                key={"basket"}
-              />
-            }
-          />
+          <Route path="/" element={<ProtectedRoutes />}>
+            <Route index element={<Home />} />
+            <Route path="menu/pizzas" element={<Pizzas />} />
+            <Route path="menu/sushi" element={<Sushi />} />
+            <Route path="menu/drink" element={<Drink />} />
+            <Route path="menu/snacks" element={<Snacks />} />
+            <Route path="menu/combo" element={<Combo />} />
+            <Route path="menu/desserts" element={<Desserts />} />
+            <Route path="menu/sauce" element={<Sauce />} />
+            <Route path="menu/fire" element={<Stock />} />
+            <Route path="basket" element={<Basket />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/network-error" element={<NetworkErrorRoutes />} />
         </Routes>
       </div>
-      <Footer />
       <div
         onClick={() => showBasket(false)}
         className={`${exists ? "blur" : "none"}`}
       ></div>
-      <BasketRight
-        context={context}
-        basket={context.basket}
-        error={error}
-        showBasket={showBasket}
-        getStoreItems={getStoreItems}
-        setCart={setCart}
-        removeItem={removeItem}
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <BasketRight />
+      <ToastCustomContainer />
     </div>
   );
 };
