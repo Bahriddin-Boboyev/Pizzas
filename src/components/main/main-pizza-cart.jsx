@@ -1,35 +1,31 @@
-import React from "react";
 import "./main.scss";
-import { ThreeDots } from "react-loader-spinner";
-import { cartSlice } from "../../helpers";
+import { useContext, useState, useEffect } from "react";
+import { DataContext } from "../../context";
+import { getProducts, useAxiosFunction } from "../../hooks";
+import { Loading } from "../../components";
 
-const MainPizzaCart = ({
-  products,
-  error,
-  loading,
-  maxItemsPerCategory,
-  getStoreItems,
-}) => {
+const MainPizzaCart = () => {
+  const { context, getStoreItems } = useContext(DataContext);
+  const [data, error, loading, axiosFetch] = useAxiosFunction();
+  const [products, setProducts] = useState([]);
+  const maxItemsPerCategory = 8;
+
+  useEffect(() => {
+    getProducts(axiosFetch, "all");
+  }, []);
+
+  const prod = data?.data?.products;
+  useEffect(() => {
+    setProducts(prod);
+  }, [data]);
+
   const categories = [...new Set(products?.map((item) => item.category.name))];
 
   return (
     <div className="mainPizza">
       {error && <h2 className="error_msg">{JSON.stringify(error)}</h2>}
       {loading ? (
-        <>
-          <div className="loading__visible">
-            <ThreeDots
-              height="150"
-              width="150"
-              radius="9"
-              color="#4fa94d"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
-              visible={products.loading}
-            />
-          </div>
-        </>
+        <Loading visible={true} />
       ) : (
         <>
           {categories.map((category) => (
@@ -47,8 +43,8 @@ const MainPizzaCart = ({
                       <div className="mainPizza__img-box">
                         <img src={product.image} alt="img" />
                       </div>
-                      <h3>{cartSlice(product.name, 15, 0, 15)}</h3>
-                      <p>{cartSlice(product.description, 30, 0, 30)}</p>
+                      <h3>{product.name}</h3>
+                      <p>{product.description}</p>
                       <div className="mainPizza__down-block">
                         <button onClick={() => getStoreItems(product)}>
                           Выбрать

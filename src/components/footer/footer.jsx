@@ -2,12 +2,13 @@ import React from "react";
 import "./footer.scss";
 import logo1 from "../../img/navbar-pizza.svg";
 import logo2 from "../../img/navbar-logo.svg";
+// import logo3 from "../../img/navbar-logo.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="footer container">
-      <div className="footer__box">
+    <div className="footer">
+      <div className="footer__box container">
         <div className="footer__box-logo">
           <img src={logo1} alt="logo" />
           <img src={logo2} alt="logo" />
@@ -78,7 +79,9 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <h3 className="footer__copyright">© Copyright 2023 — Куда Пицца</h3>
+      <h3 className="footer__copyright container">
+        © Copyright 2023 — Куда Пицца
+      </h3>
     </div>
   );
 };

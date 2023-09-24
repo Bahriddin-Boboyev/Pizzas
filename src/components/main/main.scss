@@ -43,8 +43,9 @@
 .mainPizza__list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  column-gap: 5px;
 }
 .mainPizza__item {
   display: flex;
@@ -62,6 +63,11 @@
   margin-bottom: 50px;
 
   h3 {
+    --max-lines: 1;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
     color: #191919;
     font-family: SF Pro Text;
     font-size: 18px;
@@ -70,6 +76,11 @@
     line-height: 24px;
   }
   p {
+    --max-lines: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
     color: #191919;
     font-family: SF Pro Text;
     font-size: 16px;
@@ -294,6 +305,11 @@
     padding-right: 10px;
 
     h3 {
+      --max-lines: 2;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--max-lines);
       flex-grow: 0;
       width: 150px;
       color: var(--black, #191919);
@@ -307,6 +323,11 @@
     }
 
     p {
+      --max-lines: 2;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--max-lines);
       flex-grow: 0;
       color: var(--black, #191919);
       text-align: center;
@@ -321,7 +342,6 @@
       width: 158px;
       height: 40px;
       justify-content: center;
-      align-items: center;
       flex-shrink: 0;
       color: var(--white, #fff);
       border-radius: 6px;
@@ -337,13 +357,13 @@
   }
 
   &__img-box {
+    width: 130px;
+    height: 130px;
     img {
-      width: 130px;
-      height: 130px;
       flex-shrink: 0;
     }
     margin-bottom: 12px;
-    text-align: center;
+    // text-align: center;
     margin: 0 auto;
   }
 }

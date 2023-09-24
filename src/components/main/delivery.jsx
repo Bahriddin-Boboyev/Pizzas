@@ -17,6 +17,7 @@ const Delivery = () => {
             id="delivery"
             name="delivery_type"
             value={"delivery"}
+            // checked
             defaultChecked
           />
           <label htmlFor="delivery">Доставка</label>
@@ -94,7 +95,8 @@ const Delivery = () => {
                 id="soon"
                 name="delivery-time"
                 value={"soon"}
-                checked
+                // checked
+                defaultChecked
               />
               <label htmlFor="soon">Как можно скорее</label>
             </div>

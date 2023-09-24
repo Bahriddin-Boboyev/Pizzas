@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./main.scss";
 import { Link } from "react-router-dom";
 import {
@@ -7,8 +7,12 @@ import {
   clickStoreProduct,
   storeItemsCount,
 } from "../../helpers";
+import { DataContext } from "../../context";
+import { useAxiosFunction } from "../../hooks";
 
-const BasketRight = ({ basket, context, error, showBasket, getStoreItems }) => {
+const BasketRight = () => {
+  const { context, showBasket, getStoreItems } = useContext(DataContext);
+  const [data, error, loading, axiosFetch] = useAxiosFunction();
   let prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState([]);
 
@@ -21,7 +25,7 @@ const BasketRight = ({ basket, context, error, showBasket, getStoreItems }) => {
   }, [context]);
 
   return (
-    <div className={`basket-right ${basket ? "flex" : ""}`}>
+    <div className={`basket-right ${context?.basket ? "flex" : ""}`}>
       {error ? (
         <h2 className="error_msg basket__right--error">
           {JSON.stringify(error)}

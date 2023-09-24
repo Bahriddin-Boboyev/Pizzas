@@ -9,11 +9,13 @@ import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
 import { useScrollFixed, storeTotalCost } from "../../helpers";
+import useLocalStorageState from "use-local-storage-state";
 
-const Navbar = ({ cart }) => {
+const Navbar = () => {
   const { context, showBasket, showLogin } = useContext(DataContext);
+  const [cart] = useLocalStorageState("cart", []);
   //
-  const fixed = useScrollFixed(60);
+  const fixed = useScrollFixed(50);
 
   // timer
   const [seconds, setSeconds] = useState(35 * 60);
@@ -33,8 +35,8 @@ const Navbar = ({ cart }) => {
   const remainingSeconds = seconds % 60;
 
   return (
-    <nav className="navbar container">
-      <div className="navbar__main">
+    <nav className="navbar">
+      <div className="navbar__main container">
         <div className="navbar__section-1">
           <div className="navbar__section_1_block">
             <div className="navbar__img_block">
@@ -82,27 +84,30 @@ const Navbar = ({ cart }) => {
           </div>
         </div>
       </div>
-      <div className="navbar__line"></div>
+      <div className="navbar__line container"></div>
+      <div className={`container ${fixed ? "fixed-helper" : ""}`}></div>
       <div className={`navbar__down ${fixed ? "fixed" : ""}`}>
-        <Link to={"/"} className="navbar__down-img-block">
-          <img src={pizza} alt="pizza" />
-          <img src={logo} alt="logo" />
-        </Link>
-        <div className={`navbar__down__category  ${!fixed ? "none" : ""}`}>
-          <Link to="/menu/fire">Акции</Link>
-          <Link to="/menu/pizzas">Пицца</Link>
-          <Link to="/menu/sushi">Суши</Link>
-          <Link to="/menu/drink">Напитки</Link>
-          <Link to="/menu/snacks">Закуски</Link>
-          <Link to="/menu/combo">Комбо</Link>
-          <Link to="/menu/desserts">Десерты</Link>
-          <Link to="/menu/sauce">Соусы</Link>
-        </div>
-        <div className="navbar__down-korzinka-block">
-          <button onClick={() => showBasket(true)}>
-            <img src={korzinka} alt="korzinka" />
-            <span>{storeTotalCost(cart)} ₽</span>
-          </button>
+        <div className="navbar__wrapper">
+          <Link to={"/"} className="navbar__down-img-block">
+            <img src={pizza} alt="pizza" />
+            <img src={logo} alt="logo" />
+          </Link>
+          <div className={`navbar__down__category  ${!fixed ? "none" : ""}`}>
+            <Link to="/menu/fire">Акции</Link>
+            <Link to="/menu/pizzas">Пицца</Link>
+            <Link to="/menu/sushi">Суши</Link>
+            <Link to="/menu/drink">Напитки</Link>
+            <Link to="/menu/snacks">Закуски</Link>
+            <Link to="/menu/combo">Комбо</Link>
+            <Link to="/menu/desserts">Десерты</Link>
+            <Link to="/menu/sauce">Соусы</Link>
+          </div>
+          <div className="navbar__down-korzinka-block">
+            <button onClick={() => showBasket(true)}>
+              <img src={korzinka} alt="korzinka" />
+              <span>{storeTotalCost(cart)} ₽</span>
+            </button>
+          </div>
         </div>
       </div>
       <Register context={context} showLogin={showLogin} />

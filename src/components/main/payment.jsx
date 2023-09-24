@@ -13,7 +13,8 @@ const Payment = () => {
               id="nalichi"
               name="pay"
               value={"nalichi"}
-              defaultChecked
+              // defaultChecked
+              checked
             />
             <label htmlFor="nalichi">Наличными</label>
           </div>

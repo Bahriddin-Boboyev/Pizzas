@@ -19,7 +19,8 @@ const Lease = () => {
               name="lease"
               value={"bezlease"}
               onChange={handleRadioChange}
-              defaultChecked
+              // defaultChecked
+              checked
             />
             <label htmlFor="bezlease">Без сдачи</label>
           </div>

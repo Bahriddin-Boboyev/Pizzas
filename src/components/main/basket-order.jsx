@@ -1,31 +1,20 @@
 import React from "react";
-import { ThreeDots } from "react-loader-spinner";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { cartSlice } from "../../helpers";
+import { Loading } from "../";
 
 const BasketOrder = ({ data, title, category, getStoreItems }) => {
-  const product = data?.prod?.prod?.filter(
-    (item) => item.category.name === category,
-  );
+  const product = data?.filter((item) => item.category.name === category);
 
   return (
     <div className="container basket-order">
       <h2>{title}</h2>
       {!product ? (
-        <div className="loading__visible">
-          <ThreeDots
-            height="150"
-            width="150"
-            radius="9"
-            color="#4fa94d"
-            ariaLabel="three-dots-loading"
-            visible={true}
-          />
-        </div>
+        <Loading visible={true} />
       ) : (
         <ul className="basket-order__list">
           <Swiper
@@ -52,8 +41,8 @@ const BasketOrder = ({ data, title, category, getStoreItems }) => {
                   <img src={prod.image} alt={prod.name} />
                 </div>
                 <div className="basket-order__desc-box">
-                  <h3>{cartSlice(prod.description, 22, 0, 22)}</h3>
-                  <p>{cartSlice(prod.description, 50, 0, 50)}</p>
+                  <h3>{prod.description}</h3>
+                  <p>{prod.description}</p>
                   <button onClick={() => getStoreItems(prod)}>
                     {prod.price} ₽
                   </button>
