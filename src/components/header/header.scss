@@ -350,6 +350,38 @@ select {
   }
 }
 
+.mobile__menu {
+  right: 0;
+  transition: 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transform: translateX(100%);
+  position: fixed;
+  background-color: #ff7010;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 90vh;
+  padding-bottom: 20px;
+  z-index: 12;
+  touch-action: none;
+  border-radius: 5px;
+  a {
+    font-weight: 600;
+    color: #444;
+    font-size: 27px;
+    display: block;
+    text-align: end;
+  }
+}
+.nav__scroll-top {
+  top: 71px;
+  height: 95vh;
+}
+
+.transform {
+  transform: translateX(0);
+}
+
 /*  */
 .none {
   display: none;

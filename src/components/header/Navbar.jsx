@@ -33,11 +33,20 @@ const Navbar = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (toggle) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [toggle]);
+
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
   return (
-    <nav className="navbar">
+    <nav className="navbar navbar-1">
       <div className="navbar__main container">
         <div className="navbar__section-1">
           <div className="navbar__section_1_block">
@@ -126,6 +135,36 @@ const Navbar = () => {
           <img src={korzinka2} alt="korzinka 2" />
           <span>{storeTotalCount(cart)}</span>
         </button>
+      </div>
+      <div
+        className={`mobile__menu container ${toggle ? "transform" : ""} ${
+          fixed ? "nav__scroll-top" : ""
+        }`}
+      >
+        <Link to="/menu/fire" onClick={() => setToggle(false)}>
+          Акции
+        </Link>
+        <Link to="/menu/pizzas" onClick={() => setToggle(false)}>
+          Пицца
+        </Link>
+        <Link to="/menu/sushi" onClick={() => setToggle(false)}>
+          Суши
+        </Link>
+        <Link to="/menu/drink" onClick={() => setToggle(false)}>
+          Напитки
+        </Link>
+        <Link to="/menu/snacks" onClick={() => setToggle(false)}>
+          Закуски
+        </Link>
+        <Link to="/menu/combo" onClick={() => setToggle(false)}>
+          Комбо
+        </Link>
+        <Link to="/menu/desserts" onClick={() => setToggle(false)}>
+          Десерты
+        </Link>
+        <Link to="/menu/sauce" onClick={() => setToggle(false)}>
+          Соусы
+        </Link>
       </div>
     </nav>
   );

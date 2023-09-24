@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import "./main.scss";
 import { Link } from "react-router-dom";
 import {
-  cartSlice,
   storeTotalCost,
   clickStoreProduct,
   storeItemsCount,
