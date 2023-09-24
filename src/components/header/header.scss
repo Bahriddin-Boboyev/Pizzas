@@ -437,7 +437,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     height: $height;
     width: $width;
-    top: 30px;
+    top: 10px;
     background-color: $dark;
   }
 
@@ -462,6 +462,7 @@ input::-webkit-inner-spin-button {
   }
 
   .menu_btn {
+    margin-top: 20px;
     display: unset;
     @include btn(20px, 0);
 
