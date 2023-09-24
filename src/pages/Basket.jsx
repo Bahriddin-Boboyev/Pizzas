@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
 import "./index.scss";
-import {
-  cartSlice,
-  clickStoreProduct,
-  storeItemsCount,
-  storeTotalCost,
-} from "../helpers";
+import { useEffect, useState, useContext } from "react";
 import BasketOrder from "../components/main/basket-order";
 import About from "../components/main/about";
 import Delivery from "../components/main/delivery";
+import { getProducts, useAxiosFunction } from "../hooks/";
+import { DataContext } from "../context";
+import { clickStoreProduct, storeItemsCount, storeTotalCost } from "../helpers";
 
-const Basket = ({ context, getStoreItems, error }) => {
+const Basket = () => {
   let prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState([]);
+  const { context, getStoreItems } = useContext(DataContext);
+  // eslint-disable-next-line
+  const [data, error, loading, axiosFetch] = useAxiosFunction();
+
+  useEffect(() => {
+    getProducts(axiosFetch);
+  }, []);
 
   // unique product
   useEffect(() => {
@@ -22,6 +26,9 @@ const Basket = ({ context, getStoreItems, error }) => {
     setProducts(uniqueProducts);
     // eslint-disable-next-line
   }, [context]);
+
+  // short url
+  const items = data?.data?.products;
 
   return (
     <div className="container basket">
@@ -47,8 +54,8 @@ const Basket = ({ context, getStoreItems, error }) => {
                           <img src={prod.image} alt={prod.name} />
                         </div>
                         <div className="basket__description--block">
-                          <h3>{cartSlice(prod.description, 40, 0, 40)}</h3>
-                          <p>{cartSlice(prod.description, 30, 0, 30)}</p>
+                          <h3>{prod.description}</h3>
+                          <p>{prod.description}</p>
                         </div>
                       </div>
                       <div className="basket__button-price--box">
@@ -99,13 +106,13 @@ const Basket = ({ context, getStoreItems, error }) => {
                 <h4>Итого: {storeTotalCost(prods)} ₽</h4>
               </div>
               <BasketOrder
-                data={context}
+                data={items}
                 title="Добавить к заказу?"
                 category={"Закуски"}
                 getStoreItems={getStoreItems}
               />
               <BasketOrder
-                data={context}
+                data={items}
                 title="Соусы"
                 category={"Соусы"}
                 getStoreItems={getStoreItems}

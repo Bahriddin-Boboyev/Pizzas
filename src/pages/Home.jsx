@@ -1,31 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import "./index.scss";
 import CartDown from "../components/header/cart-down";
 import CartUp from "../components/header/cart-up";
 import MainPizzaCart from "../components/main/main-pizza-cart";
-import { DataContext } from "../context";
 
-const Home = ({ setCategory }) => {
+const Home = () => {
   const [descShow, setDescShow] = useState(true);
-  const { context, getStoreItems } = useContext(DataContext);
-  const [products, setProducts] = useState([]);
-  const maxItemsPerCategory = 8;
-
-  useEffect(() => {
-    setCategory("all");
-  }, [setCategory]);
-
-  useEffect(() => {
-    if (context?.prod) {
-      setProducts({ ...context.prod });
-    }
-  }, [context]);
 
   return (
     <div>
       <CartUp />
       <CartDown />
-      <div className="home__search-box">
+      <div className="home__search-box container">
         <div>
           <label>Проверить адрес доставки</label>
           <input type="text" placeholder="Адрес" />
@@ -33,13 +19,7 @@ const Home = ({ setCategory }) => {
         </div>
       </div>
 
-      <MainPizzaCart
-        products={products?.prod}
-        error={products.error}
-        loading={products.loading}
-        maxItems={maxItemsPerCategory}
-        getStoreItems={getStoreItems}
-      />
+      <MainPizzaCart />
 
       <div className="home__dostavki">
         <h2>Доставка пиццы в Москве</h2>

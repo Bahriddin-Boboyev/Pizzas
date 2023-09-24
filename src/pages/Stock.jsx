@@ -1,22 +1,10 @@
-import React, { useEffect } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import useAxiosFunction from "../hooks/useAxiosFunction";
-import { useScrollFixed, useGetCategory } from "../helpers";
+import { useScrollFixed } from "../helpers";
+import { Loading } from "../components";
 
-const Stock = ({ setCategory }) => {
-  const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();
-  //
-  useGetCategory(axiosFetch);
-  useEffect(() => {
-    if (!error && !loading && dataAxios?.data) {
-      const result = dataAxios?.data.categories.find(
-        (item) => item.name === "Закуски",
-      );
-      setCategory(result._id);
-    }
-    // eslint-disable-next-line
-  }, [dataAxios, error, loading]);
-  //
+const Stock = () => {
+  const [data, error, loading, axiosFetch] = useAxiosFunction();
+
   const fixed = useScrollFixed(60);
 
   return (
@@ -26,18 +14,7 @@ const Stock = ({ setCategory }) => {
       ) : (
         <>
           {loading ? (
-            <div className="loading__visible">
-              <ThreeDots
-                height="150"
-                width="150"
-                radius="9"
-                color="#4fa94d"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={loading}
-              />
-            </div>
+            <Loading visible={true} />
           ) : (
             <>
               <div className="open__soong">

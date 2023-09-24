@@ -1,30 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { ThreeDots } from "react-loader-spinner";
+import { useEffect, useState, useContext } from "react";
 import useAxiosFunction from "../hooks/useAxiosFunction";
-import { cartSlice, useScrollFixed, useGetCategory } from "../helpers";
+import { useScrollFixed } from "../helpers";
+import { getCategory, getProducts } from "../hooks";
+import { DataContext } from "../context";
+import { Items, Loading } from "../components";
 
-const Pizzas = ({ setCategory, getStoreItems, data }) => {
-  const [dataAxios, error, loading, axiosFetch] = useAxiosFunction();
-  const [product, setProduct] = useState([]);
-  useGetCategory(axiosFetch);
+const Pizzas = () => {
+  const [data, error, loading, axiosFetch] = useAxiosFunction();
+  const [data2, error2, loading2, axiosFetch2] = useAxiosFunction();
+  const { getStoreItems } = useContext(DataContext);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if (!error && !loading && dataAxios?.data) {
-      const result = dataAxios?.data.categories.find(
+    getCategory(axiosFetch2);
+  }, []);
+
+  useEffect(() => {
+    if (!error2 && !loading && data2?.data) {
+      const result = data2?.data.categories.find(
         (item) => item.name === "Пицца",
       );
-      setCategory(result._id);
+      getProducts(axiosFetch, result._id);
     }
     // eslint-disable-next-line
-  }, [dataAxios, error, loading]);
+  }, [data2, error2, loading2]);
 
   useEffect(() => {
     if (data?.data?.products) {
-      setProduct(data?.data?.products);
+      setProducts(data?.data?.products);
     }
   }, [data]);
-  const fixed = useScrollFixed(60);
-  const products = product.filter((item) => item.category.name === "Пицца");
+  const fixed = useScrollFixed(50);
 
   return (
     <div className={`pizzas ${fixed ? "pizzas-fixed" : ""}`}>
@@ -33,38 +39,14 @@ const Pizzas = ({ setCategory, getStoreItems, data }) => {
       ) : (
         <>
           {loading ? (
-            <div className="loading__visible">
-              <ThreeDots
-                height="150"
-                width="150"
-                radius="9"
-                color="#4fa94d"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={loading}
-              />
-            </div>
+            <Loading visible={true} />
           ) : (
             <>
-              <h1>Пицца</h1>
-              <ul className="pizzas__list">
-                {products.map((prod) => (
-                  <li className="pizzas__item" key={prod._id}>
-                    <div className="pizzas__img-box">
-                      <img src={prod.image} alt="img" />
-                    </div>
-                    <h3>{cartSlice(prod.name, 15, 0, 15)}</h3>
-                    <p>{cartSlice(prod.description, 30, 0, 30)}</p>
-                    <div className="pizzas__down-block">
-                      <button onClick={() => getStoreItems(prod)}>
-                        Выбрать
-                      </button>
-                      <span>от {prod.price} ₽</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <Items
+                getStoreItems={getStoreItems}
+                products={products}
+                title="Пицца"
+              />
             </>
           )}
         </>

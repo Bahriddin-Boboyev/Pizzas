@@ -8,6 +8,7 @@ import Snacks from "./Snacks";
 import Sauce from "./Sauce";
 import Basket from "./Basket";
 import Stock from "./Stock";
+import { PageNotFound } from "./404/PageNotFound";
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   Sauce,
   Basket,
   Stock,
+  PageNotFound,
 };

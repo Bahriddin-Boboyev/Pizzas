@@ -1,5 +1,4 @@
 .home__search-box {
-  width: 1290px;
   height: 80px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -7,20 +6,23 @@
   background: #fff;
   div {
     padding-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     label {
+      flex-shrink: 0;
       font-family: SF Pro Text;
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
-      margin-right: 32px;
-      margin-left: 28px;
     }
     input {
       padding: 20px;
-      width: 783px !important;
-      height: 48px !important;
-      flex-shrink: 0;
+      max-width: 783px;
+      max-height: 48px;
+      width: 100%;
+      height: 100%;
       border-radius: 6px;
       border: 1px solid #f0f0f0;
       background: #fff;
@@ -52,7 +54,8 @@
   }
 }
 .home__dostavki {
-  width: 850px;
+  max-width: 850px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 60px;
   h2 {
@@ -119,10 +122,6 @@
 
 /* PIZZAS */
 
-.pizzas-fixed {
-  margin-top: 80px;
-}
-
 .pizzas {
   display: flex;
   flex-direction: column;
@@ -161,6 +160,11 @@
   margin-bottom: 50px;
 
   h3 {
+    --max-lines: 1;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
     color: #191919;
     font-family: SF Pro Text;
     font-size: 18px;
@@ -169,6 +173,11 @@
     line-height: 24px;
   }
   p {
+    --max-lines: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
     color: #191919;
     font-family: SF Pro Text;
     font-size: 16px;
@@ -261,6 +270,11 @@
   }
   &__description--block {
     h3 {
+      --max-lines: 1;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--max-lines);
       color: var(--black, #191919);
       font-family: Inter;
       font-size: 20px;
@@ -270,6 +284,11 @@
       margin-bottom: 5px;
     }
     p {
+      --max-lines: 2;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--max-lines);
       color: var(--black, #191919);
       font-family: SF Pro Text;
       font-size: 16px;
@@ -317,11 +336,13 @@
   }
   &__not-fount--box {
     div {
+      font-size: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-top: 10%;
       color: #ff7010;
+      margin-bottom: 10%;
     }
   }
 
