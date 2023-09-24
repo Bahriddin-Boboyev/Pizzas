@@ -5,7 +5,7 @@ import cart2 from "../../img/cart-down-2.svg";
 const CartDown = () => {
   return (
     <div className="cartDown">
-      <ul className="cartDown__list">
+      <ul className="cartDown__list" id="style-2">
         <li className="cartDown__item">
           <img src={cart1} alt="img" />
           <h3>3 средние пиццы от 999 рублей</h3>

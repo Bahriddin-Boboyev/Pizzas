@@ -5,16 +5,18 @@ import locationIcon from "../../img/location.svg";
 import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
+import korzinka2 from "../../img/korzinka-2.svg";
 import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
-import { useScrollFixed, storeTotalCost } from "../../helpers";
+import { useScrollFixed, storeTotalCost, storeTotalCount } from "../../helpers";
 import useLocalStorageState from "use-local-storage-state";
 
 const Navbar = () => {
   const { context, showBasket, showLogin } = useContext(DataContext);
+  const [toggle, setToggle] = useState(false);
   const [cart] = useLocalStorageState("cart", []);
-  //
+
   const fixed = useScrollFixed(50);
 
   // timer
@@ -59,7 +61,7 @@ const Navbar = () => {
               </option>
             </select>
           </div>
-          <div className="navbar__item">
+          <div className="navbar__item navbar__item--locations">
             <Link to={"#"}>Проверить адрес</Link>
           </div>
           <div className="navbar__item">
@@ -72,7 +74,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar__section-2">
-          <div className="navbar__item-2">
+          <div className="navbar__item-2 navbar__item-2--work">
             <p>Время работы: с 11:00 до 23:00</p>
           </div>
           <div className="navbar__section-2-login">
@@ -108,10 +110,23 @@ const Navbar = () => {
               <span>{storeTotalCost(cart)} ₽</span>
             </button>
           </div>
+          <div
+            class={`menu menu_btn ${toggle ? "open" : ""}`}
+            onClick={() => setToggle((prev) => !prev)}
+          >
+            <div class="icon-E"></div>
+            <div class="icon-X"></div>
+          </div>
         </div>
       </div>
       <Register context={context} showLogin={showLogin} />
       <Login context={context} showLogin={showLogin} />
+      <div className="navbar__basket-shop--box">
+        <button onClick={() => showBasket(true)}>
+          <img src={korzinka2} alt="korzinka 2" />
+          <span>{storeTotalCount(cart)}</span>
+        </button>
+      </div>
     </nav>
   );
 };

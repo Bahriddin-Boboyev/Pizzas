@@ -27,7 +27,7 @@ const CartUp = () => {
 
   return (
     <div className={`cartUp ${fixed ? "cartUpFixed" : ""}`}>
-      <ul className="cartUp__list">
+      <ul className="cartUp__list" id="style-2">
         <li className="cartUp__item">
           <Link to={"menu/fire"} className="cartUp__image-block">
             <div>

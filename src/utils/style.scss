@@ -1,9 +1,11 @@
 .network_err {
+  font-family: "Montserrat";
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  color: #5c5c5c;
 
   &__box {
     max-width: 75%;

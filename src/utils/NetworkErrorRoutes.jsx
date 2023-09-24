@@ -6,7 +6,7 @@ const NetworkErrorRoutes = () => {
 
   return (
     <div className="network_err container">
-      <div className="network_err___box">
+      <div className="network_err__box">
         <div>
           <lottie-player
             src="https://lottie.host/16efe69b-a500-4040-8ec1-1d4bc412645f/zNjeENhjCg.json"
