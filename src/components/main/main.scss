@@ -131,7 +131,8 @@
 
 .basket-right {
   height: 100vh;
-  width: 420px;
+  max-width: 420px;
+  width: 100%;
   z-index: 30;
   background-color: #fff;
   flex-direction: column;
@@ -140,6 +141,10 @@
   left: 100%;
   transform: translate(-100%);
   display: none;
+
+  &__svg {
+    cursor: pointer;
+  }
 }
 
 .basket-right__box {
@@ -151,10 +156,6 @@
   h3 {
     font-size: 32px;
     font-weight: 600;
-  }
-
-  svg {
-    cursor: pointer;
   }
 }
 .basket-right__content {
@@ -186,10 +187,20 @@
       display: flex;
 
       h6 {
+        --max-lines: 1;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--max-lines);
         font-size: 16px;
         font-weight: 600;
       }
       p {
+        --max-lines: 2;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--max-lines);
         font-size: 14px;
         font-weight: 400;
       }
@@ -737,6 +748,71 @@
       background-size: 13px;
       width: 13px;
       height: 13px;
+    }
+  }
+
+  .basket-right {
+    h3 {
+      font-size: 20px;
+    }
+    &__svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+    &__footer {
+      padding: 12px 15px;
+      span {
+        font-size: 15px;
+      }
+      a {
+        font-size: 14px;
+        padding: 10px 13px;
+      }
+    }
+  }
+  .basket-right__item {
+    padding: 10px !important;
+    img {
+      width: 84px !important;
+      height: 84px !important;
+    }
+  }
+  .basket-right__info {
+    h6 {
+      font-size: 14px !important;
+    }
+    p {
+      font-size: 12px !important;
+    }
+  }
+  .basket-right__btn-box {
+    width: 72px !important;
+    height: 30px !important;
+
+    button {
+      font-size: 15px !important;
+    }
+    span {
+      margin-top: 6px !important;
+      font-size: 14px !important;
+    }
+  }
+  .basket-right__btn-box ~ span {
+    margin-top: 15px;
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .basket-right {
+    &__footer {
+      span {
+        font-size: 13px;
+      }
+      a {
+        font-size: 13px;
+        padding: 10px 8px;
+      }
     }
   }
 }

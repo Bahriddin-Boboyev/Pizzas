@@ -9,6 +9,7 @@ import {
 } from "../../helpers";
 import { DataContext } from "../../context";
 import { useAxiosFunction } from "../../hooks";
+import basketClose from "../../img/basket-close.svg";
 
 const BasketRight = () => {
   const { context, showBasket, getStoreItems } = useContext(DataContext);
@@ -34,22 +35,12 @@ const BasketRight = () => {
         <>
           <div className="basket-right__box">
             <h3>Ваш заказ</h3>
-            <svg
+            <img
+              src={basketClose}
+              alt=" basket"
+              className="basket-right__svg"
               onClick={() => showBasket(false)}
-              width="24"
-              height="24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url('6bfd12d8773c5ea5')">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M1.332.229A.78.78 0 0 0 .23 1.332L10.896 12 .23 22.668a.78.78 0 1 0 1.103 1.103L12 13.104 22.668 23.77a.78.78 0 1 0 1.103-1.103L13.104 12 23.77 1.332A.78.78 0 1 0 22.668.23L12 10.896 1.332.23Z"
-                  fill="#A5A5A5"
-                ></path>
-              </g>
-            </svg>
+            />
           </div>
           <ul className="basket-right__content">
             {!prods?.length ? (
@@ -71,8 +62,8 @@ const BasketRight = () => {
                   <li className="basket-right__item" key={prod._id}>
                     <img src={prod.image} alt={prod.name} />
                     <div className="basket-right__info">
-                      <h6>{cartSlice(prod.description, 20, 0, 20)}</h6>
-                      <p>{cartSlice(prod.description, 25, 0, 25)}</p>
+                      <h6>{prod.description}</h6>
+                      <p>{prod.description}</p>
                       <div className="basket-right__btn-box">
                         <button
                           onClick={() =>
