@@ -32,7 +32,8 @@ const MainPizzaCart = () => {
             <div key={category} className="mainPizza__top_box">
               <div className="mainPizza_head">
                 <h2>{category}</h2>
-                <button>Фильтры</button>
+                <button className="none">Фильтры</button>{" "}
+                {/* xozircha mavjud emas qo'shishim kerak */}
               </div>
               <ul className="mainPizza__list">
                 {products
