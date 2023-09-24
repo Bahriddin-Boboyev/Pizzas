@@ -16,6 +16,7 @@
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
+      margin-right: 8px;
     }
     input {
       padding: 20px;
@@ -428,5 +429,13 @@
 
   h1 {
     color: #ff7010;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .home__search-box {
+    label {
+      display: none;
+    }
   }
 }
