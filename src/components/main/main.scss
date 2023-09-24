@@ -692,3 +692,51 @@
   background: var(--line-gray, #f0f0f0);
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 500px) {
+  .mainPizza__item {
+    max-height: 430px;
+    height: 100%;
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 14px;
+    }
+    .mainPizza__img-box {
+      margin-top: 10px;
+    }
+
+    .mainPizza__down-block {
+      margin-bottom: 20px;
+      button {
+        padding: 10px 26px;
+        font-size: 14px;
+        margin: unset;
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+  .mainPizza_head {
+    h2 {
+      font-size: 30px !important;
+    }
+  }
+  .mainPizza__top_box .mainPizza_head {
+    button {
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      padding: 7px 12px;
+      align-items: center;
+    }
+
+    button::before {
+      background-size: 13px;
+      width: 13px;
+      height: 13px;
+    }
+  }
+}

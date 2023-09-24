@@ -121,7 +121,7 @@ const Navbar = () => {
       </div>
       <Register context={context} showLogin={showLogin} />
       <Login context={context} showLogin={showLogin} />
-      <div className="navbar__basket-shop--box">
+      <div className="navbar__basket-shop--box hover">
         <button onClick={() => showBasket(true)}>
           <img src={korzinka2} alt="korzinka 2" />
           <span>{storeTotalCount(cart)}</span>

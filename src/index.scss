@@ -293,3 +293,11 @@ picture {
   visibility: visible;
   border: 1px solid #ff7010;
 }
+
+/* hover */
+.hover {
+  transition: transform 0.2s;
+}
+.hover:hover {
+  transform: scale(1.05);
+}

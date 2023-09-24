@@ -1,11 +1,15 @@
 .home__search-box {
+  padding-left: 32px;
+  padding-right: 32px;
   height: 80px;
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid #f0f0f0;
   background: #fff;
+  display: flex;
+  align-items: center;
   div {
-    padding-top: 1%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -434,8 +438,43 @@
 
 @media screen and (max-width: 700px) {
   .home__search-box {
+    padding-left: 10px;
+    padding-right: 10px;
     label {
       display: none;
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home__dostavki {
+    h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+    .home__dostavki-desc_box .home__dostavki-desc {
+      font-size: 12px;
+      line-height: 20px;
+    }
+    .home__dostavki-btn {
+      font-size: 14px;
+    }
+  }
+
+  .home__search-box {
+    height: 60px !important;
+    padding-top: 3px;
+  }
+
+  .home__search-box div button {
+    font-size: 14px !important;
+    width: 120px !important;
+    height: 43px !important;
+    margin-left: 18px !important;
+  }
+
+  .home__search-box div input {
+    font-size: 14px;
+    max-height: 43px !important;
   }
 }

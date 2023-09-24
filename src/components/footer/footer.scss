@@ -155,3 +155,31 @@
     width: 250px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .footer {
+    margin-bottom: 40px;
+    .footer__box-logo {
+      :nth-child(1) {
+        width: 30px;
+        height: 30px;
+      }
+      :nth-child(2) {
+        width: 90px;
+      }
+    }
+    .footer__item {
+      h2 {
+        font-size: 17px;
+      }
+    }
+    .footer__inner-item a {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .footer__copyright {
+      font-size: 14px;
+    }
+  }
+}

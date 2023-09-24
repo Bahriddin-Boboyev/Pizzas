@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       <CartUp />
       <CartDown />
-      <div className="home__search-box container">
+      <div className="home__search-box">
         <div>
           <label>Проверить адрес доставки</label>
           <input type="text" placeholder="Адрес" />
