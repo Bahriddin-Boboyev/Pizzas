@@ -145,62 +145,64 @@ const Navbar = () => {
           fixed ? "nav__scroll-top" : ""
         }`}
       >
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/fire"
-          onClick={() => setToggle(false)}
-        >
-          Акции
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/pizzas"
-          onClick={() => setToggle(false)}
-        >
-          Пицца
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/sushi"
-          onClick={() => setToggle(false)}
-        >
-          Суши
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/drink"
-          onClick={() => setToggle(false)}
-        >
-          Напитки
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/snacks"
-          onClick={() => setToggle(false)}
-        >
-          Закуски
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/combo"
-          onClick={() => setToggle(false)}
-        >
-          Комбо
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/desserts"
-          onClick={() => setToggle(false)}
-        >
-          Десерты
-        </Link>
-        <Link
-          className={`hover nav__links ${toggle ? "transform" : ""}`}
-          to="/menu/sauce"
-          onClick={() => setToggle(false)}
-        >
-          Соусы
-        </Link>
+        <div className={`mobile__menu--box ${toggle ? "transform" : ""}`}>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/fire"
+            onClick={() => setToggle(false)}
+          >
+            Акции
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/pizzas"
+            onClick={() => setToggle(false)}
+          >
+            Пицца
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/sushi"
+            onClick={() => setToggle(false)}
+          >
+            Суши
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/drink"
+            onClick={() => setToggle(false)}
+          >
+            Напитки
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/snacks"
+            onClick={() => setToggle(false)}
+          >
+            Закуски
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/combo"
+            onClick={() => setToggle(false)}
+          >
+            Комбо
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/desserts"
+            onClick={() => setToggle(false)}
+          >
+            Десерты
+          </Link>
+          <Link
+            className={`nav__links hover`}
+            to="/menu/sauce"
+            onClick={() => setToggle(false)}
+          >
+            Соусы
+          </Link>
+        </div>
       </div>
     </nav>
   );

@@ -294,10 +294,9 @@ picture {
   border: 1px solid #ff7010;
 }
 
-/* hover */
 .hover {
-  transition: transform 0.2s;
+  transition: transform 0.5s !important;
 }
 .hover:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) !important;
 }
