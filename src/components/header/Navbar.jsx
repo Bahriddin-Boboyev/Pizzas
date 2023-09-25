@@ -99,7 +99,11 @@ const Navbar = () => {
       <div className={`container ${fixed ? "fixed-helper" : ""}`}></div>
       <div className={`navbar__down ${fixed ? "fixed" : ""}`}>
         <div className="navbar__wrapper">
-          <Link to={"/"} className="navbar__down-img-block">
+          <Link
+            to={"/"}
+            className="navbar__down-img-block"
+            onClick={() => setToggle(false)}
+          >
             <img src={pizza} alt="pizza" />
             <img src={logo} alt="logo" />
           </Link>
@@ -141,28 +145,60 @@ const Navbar = () => {
           fixed ? "nav__scroll-top" : ""
         }`}
       >
-        <Link to="/menu/fire" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/fire"
+          onClick={() => setToggle(false)}
+        >
           Акции
         </Link>
-        <Link to="/menu/pizzas" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/pizzas"
+          onClick={() => setToggle(false)}
+        >
           Пицца
         </Link>
-        <Link to="/menu/sushi" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/sushi"
+          onClick={() => setToggle(false)}
+        >
           Суши
         </Link>
-        <Link to="/menu/drink" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/drink"
+          onClick={() => setToggle(false)}
+        >
           Напитки
         </Link>
-        <Link to="/menu/snacks" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/snacks"
+          onClick={() => setToggle(false)}
+        >
           Закуски
         </Link>
-        <Link to="/menu/combo" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/combo"
+          onClick={() => setToggle(false)}
+        >
           Комбо
         </Link>
-        <Link to="/menu/desserts" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/desserts"
+          onClick={() => setToggle(false)}
+        >
           Десерты
         </Link>
-        <Link to="/menu/sauce" onClick={() => setToggle(false)}>
+        <Link
+          className="hover"
+          to="/menu/sauce"
+          onClick={() => setToggle(false)}
+        >
           Соусы
         </Link>
       </div>
