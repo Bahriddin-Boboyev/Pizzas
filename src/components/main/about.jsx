@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="container about">
+    <div className="about">
       <h3>О вас</h3>
       <form className="about__box">
         <div className="about__input-box">

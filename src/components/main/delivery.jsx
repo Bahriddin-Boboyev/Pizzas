@@ -8,26 +8,30 @@ const Delivery = () => {
   const prods = storeTotalCost(JSON.parse(localStorage.getItem("cart")));
 
   return (
-    <div className="container delivery">
+    <div className="delivery">
       <div className="delivery__hero">
         <h3>Доставка</h3>
-        <div>
-          <input
-            type="radio"
-            id="delivery"
-            name="delivery_type"
-            value={"delivery"}
-            // checked
-            defaultChecked
-          />
-          <label htmlFor="delivery">Доставка</label>
-          <input
-            type="radio"
-            id="pickup"
-            name="delivery_type"
-            value={"pickup"}
-          />
-          <label htmlFor="pickup">Самовывоз</label>
+        <div className="delivery__hero--box">
+          <div>
+            <input
+              type="radio"
+              id="delivery"
+              name="delivery_type"
+              value={"delivery"}
+              // checked
+              defaultChecked
+            />
+            <label htmlFor="delivery">Доставка</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="pickup"
+              name="delivery_type"
+              value={"pickup"}
+            />
+            <label htmlFor="pickup">Самовывоз</label>
+          </div>
         </div>
       </div>
       <div className="delivery__box">

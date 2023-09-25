@@ -155,7 +155,8 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   height: 440px;
   padding-bottom: 0px;
   gap: 10px;
@@ -237,6 +238,8 @@
 
 .basket {
   max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
   &__title {
     color: var(--black, #191919);
     font-family: Inter;
@@ -248,7 +251,8 @@
   }
 
   &__item {
-    width: 850px;
+    max-width: 850px;
+    width: 100%;
     height: 152px;
     flex-shrink: 0;
     border-radius: 12px;
@@ -260,13 +264,8 @@
     padding: 16px;
     margin-bottom: 16px;
   }
-  &__img-desc--box {
-    width: 47%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
   &__img--block {
+    width: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -275,7 +274,13 @@
     flex-shrink: 0;
     padding: 10px;
   }
+  &__second--box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   &__description--block {
+    width: 65%;
     h3 {
       --max-lines: 1;
       display: -webkit-box;
@@ -291,7 +296,7 @@
       margin-bottom: 5px;
     }
     p {
-      --max-lines: 2;
+      --max-lines: 1;
       display: -webkit-box;
       overflow: hidden;
       -webkit-box-orient: vertical;
@@ -357,7 +362,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 850px;
+    max-width: 850px;
+    width: 100%;
     height: 80px;
     flex-shrink: 0;
     margin-bottom: 30px;
@@ -378,6 +384,9 @@
   }
 
   &__form-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     button {
       border: none;
       cursor: pointer;
@@ -396,7 +405,8 @@
     }
   }
   &__input {
-    width: 320px;
+    max-width: 320px;
+    width: 100%;
     height: 48px;
     flex-shrink: 0;
     border-radius: 6px;
@@ -424,13 +434,11 @@
 /* Stock */
 
 .open__soong {
-  margin-top: 100px;
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
-
+  height: 60vh;
   h1 {
     color: #ff7010;
   }
@@ -443,6 +451,77 @@
     label {
       display: none;
     }
+  }
+  .basket {
+    &__title {
+      font-size: 35px !important;
+    }
+  }
+  .basket__button-price--box {
+    width: 135px !important   ;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .pizzas__item {
+    max-width: 400px;
+    .pizzas__img-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 280px;
+      margin: 0 auto;
+      margin-top: 5%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .swiper-pagination {
+    --swiper-pagination-bullet-size: 12px;
+  }
+  .open__soong {
+    h1 {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .basket__second--box {
+    align-items: start;
+    flex-direction: column;
+  }
+  .basket__description--block {
+    margin-bottom: 12px;
+  }
+  .basket__button-price--box {
+    width: 80% !important;
+  }
+  .about__box {
+    flex-wrap: wrap;
+  }
+  .basket {
+    &__title {
+      font-size: 30px !important;
+    }
+    .about__box {
+      gap: 10px;
+    }
+  }
+  .delivery__home-box {
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .about__input-box input {
+    max-width: 340px;
+  }
+  .about__box {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
@@ -476,5 +555,170 @@
   .home__search-box div input {
     font-size: 14px;
     max-height: 43px !important;
+  }
+  .basket__form-box {
+    max-width: 500px;
+    width: 100%;
+  }
+  .basket__input {
+    max-width: 100%;
+  }
+  .basket__promo-box {
+    flex-direction: column;
+    margin-bottom: 10px;
+    height: 105px;
+    h4 {
+      margin-top: 5px;
+    }
+  }
+  .basket__button-price--box div {
+    padding: 0;
+  }
+  .basket__description--block {
+    width: 100%;
+  }
+  .basket__button-price--box {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  .pizzas__item {
+    max-width: 300px;
+    .pizzas__img-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 250px;
+      margin: 0 auto;
+      margin-top: 5%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .basket__description--block {
+    h3 {
+      font-size: 17px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  .basket__button-price--box h4 {
+    font-size: 16px;
+  }
+  .basket__button-price--box div {
+    width: 70px;
+  }
+  .basket__input {
+    font-size: 14px;
+  }
+  .basket__promo-box h4 {
+    font-size: 15px;
+  }
+  .basket-order h2,
+  .about h3,
+  .delivery__hero h3,
+  .payment__box h2,
+  .lease__box h2,
+  .comment h2 {
+    font-size: 21px;
+  }
+  .basket-order__desc-box {
+    width: 300px;
+    h3 {
+      width: 80%;
+      font-size: 14px;
+    }
+    p {
+      width: 90%;
+      font-size: 12px;
+    }
+    button {
+      font-size: 15px;
+      width: 120px;
+    }
+  }
+  .delivery__hero div label {
+    width: 140px;
+    font-size: 14px;
+  }
+  .about__input-box input,
+  .comment__box textarea,
+  .delivery__box input,
+  .delivery__order-box h4 {
+    font-size: 14px;
+  }
+  .delivery__checkout h3 {
+    font-size: 16px;
+  }
+  .delivery__checkout button {
+    font-size: 14px;
+    width: 162px;
+  }
+
+  .delivery__order-time-box,
+  .lease__lease-box,
+  .payment__payment-box {
+    div {
+      width: max-content;
+    }
+  }
+  .basket__item {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 378px) {
+  .basket-order__desc-box {
+    max-width: 230px;
+    width: 100%;
+  }
+  .basket__description--block h3 {
+    font-size: 15px;
+  }
+  .basket__description--block p {
+    font-size: 12px;
+  }
+  .basket__button-price--box div {
+    width: 55px;
+    gap: 0;
+    button {
+      font-size: 14px;
+    }
+    span {
+      font-size: 14px;
+    }
+  }
+  .basket__button-price--box h4 {
+    font-size: 15px;
+  }
+  .delivery__hero div label {
+    width: 100px;
+    font-size: 13px;
+  }
+  .open__soong {
+    h1 {
+      font-size: 27px;
+    }
+  }
+}
+
+@media screen and (max-width: 333px) {
+  .payment__payment-box,
+  .delivery__order-time-box,
+  .lease__lease-box {
+    flex-wrap: wrap;
+  }
+  .delivery__checkout {
+    h3 {
+      font-size: 15px;
+    }
+    button {
+      width: 139px;
+      font-size: 14px;
+      padding: 10px 10px;
+    }
   }
 }

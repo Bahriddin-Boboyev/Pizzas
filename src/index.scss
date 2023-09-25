@@ -274,7 +274,7 @@ picture {
   position: relative;
   background-color: #fff;
   content: "";
-  top: -1px;
+  top: -3px;
   left: -1px;
   display: inline-block;
   visibility: visible;
@@ -283,7 +283,7 @@ picture {
 .input__custom[type="radio"]:checked:after {
   width: 15px;
   height: 15px;
-  top: -1px;
+  top: -3px;
   left: -1px;
   border-radius: 15px;
   position: relative;

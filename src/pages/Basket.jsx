@@ -31,7 +31,7 @@ const Basket = () => {
   const items = data?.data?.products;
 
   return (
-    <div className="container basket">
+    <div className="basket">
       {error ? (
         <h2 className="error_msg">{JSON.stringify(error)}</h2>
       ) : (
@@ -49,42 +49,42 @@ const Basket = () => {
                 {products?.map((prod) =>
                   storeItemsCount(prod._id, prods) > 0 ? (
                     <li className="basket__item" key={prod._id}>
-                      <div className="basket__img-desc--box">
-                        <div className="basket__img--block">
-                          <img src={prod.image} alt={prod.name} />
-                        </div>
+                      <div className="basket__img--block">
+                        <img src={prod.image} alt={prod.name} />
+                      </div>
+                      <div className="basket__second--box">
                         <div className="basket__description--block">
                           <h3>{prod.description}</h3>
                           <p>{prod.description}</p>
                         </div>
-                      </div>
-                      <div className="basket__button-price--box">
-                        <div>
-                          <button
-                            onClick={() =>
-                              clickStoreProduct(
-                                { item: prod, type: "decrement" },
-                                prods,
-                                getStoreItems,
-                              )
-                            }
-                          >
-                            -
-                          </button>
-                          <span>{storeItemsCount(prod._id, prods)}</span>
-                          <button
-                            onClick={() =>
-                              clickStoreProduct(
-                                { item: prod, type: "increment" },
-                                prods,
-                                getStoreItems,
-                              )
-                            }
-                          >
-                            +
-                          </button>
+                        <div className="basket__button-price--box">
+                          <div>
+                            <button
+                              onClick={() =>
+                                clickStoreProduct(
+                                  { item: prod, type: "decrement" },
+                                  prods,
+                                  getStoreItems,
+                                )
+                              }
+                            >
+                              -
+                            </button>
+                            <span>{storeItemsCount(prod._id, prods)}</span>
+                            <button
+                              onClick={() =>
+                                clickStoreProduct(
+                                  { item: prod, type: "increment" },
+                                  prods,
+                                  getStoreItems,
+                                )
+                              }
+                            >
+                              +
+                            </button>
+                          </div>
+                          <h4>{prod.price} ₽</h4>
                         </div>
-                        <h4>{prod.price} ₽</h4>
                       </div>
                     </li>
                   ) : (
