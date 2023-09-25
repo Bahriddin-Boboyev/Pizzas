@@ -365,13 +365,15 @@ select {
   z-index: 12;
   touch-action: none;
   border-radius: 5px;
-  a {
-    font-weight: 600;
-    color: #444;
-    font-size: 33px;
-    display: block;
-    text-align: end;
-  }
+}
+
+.nav__links {
+  opacity: 0;
+  font-weight: 600;
+  color: #444;
+  font-size: 33px;
+  transform: translateX(300%);
+  transition: transform 1.8s ease-in-out;
 }
 .nav__scroll-top {
   top: 71px;
@@ -379,6 +381,7 @@ select {
 }
 
 .transform {
+  opacity: 1;
   transform: translateX(0);
 }
 
