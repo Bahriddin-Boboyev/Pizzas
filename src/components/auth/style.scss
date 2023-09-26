@@ -5,7 +5,8 @@
 .login__modal {
   padding: 20px 0;
   position: fixed;
-  width: 850px;
+  max-width: 850px;
+  width: 100%;
   flex-shrink: 0;
   border-radius: 24px;
   background: var(--background-gray, #f9f9f9);
@@ -13,6 +14,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  margin-right: 10px;
 
   h2 {
     color: var(--black, #191919);
@@ -48,8 +50,11 @@
 
   /* register */
   .login__modal-box {
+    padding-left: 8px;
+    padding-right: 8px;
     position: relative;
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     margin: 0 auto;
     h4 {
       color: var(--gray-text, #a5a5a5);
@@ -61,7 +66,8 @@
       margin-bottom: 8px;
     }
     input {
-      width: 320px;
+      max-width: 320px;
+      width: 100%;
       height: 48px;
       border-radius: 6px;
       border: 1px solid var(--line-gray, #f0f0f0);
@@ -81,7 +87,8 @@
       width: 100%;
       margin: 0 auto;
       display: flex;
-      width: 320px;
+      max-width: 320px;
+      width: 100%;
       padding: 13px 40px;
       justify-content: center;
       align-items: center;
@@ -100,10 +107,10 @@
       margin-bottom: 5px;
     }
     p {
-      width: 100%;
       margin: 0 auto;
       text-align: center;
-      width: 320px;
+      max-width: 320px;
+      width: 100%;
       color: var(--black, #191919);
       text-align: center;
       font-family: Inter;
@@ -127,5 +134,81 @@
     width: 32px;
     height: 32px;
     flex-shrink: 0;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .login__modal {
+    width: 95%;
+  }
+  .btn__login-modal {
+    top: 15px;
+    right: 15px;
+    z-index: 34;
+    svg {
+      path {
+        fill: #ff7010 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .login__modal {
+    h2 {
+      font-size: 27px;
+    }
+    p {
+      width: 350px;
+      font-size: 14px;
+    }
+  }
+  .login__modal-box {
+    button {
+      font-size: 15px !important;
+    }
+  }
+  .login__modal .login__modal-box input {
+    font-size: 14px;
+  }
+  .login__modal .login__modal-box p {
+    font-size: 13px;
+  }
+  .btn__login-modal svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 477px) {
+  .login__modal {
+    h2 {
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+    p {
+      width: 300px;
+      font-size: 12px;
+    }
+  }
+  .login__modal .login__modal-box p {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .btn__login-modal svg {
+    width: 23px;
+    height: 23px;
+  }
+  .btn__login-modal {
+    top: 15px;
+    right: 15px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .btn__login-modal {
+    top: 10px;
+    right: 10px;
   }
 }
