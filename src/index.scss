@@ -300,3 +300,12 @@ picture {
 .hover:hover {
   transform: scale(1.05) !important;
 }
+
+@media screen and (max-width: 444px) {
+  .input__custom[type="radio"]:after {
+    top: -1px;
+  }
+  .input__custom[type="radio"]:checked:after {
+    top: -1px;
+  }
+}
