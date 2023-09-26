@@ -86,9 +86,7 @@ const Register = ({ context, showLogin }) => {
           placeholder="пароль"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button type="submit" onClick={(event) => handlerRegister(event)}>
-          Регистрация
-        </button>
+        <button type="submit">Регистрация</button>
         <p>
           Продолжая, вы соглашаетесь со сбором и обработкой персональных данных
           и пользовательским соглашением

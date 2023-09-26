@@ -69,7 +69,7 @@ const Login = ({ context, showLogin }) => {
           placeholder="пароль"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button onClick={(event) => handlerLogin(event)}>Войти</button>
+        <button>Войти</button>
         <p>
           Продолжая, вы соглашаетесь со сбором и обработкой персональных данных
           и пользовательским соглашением

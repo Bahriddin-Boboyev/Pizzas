@@ -38,7 +38,7 @@ const useAxiosFunction = () => {
 
       console.log(error);
 
-      if (error?.code === "ERR_NETWORK" || error.code === "ERR_BAD_REQUEST") {
+      if (error?.code === "ERR_NETWORK") {
         navigate("/network-error");
       }
       // toast error
