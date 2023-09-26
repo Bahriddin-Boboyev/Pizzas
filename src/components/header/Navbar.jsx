@@ -6,6 +6,7 @@ import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 import korzinka2 from "../../img/korzinka-2.svg";
+import login from "../../img/login.svg";
 import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
@@ -145,6 +146,24 @@ const Navbar = () => {
           fixed ? "nav__scroll-top" : ""
         }`}
       >
+        <div
+          className={`login__block hover`}
+          onClick={() => (
+            showLogin({ hidden: true, type: "register" }), setToggle(false)
+          )}
+        >
+          <div
+            className={`login__inner-block ${
+              toggle ? "transform-important" : ""
+            }`}
+          >
+            <div>
+              <img src={login} alt="img" />
+            </div>
+            <h4>Войти в аккаунт</h4>
+          </div>
+        </div>
+        <div className="line"></div>
         <div className={`mobile__menu--box ${toggle ? "transform" : ""}`}>
           <Link
             className={`nav__links hover`}
