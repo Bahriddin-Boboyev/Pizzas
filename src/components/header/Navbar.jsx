@@ -124,11 +124,11 @@ const Navbar = () => {
             </button>
           </div>
           <div
-            class={`menu menu_btn ${toggle ? "open" : ""}`}
+            className={`menu menu_btn ${toggle ? "open" : ""}`}
             onClick={() => setToggle((prev) => !prev)}
           >
-            <div class="icon-E"></div>
-            <div class="icon-X"></div>
+            <div className="icon-E"></div>
+            <div className="icon-X"></div>
           </div>
         </div>
       </div>

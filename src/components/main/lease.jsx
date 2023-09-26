@@ -6,6 +6,7 @@ const Lease = () => {
   const handleRadioChange = (event) => {
     setIsChecked(event.target.value === "bezlease");
   };
+
   return (
     <div className="lease">
       <div className="lease__box">
@@ -17,10 +18,9 @@ const Lease = () => {
               type="radio"
               id="bezlease"
               name="lease"
-              value={"bezlease"}
+              value="bezlease"
               onChange={handleRadioChange}
-              // defaultChecked
-              checked
+              defaultChecked
             />
             <label htmlFor="bezlease">Без сдачи</label>
           </div>
@@ -30,7 +30,7 @@ const Lease = () => {
               type="radio"
               id="byLease"
               name="lease"
-              value={"byLease"}
+              value="byLease"
               onChange={handleRadioChange}
             />
             <label htmlFor="byLease">Сдача с</label>

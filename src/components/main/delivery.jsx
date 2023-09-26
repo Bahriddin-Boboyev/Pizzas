@@ -17,8 +17,7 @@ const Delivery = () => {
               type="radio"
               id="delivery"
               name="delivery_type"
-              value={"delivery"}
-              // checked
+              value="delivery"
               defaultChecked
             />
             <label htmlFor="delivery">Доставка</label>
@@ -28,7 +27,7 @@ const Delivery = () => {
               type="radio"
               id="pickup"
               name="delivery_type"
-              value={"pickup"}
+              value="pickup"
             />
             <label htmlFor="pickup">Самовывоз</label>
           </div>
@@ -98,8 +97,7 @@ const Delivery = () => {
                 type="radio"
                 id="soon"
                 name="delivery-time"
-                value={"soon"}
-                // checked
+                value="soon"
                 defaultChecked
               />
               <label htmlFor="soon">Как можно скорее</label>
@@ -110,7 +108,7 @@ const Delivery = () => {
                 type="radio"
                 id="byTime"
                 name="delivery-time"
-                value={"byTime"}
+                value="byTime"
               />
               <label htmlFor="byTime">По времени</label>
             </div>
