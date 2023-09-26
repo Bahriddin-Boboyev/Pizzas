@@ -303,11 +303,11 @@ picture {
 
 @media screen and (max-width: 444px) {
   .input__custom[type="radio"]:after {
-    top: 0px;
-    left: 1px;
+    top: 1px;
+    left: 0px;
   }
   .input__custom[type="radio"]:checked:after {
-    top: 0px;
-    left: 1px;
+    top: 1px;
+    left: 0px;
   }
 }
