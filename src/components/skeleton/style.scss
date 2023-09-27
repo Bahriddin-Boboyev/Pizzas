@@ -1,0 +1,25 @@
+.main-skeleton {
+  width: 300px;
+  &__image {
+    height: 250px;
+    margin-bottom: 10px;
+  }
+  &__title {
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btn {
+    height: 40px;
+    width: 140px;
+  }
+  &__price {
+    width: 100px;
+    height: 30px;
+    margin-top: 8px;
+  }
+}

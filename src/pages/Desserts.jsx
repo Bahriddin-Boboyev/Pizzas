@@ -3,7 +3,7 @@ import useAxiosFunction from "../hooks/useAxiosFunction";
 import { useScrollFixed } from "../helpers";
 import { getCategory, getProducts } from "../hooks";
 import { DataContext } from "../context";
-import { Loading, Items } from "../components";
+import { Items, MainSkeleton } from "../components";
 
 const Desserts = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
@@ -39,7 +39,16 @@ const Desserts = () => {
       ) : (
         <>
           {loading ? (
-            <Loading visible={true} />
+            <ul className="mainPizza__list--loading">
+              {new Array(4).fill(0).map((item, index) => (
+                <li
+                  key={`${index}${Date.now()}`}
+                  className="mainPizza__list--loading"
+                >
+                  <MainSkeleton />
+                </li>
+              ))}
+            </ul>
           ) : (
             <>
               <Items

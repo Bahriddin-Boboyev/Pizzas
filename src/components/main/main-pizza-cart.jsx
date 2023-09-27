@@ -2,8 +2,9 @@ import "./main.scss";
 import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../context";
 import { getProducts, useAxiosFunction } from "../../hooks";
-import { Loading } from "../../components";
+// import { Loading } from "../../components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { MainSkeleton } from "../";
 
 const MainPizzaCart = () => {
   const { context, getStoreItems } = useContext(DataContext);
@@ -26,7 +27,16 @@ const MainPizzaCart = () => {
     <div className="mainPizza">
       {error && <h2 className="error_msg">{JSON.stringify(error)}</h2>}
       {loading ? (
-        <Loading visible={true} />
+        <ul className="mainPizza__list--loading">
+          {new Array(4).fill(0).map((item, index) => (
+            <li
+              key={`${index}${Date.now()}`}
+              className="mainPizza__list--loading"
+            >
+              <MainSkeleton />
+            </li>
+          ))}
+        </ul>
       ) : (
         <>
           {categories.map((category) => (
