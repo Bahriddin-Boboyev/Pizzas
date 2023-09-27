@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../context";
 import { getProducts, useAxiosFunction } from "../../hooks";
 import { Loading } from "../../components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const MainPizzaCart = () => {
   const { context, getStoreItems } = useContext(DataContext);
@@ -42,7 +43,11 @@ const MainPizzaCart = () => {
                   .map((product) => (
                     <li key={product._id} className="mainPizza__item">
                       <div className="mainPizza__img-box">
-                        <img src={product.image} alt="img" />
+                        <LazyLoadImage
+                          src={product.image}
+                          alt={product.name}
+                          effect="blur"
+                        />
                       </div>
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>

@@ -75,7 +75,7 @@ const App = () => {
       </div>
       <div
         onClick={() => showBasket(false)}
-        className={`${exists ? "blur" : "none"}`}
+        className={`${exists ? "blur-bg" : "none"}`}
       ></div>
       <BasketRight />
       <ToastCustomContainer />

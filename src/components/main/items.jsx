@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 export const Items = ({ title, products, getStoreItems }) => {
   return (
     <>
@@ -6,7 +7,7 @@ export const Items = ({ title, products, getStoreItems }) => {
         {products.map((prod) => (
           <li className="pizzas__item" key={prod._id}>
             <div className="pizzas__img-box">
-              <img src={prod.image} alt="img" />
+              <LazyLoadImage src={prod.image} alt={prod.name} effect="blur" />
             </div>
             <h3>{prod.name}</h3>
             <p>{prod.description}</p>
