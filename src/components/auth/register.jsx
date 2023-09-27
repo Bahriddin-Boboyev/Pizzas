@@ -1,37 +1,34 @@
 import React, { useState } from "react";
 import "./style.scss";
-import axios from "../../apis/api";
 import useAxiosFunction from "../../hooks/useAxiosFunction";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import { postRegister } from "../../hooks";
 
 const Register = ({ context, showLogin }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("998");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   // post register
-  const postRegister = (data) => {
+  const fetchRegister = (data) => {
     toast.loading("Loading...", {
       toastId: 2,
     });
-    axiosFetch({
-      axiosInstance: axios(),
-      method: "POST",
-      url: "/users",
-      requestConfig: {
-        data,
-      },
-    });
+    postRegister(axiosFetch, data);
   };
 
   // submit func
   const handlerRegister = (event) => {
     event.preventDefault();
     if (name && email && phone && password) {
-      postRegister({ name, email, phone, password });
+      fetchRegister({ name, email, phone, password });
+      setEmail("");
+      setName("");
+      setPhone("");
+      setPassword("");
     }
   };
 

@@ -3,16 +3,35 @@ import { useEffect, useState, useContext } from "react";
 import BasketOrder from "../components/main/basket-order";
 import About from "../components/main/about";
 import Delivery from "../components/main/delivery";
-import { getProducts, useAxiosFunction } from "../hooks/";
+import { getProducts, useAxiosFunction, useInputValue } from "../hooks/";
 import { DataContext } from "../context";
 import { clickStoreProduct, storeItemsCount, storeTotalCost } from "../helpers";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+const inputs = {
+  name: "",
+  number: "",
+  email: "",
+  ulitsa: "",
+  home: "",
+  podez: "",
+  etaj: "",
+  kvartira: "",
+  domafon: "",
+  delivery_type: "delivery",
+  delivery_time: "soon",
+};
 
 const Basket = () => {
   let prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState([]);
-  const { context, getStoreItems } = useContext(DataContext);
+  const { context, getStoreItems, getSubmitInputValues } =
+    useContext(DataContext);
   // eslint-disable-next-line
   const [data, error, loading, axiosFetch] = useAxiosFunction();
+  const { value, change } = useInputValue(inputs);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProducts(axiosFetch);
@@ -29,6 +48,31 @@ const Basket = () => {
 
   // short url
   const items = data?.data?.products;
+  const totalProdsCost = storeTotalCost(
+    JSON.parse(localStorage.getItem("cart")),
+  );
+  const isToken = localStorage.getItem("token");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!isToken)
+      return toast.error(
+        "Products tasdiqlash uchun iltimos ro'yxatdan o'ting!",
+      );
+    console.log(isToken);
+    getSubmitInputValues();
+    console.log(value);
+    console.log(context.values);
+    let prodItems = [];
+    products.map((prod) =>
+      prodItems.push({
+        id: prod._id,
+        count: storeItemsCount(prod._id, prods),
+      }),
+    );
+    console.log(prodItems);
+    navigate("/order");
+  };
 
   return (
     <div className="basket">
@@ -117,8 +161,16 @@ const Basket = () => {
                 category={"Соусы"}
                 getStoreItems={getStoreItems}
               />
-              <About />
-              <Delivery />
+              <form className="basket__form" onSubmit={handleSubmit}>
+                <About value={value} change={change} />
+                <Delivery value={value} change={change} />
+                <div className="delivery__checkout">
+                  <h3>Итого: {totalProdsCost} ₽</h3>
+                  <button type="submit" className="btn">
+                    Оформить заказ
+                  </button>
+                </div>
+              </form>
             </>
           )}
         </div>

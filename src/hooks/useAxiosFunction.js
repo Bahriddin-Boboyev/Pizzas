@@ -29,7 +29,11 @@ const useAxiosFunction = () => {
         setResponse(res.data);
       }
       // toast success
-      toastNotification(2, "success", "done");
+      toastNotification(
+        2,
+        "success",
+        "Siz muavviqiyatli ro'yxatdan o'tdingiz!",
+      );
 
       setError(null);
     } catch (error) {

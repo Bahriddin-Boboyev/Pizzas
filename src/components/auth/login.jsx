@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import axios from "../../apis/api";
+import { postLogin } from "../../hooks";
 import useAxiosFunction from "../../hooks/useAxiosFunction";
 
 const Login = ({ context, showLogin }) => {
@@ -12,23 +12,18 @@ const Login = ({ context, showLogin }) => {
   const [password, setPassword] = useState("");
 
   // post login
-  const postLogin = (data) => {
+  const fetchLogin = (data) => {
     toast.loading("Loading...", { toastId: 2 });
-    axiosFetch({
-      axiosInstance: axios(),
-      method: "POST",
-      url: "/login",
-      requestConfig: {
-        data,
-      },
-    });
+    postLogin(axiosFetch, data);
   };
 
   // submit func
   const handlerLogin = (event) => {
     event.preventDefault();
     if (email && password) {
-      postLogin({ email, password });
+      fetchLogin({ email, password });
+      setEmail("");
+      setPassword("");
     }
   };
 

@@ -4,6 +4,7 @@ import {
   API_PARAMS,
   GET_PRODUCTS,
   GET_STORE_ITEM,
+  SUBMIT_INPUTS_VALUES,
 } from "./actions";
 
 const items = localStorage.getItem("cart");
@@ -29,6 +30,17 @@ const reducer = (state, action) => {
         };
       }
       return { ...state, store: [action.payload] };
+    case SUBMIT_INPUTS_VALUES:
+      return {
+        ...state,
+        values: {
+          pay: "nalichi",
+          lease: "bezlease",
+          ...state.values,
+          ...action.payload,
+        },
+      };
+
     default:
       return state;
   }

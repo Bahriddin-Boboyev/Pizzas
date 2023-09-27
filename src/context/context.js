@@ -6,6 +6,8 @@ import {
   GET_STORE_ITEM,
   SHOW_BASKET,
   SHOW_LOGIN,
+  REQUIRED_iNPUTS,
+  SUBMIT_INPUTS_VALUES,
 } from "./actions";
 
 export const DataContext = createContext();
@@ -46,6 +48,13 @@ const DataProvider = ({ children }) => {
     });
   };
 
+  const getSubmitInputValues = (payload) => {
+    dispatch({
+      type: SUBMIT_INPUTS_VALUES,
+      payload,
+    });
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -55,6 +64,7 @@ const DataProvider = ({ children }) => {
         apiParams,
         getProducts,
         getStoreItems,
+        getSubmitInputValues,
       }}
     >
       {children}

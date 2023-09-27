@@ -293,3 +293,21 @@ input[type="radio"]:checked {
 .hover:hover {
   transform: scale(1.05) !important;
 }
+.btn {
+  display: inline-flex;
+  padding: 13px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  background: var(--Primary, #ff7010);
+  border: none;
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: SF Pro Text;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  cursor: pointer;
+}

@@ -1,12 +1,9 @@
 import React from "react";
-import { storeTotalCost } from "../../helpers";
 import Comment from "./comment";
 import Lease from "./lease";
 import Payment from "./payment";
 
-const Delivery = () => {
-  const prods = storeTotalCost(JSON.parse(localStorage.getItem("cart")));
-
+const Delivery = ({ value, change }) => {
   return (
     <div className="delivery">
       <div className="delivery__hero">
@@ -19,6 +16,7 @@ const Delivery = () => {
               name="delivery_type"
               value="delivery"
               defaultChecked
+              onChange={change}
             />
             <label htmlFor="delivery">Доставка</label>
           </div>
@@ -28,63 +26,89 @@ const Delivery = () => {
               id="pickup"
               name="delivery_type"
               value="pickup"
+              onChange={change}
             />
             <label htmlFor="pickup">Самовывоз</label>
           </div>
         </div>
       </div>
       <div className="delivery__box">
-        <label htmlFor="home">Улица*</label>
+        <label htmlFor="ulitsa">Улица*</label>
         <input
           type="text"
           className="delivery__input delivery__input--home"
           placeholder="Пушкина"
-          id="home"
+          id="ulitsa"
+          name="ulitsa"
+          value={value.ulitsa}
+          required
+          autoComplete="off"
+          onChange={change}
         />
         <div className="delivery__home-box">
           <div>
-            <label htmlFor="dom">Дом</label>
+            <label htmlFor="home">Дом</label>
             <input
               className="delivery__input"
               type="text"
-              id="dom"
+              id="home"
+              name="home"
+              value={value.home}
               placeholder="1а"
+              autoComplete="off"
+              onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="dom">Подъезд</label>
+            <label htmlFor="podez">Подъезд</label>
             <input
               className="delivery__input"
               type="text"
-              id="dom"
+              id="podez"
+              name="podez"
+              value={value.podez}
               placeholder="1"
+              autoComplete="off"
+              onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="dom">Этаж</label>
+            <label htmlFor="etaj">Этаж</label>
             <input
               className="delivery__input"
               type="text"
-              id="dom"
+              id="etaj"
+              name="etaj"
+              value={value.etaj}
               placeholder="2"
+              autoComplete="off"
+              onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="dom">Квартира</label>
+            <label htmlFor="kvartira">Квартира</label>
             <input
               className="delivery__input"
               type="text"
-              id="dom"
+              id="kvartira"
+              name="kvartira"
+              value={value.kvartira}
               placeholder="3"
+              autoComplete="off"
+              onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="dom">Домофон</label>
+            <label htmlFor="domafon">Домофон</label>
             <input
               className="delivery__input"
               type="text"
-              id="dom"
+              id="domafon"
+              name="domafon"
+              value={value.domafon}
               placeholder="0000"
+              autoComplete="off"
+              onChange={change}
             />
           </div>
         </div>
@@ -96,9 +120,10 @@ const Delivery = () => {
                 className="input__custom"
                 type="radio"
                 id="soon"
-                name="delivery-time"
+                name="delivery_time"
                 value="soon"
                 defaultChecked
+                onChange={change}
               />
               <label htmlFor="soon">Как можно скорее</label>
             </div>
@@ -107,8 +132,9 @@ const Delivery = () => {
                 className="input__custom"
                 type="radio"
                 id="byTime"
-                name="delivery-time"
+                name="delivery_time"
                 value="byTime"
+                onChange={change}
               />
               <label htmlFor="byTime">По времени</label>
             </div>
@@ -121,11 +147,6 @@ const Delivery = () => {
         <div className="line"></div>
         <Comment />
         <div className="line"></div>
-
-        <div className="delivery__checkout">
-          <h3>Итого: {prods} ₽</h3>
-          <button className="btn">Оформить заказ</button>
-        </div>
       </div>
     </div>
   );

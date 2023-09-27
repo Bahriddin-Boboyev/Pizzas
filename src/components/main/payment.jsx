@@ -1,6 +1,9 @@
-import React from "react";
+import { useContext } from "react";
+import { DataContext } from "../../context";
 
 const Payment = () => {
+  const { getSubmitInputValues } = useContext(DataContext);
+
   return (
     <div className="payment">
       <div className="payment__box">
@@ -12,9 +15,9 @@ const Payment = () => {
               type="radio"
               id="nalichi"
               name="pay"
-              value={"nalichi"}
+              value="nalichi"
               defaultChecked
-              // checked
+              onChange={() => getSubmitInputValues({ pay: "nalichi" })}
             />
             <label htmlFor="nalichi">Наличными</label>
           </div>
@@ -24,7 +27,8 @@ const Payment = () => {
               type="radio"
               id="card"
               name="pay"
-              value={"card"}
+              value="card"
+              onChange={() => getSubmitInputValues({ pay: "card" })}
             />
             <label htmlFor="card">По времени</label>
           </div>
@@ -34,7 +38,8 @@ const Payment = () => {
               type="radio"
               id="applePay"
               name="pay"
-              value={"applePay"}
+              value="applePay"
+              onChange={() => getSubmitInputValues({ pay: "applePay" })}
             />
             <label htmlFor="applePay">По времени</label>
           </div>

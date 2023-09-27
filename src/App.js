@@ -17,6 +17,7 @@ import {
   Sushi,
   Stock,
   Basket,
+  Order,
   PageNotFound,
 } from "./pages";
 
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="menu/sauce" element={<Sauce />} />
             <Route path="menu/fire" element={<Stock />} />
             <Route path="basket" element={<Basket />} />
+            <Route path="order" element={<Order />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/network-error" element={<NetworkErrorRoutes />} />
