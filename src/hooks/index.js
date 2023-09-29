@@ -5,6 +5,8 @@ import { getPing } from "./getPing";
 import { useInputValue } from "./useInputValue";
 import { postLogin } from "./postLogin";
 import { postRegister } from "./postRegister";
+import { postOrder } from "./postOrder";
+import { getRefreshToken } from "./getRefreshToken";
 
 export {
   useAxiosFunction,
@@ -14,4 +16,6 @@ export {
   useInputValue,
   postLogin,
   postRegister,
+  postOrder,
+  getRefreshToken,
 };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toastNotification } from "../helpers";
 import { useNavigate } from "react-router-dom";
+import { getRefreshToken } from "./";
 
 const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);
@@ -45,12 +46,18 @@ const useAxiosFunction = () => {
       if (error?.code === "ERR_NETWORK") {
         navigate("/network-error");
       }
+      // get refresh token
+      if (error?.response?.data?.error === "jwt expired") {
+        await getRefreshToken();
+      }
+
       // toast error
       toastNotification(2, "error", `error: ${error_msg}`);
     } finally {
       setLoading(false);
     }
   };
+
   return [response, error, loading, axiosFetch];
 };
 

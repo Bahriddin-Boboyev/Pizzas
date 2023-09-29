@@ -1,4 +1,5 @@
 import NetworkErrorRoutes from "./NetworkErrorRoutes";
 import { ProtectedRoutes } from "./ProtectedRoutes";
+import { SomethingWrong } from "./SomethingWrong";
 
-export { NetworkErrorRoutes, ProtectedRoutes };
+export { NetworkErrorRoutes, ProtectedRoutes, SomethingWrong };

@@ -5,6 +5,7 @@ import { storeItemsCount } from "./store-items-count";
 import { storeTotalCost } from "./store-total-cost";
 import { toastNotification } from "./toast-notification";
 import { storeTotalCount } from "./store-total-count";
+import { prodsItemsIsArray } from "./prods-items-is-array";
 
 //
 export {
@@ -15,4 +16,5 @@ export {
   storeTotalCount,
   storeTotalCost,
   toastNotification,
+  prodsItemsIsArray,
 };

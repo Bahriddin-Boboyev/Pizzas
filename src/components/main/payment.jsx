@@ -13,13 +13,13 @@ const Payment = () => {
             <input
               className="input__custom"
               type="radio"
-              id="nalichi"
+              id="cash"
               name="pay"
-              value="nalichi"
+              value="cash"
               defaultChecked
-              onChange={() => getSubmitInputValues({ pay: "nalichi" })}
+              onChange={() => getSubmitInputValues({ pay: "cash" })}
             />
-            <label htmlFor="nalichi">Наличными</label>
+            <label htmlFor="cash">Наличными</label>
           </div>
           <div>
             <input
@@ -30,7 +30,7 @@ const Payment = () => {
               value="card"
               onChange={() => getSubmitInputValues({ pay: "card" })}
             />
-            <label htmlFor="card">По времени</label>
+            <label htmlFor="card">Картой</label>
           </div>
           <div>
             <input
@@ -41,7 +41,7 @@ const Payment = () => {
               value="applePay"
               onChange={() => getSubmitInputValues({ pay: "applePay" })}
             />
-            <label htmlFor="applePay">По времени</label>
+            <label htmlFor="applePay">Apple Pay</label>
           </div>
         </div>
       </div>

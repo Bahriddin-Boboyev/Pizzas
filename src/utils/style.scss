@@ -33,3 +33,39 @@
     cursor: pointer;
   }
 }
+
+.something-wrong {
+  transform: translateY(50%);
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  font-family: "Montserrat", sans-serif !important;
+
+  h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+
+  button {
+    i {
+      font-size: 20px;
+      transition: all 1s ease-in-out;
+    }
+  }
+}
+
+.rotate-icon {
+  transform: rotate(360deg);
+}
+
+@media screen and (max-width: 380px) {
+  .something-wrong {
+    h1 {
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+  }
+}

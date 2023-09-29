@@ -6,7 +6,7 @@ const Lease = () => {
   const { getSubmitInputValues } = useContext(DataContext);
 
   const handleRadioChange = (event) => {
-    setIsChecked(event.target.value === "bezlease");
+    setIsChecked(event.target.value === "noLease");
   };
 
   return (
@@ -18,16 +18,15 @@ const Lease = () => {
             <input
               className="input__custom"
               type="radio"
-              id="bezlease"
+              id="noLease"
               name="lease"
-              value="bezlease"
+              value="noLease"
               onChange={(e) => (
-                handleRadioChange(e),
-                getSubmitInputValues({ lease: "bezlease" })
+                handleRadioChange(e), getSubmitInputValues({ lease: "noLease" })
               )}
               defaultChecked
             />
-            <label htmlFor="bezlease">Без сдачи</label>
+            <label htmlFor="noLease">Без сдачи</label>
           </div>
           <div className="lease__fix">
             <input

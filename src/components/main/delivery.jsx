@@ -33,14 +33,14 @@ const Delivery = ({ value, change }) => {
         </div>
       </div>
       <div className="delivery__box">
-        <label htmlFor="ulitsa">Улица*</label>
+        <label htmlFor="street">Улица*</label>
         <input
           type="text"
           className="delivery__input delivery__input--home"
           placeholder="Пушкина"
-          id="ulitsa"
-          name="ulitsa"
-          value={value.ulitsa}
+          id="street"
+          name="street"
+          value={value.street}
           required
           autoComplete="off"
           onChange={change}
@@ -60,52 +60,52 @@ const Delivery = ({ value, change }) => {
             />
           </div>
           <div>
-            <label htmlFor="podez">Подъезд</label>
+            <label htmlFor="entrance">Подъезд</label>
             <input
               className="delivery__input"
               type="text"
-              id="podez"
-              name="podez"
-              value={value.podez}
+              id="entrance"
+              name="entrance"
+              value={value.entrance}
               placeholder="1"
               autoComplete="off"
               onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="etaj">Этаж</label>
+            <label htmlFor="floor">Этаж</label>
             <input
               className="delivery__input"
               type="text"
-              id="etaj"
-              name="etaj"
-              value={value.etaj}
+              id="floor"
+              name="floor"
+              value={value.floor}
               placeholder="2"
               autoComplete="off"
               onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="kvartira">Квартира</label>
+            <label htmlFor="apartment">Квартира</label>
             <input
               className="delivery__input"
               type="text"
-              id="kvartira"
-              name="kvartira"
-              value={value.kvartira}
+              id="apartment"
+              name="apartment"
+              value={value.apartment}
               placeholder="3"
               autoComplete="off"
               onChange={change}
             />
           </div>
           <div>
-            <label htmlFor="domafon">Домофон</label>
+            <label htmlFor="doorPhone">Домофон</label>
             <input
               className="delivery__input"
               type="text"
-              id="domafon"
-              name="domafon"
-              value={value.domafon}
+              id="doorPhone"
+              name="doorPhone"
+              value={value.doorPhone}
               placeholder="0000"
               autoComplete="off"
               onChange={change}

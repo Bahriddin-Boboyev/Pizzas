@@ -3,9 +3,20 @@ import { useEffect, useState, useContext } from "react";
 import BasketOrder from "../components/main/basket-order";
 import About from "../components/main/about";
 import Delivery from "../components/main/delivery";
-import { getProducts, useAxiosFunction, useInputValue } from "../hooks/";
+import {
+  getProducts,
+  postOrder,
+  useAxiosFunction,
+  useInputValue,
+} from "../hooks/";
 import { DataContext } from "../context";
-import { clickStoreProduct, storeItemsCount, storeTotalCost } from "../helpers";
+import {
+  clickStoreProduct,
+  prodsItemsIsArray,
+  storeItemsCount,
+  storeTotalCost,
+  toastNotification,
+} from "../helpers";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -13,14 +24,14 @@ const inputs = {
   name: "",
   number: "",
   email: "",
-  ulitsa: "",
+  street: "",
   home: "",
-  podez: "",
-  etaj: "",
-  kvartira: "",
-  domafon: "",
-  delivery_type: "delivery",
+  entrance: "",
+  floor: "",
+  apartment: "",
+  doorPhone: "",
   delivery_time: "soon",
+  delivery_type: "delivery",
 };
 
 const Basket = () => {
@@ -30,6 +41,7 @@ const Basket = () => {
     useContext(DataContext);
   // eslint-disable-next-line
   const [data, error, loading, axiosFetch] = useAxiosFunction();
+  const [data2, error2, loading2, axiosFetch2] = useAxiosFunction();
   const { value, change } = useInputValue(inputs);
   const navigate = useNavigate();
 
@@ -59,20 +71,37 @@ const Basket = () => {
       return toast.error(
         "Products tasdiqlash uchun iltimos ro'yxatdan o'ting!",
       );
-    console.log(isToken);
+    toast.loading("Loading...", { toastId: 3 });
     getSubmitInputValues();
-    console.log(value);
-    console.log(context.values);
-    let prodItems = [];
-    products.map((prod) =>
-      prodItems.push({
-        id: prod._id,
-        count: storeItemsCount(prod._id, prods),
-      }),
-    );
-    console.log(prodItems);
-    navigate("/order");
+    let values = {};
+    for (const i in value) {
+      if (value[i] !== "") {
+        values[i] = value[i];
+      }
+    }
+    const data = {
+      products: prodsItemsIsArray(products, prods),
+      ...values,
+    };
+    data.lease = context?.values?.lease;
+    data.payment = context?.values?.pay;
+    if (context?.values?.comment) {
+      data.comment = context?.values.comment;
+    }
+    postOrder(axiosFetch2, data);
   };
+
+  useEffect(() => {
+    if (error2) {
+      // toast error
+      toastNotification(3, "error", error2);
+    } else if (data2?.data) {
+      // toast success
+      localStorage.removeItem("cart");
+      toastNotification(3, "success", data2?.data);
+      navigate("/order");
+    }
+  }, [data2, error2]);
 
   return (
     <div className="basket">

@@ -34,8 +34,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         values: {
-          pay: "nalichi",
-          lease: "bezlease",
+          pay: "cash",
+          lease: "noLease",
           ...state.values,
           ...action.payload,
         },
