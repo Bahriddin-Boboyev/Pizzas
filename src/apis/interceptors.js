@@ -1,5 +1,8 @@
 import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
+let token = localStorage.getItem("token");
+
+if (token) token = JSON.parse(token);
 
 const axiosFunc = (params) => {
   if (params) {
@@ -8,8 +11,10 @@ const axiosFunc = (params) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: token,
       },
       params,
+      withCredentials: true,
     });
   } else {
     return axios.create({
@@ -17,7 +22,9 @@ const axiosFunc = (params) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: token,
       },
+      withCredentials: true,
     });
   }
 };

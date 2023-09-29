@@ -4,7 +4,7 @@ import { DataContext } from "./context/context";
 import BasketRight from "./components/main/basket-right";
 import useAxiosFunction from "./hooks/useAxiosFunction";
 import useLocalStorageState from "use-local-storage-state";
-import { NetworkErrorRoutes, ProtectedRoutes } from "./utils";
+import { NetworkErrorRoutes, ProtectedRoutes, SomethingWrong } from "./utils";
 import { ToastCustomContainer } from "./components";
 import {
   Combo,
@@ -71,6 +71,7 @@ const App = () => {
           </Route>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/network-error" element={<NetworkErrorRoutes />} />
+          <Route path="/error" element={<SomethingWrong />} />
         </Routes>
       </div>
       <div

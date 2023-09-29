@@ -1,3 +1,3 @@
-import axios from "./api";
+import axios from "./interceptors";
 
 export { axios };
