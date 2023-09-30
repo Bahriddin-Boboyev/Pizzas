@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Footer, Loading, Navbar } from "../components";
 import { getPing, useAxiosFunction } from "../hooks";
-import NetworkErrorRoutes from "./NetworkErrorRoutes";
+import { SomethingWrong } from "./SomethingWrong";
 
 export const ProtectedRoutes = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
@@ -12,7 +12,7 @@ export const ProtectedRoutes = () => {
   }, []);
 
   if (loading || error) {
-    return loading ? <Loading visible={true} /> : <NetworkErrorRoutes />;
+    return loading ? <Loading visible={true} /> : <SomethingWrong />;
   }
 
   if (data?.data === "Pong!") {

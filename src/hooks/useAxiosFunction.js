@@ -17,9 +17,7 @@ const useAxiosFunction = () => {
       if (requestConfig?.data) {
         const res = await axiosInstance[method.toLowerCase()](
           url,
-          {
-            ...requestConfig?.data,
-          },
+          { ...requestConfig?.data },
           { ...requestConfig },
         );
         setResponse(res.data);

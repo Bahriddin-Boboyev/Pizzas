@@ -4,29 +4,17 @@ let token = localStorage.getItem("token");
 
 if (token) token = JSON.parse(token);
 
-const axiosFunc = (params) => {
-  if (params) {
-    return axios.create({
-      baseURL: BASE_URL,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: token,
-      },
-      params,
-      withCredentials: true,
-    });
-  } else {
-    return axios.create({
-      baseURL: BASE_URL,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: token,
-      },
-      withCredentials: true,
-    });
-  }
+const axiosFunc = (params, withCredentials) => {
+  return axios.create({
+    baseURL: BASE_URL,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: token,
+    },
+    params: params && params,
+    withCredentials: withCredentials && true,
+  });
 };
 
 export default axiosFunc;

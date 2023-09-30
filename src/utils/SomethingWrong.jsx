@@ -16,7 +16,9 @@ export const SomethingWrong = () => {
           onClick={() => (setReload(!reload), navigate("/"))}
         >
           <i
-            class={`fa-solid fa-rotate-right ${reload ? "rotate-icon" : ""}`}
+            className={`fa-solid fa-rotate-right ${
+              reload ? "rotate-icon" : ""
+            }`}
           ></i>
         </button>
       </article>
