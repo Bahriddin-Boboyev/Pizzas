@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { postRegister } from "../../hooks";
 
-const Register = ({ context, showLogin }) => {
+const Register = ({ context, showModal }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [name, setName] = useState("");
@@ -36,7 +36,7 @@ const Register = ({ context, showLogin }) => {
     // set token
     if (response?.data) {
       localStorage.setItem("token", JSON.stringify(response?.data));
-      showLogin({ hidden: false });
+      showModal({ hidden: false });
     }
     // eslint-disable-next-line
   }, [response?.data]);
@@ -44,7 +44,7 @@ const Register = ({ context, showLogin }) => {
   return (
     <div
       className={`${
-        context?.login?.hidden && context?.login?.type === "register"
+        context?.modal?.hidden && context?.modal?.type === "register"
           ? "login__modal"
           : "none"
       }`}
@@ -90,14 +90,14 @@ const Register = ({ context, showLogin }) => {
         </p>
         <p className="login-modal__est-acc">
           У вас уже есть аккаунт?{" "}
-          <span onClick={() => showLogin({ hidden: true, type: "login" })}>
+          <span onClick={() => showModal({ hidden: true, type: "login" })}>
             Авторизоваться
           </span>
         </p>
       </form>
       <button
         className="btn__login-modal"
-        onClick={() => showLogin({ hidden: false })}
+        onClick={() => showModal({ hidden: false })}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

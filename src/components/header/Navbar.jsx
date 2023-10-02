@@ -10,30 +10,20 @@ import login from "../../img/login.svg";
 import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
-import { useScrollFixed, storeTotalCost, storeTotalCount } from "../../helpers";
+import {
+  useScrollFixed,
+  storeTotalCost,
+  storeTotalCount,
+  Timer,
+} from "../../helpers";
 import useLocalStorageState from "use-local-storage-state";
 
 const Navbar = () => {
-  const { context, showBasket, showLogin } = useContext(DataContext);
+  const { context, showBasket, showModal } = useContext(DataContext);
   const [toggle, setToggle] = useState(false);
   const [cart] = useLocalStorageState("cart", []);
 
   const fixed = useScrollFixed(50);
-
-  // timer
-  const [seconds, setSeconds] = useState(35 * 60);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((seconds) => {
-        if (seconds === 0) {
-          return 35 * 60;
-        } else {
-          return seconds - 1;
-        }
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     if (toggle) {
@@ -43,6 +33,7 @@ const Navbar = () => {
     }
   }, [toggle]);
 
+  const seconds = Timer(35);
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
@@ -89,7 +80,7 @@ const Navbar = () => {
           </div>
           <div className="navbar__section-2-login">
             <button
-              onClick={() => showLogin({ hidden: true, type: "register" })}
+              onClick={() => showModal({ hidden: true, type: "register" })}
             >
               Войти в аккаунт
             </button>
@@ -133,8 +124,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <Register context={context} showLogin={showLogin} />
-      <Login context={context} showLogin={showLogin} />
+      <Register context={context} showModal={showModal} />
+      <Login context={context} showModal={showModal} />
       <div className="navbar__basket-shop--box hover">
         <span className="animate-ping"></span>
         <button onClick={() => showBasket(true)}>
@@ -150,7 +141,7 @@ const Navbar = () => {
         <div
           className={`login__block hover`}
           onClick={() => (
-            showLogin({ hidden: true, type: "register" }), setToggle(false)
+            showModal({ hidden: true, type: "register" }), setToggle(false)
           )}
         >
           <div

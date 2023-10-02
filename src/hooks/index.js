@@ -7,6 +7,8 @@ import { postLogin } from "./postLogin";
 import { postRegister } from "./postRegister";
 import { postOrder } from "./postOrder";
 import { getRefreshToken } from "./getRefreshToken";
+import { getSendMailer } from "./getSendMailer";
+import { postCode } from "./postCode";
 
 export {
   useAxiosFunction,
@@ -18,4 +20,6 @@ export {
   postRegister,
   postOrder,
   getRefreshToken,
+  getSendMailer,
+  postCode,
 };

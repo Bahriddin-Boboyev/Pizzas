@@ -136,7 +136,28 @@
     flex-shrink: 0;
   }
 }
-
+.login__modal {
+  &--sms {
+    h2 {
+      margin-bottom: 5px !important;
+    }
+  }
+  &__deck {
+    line-height: 17px !important;
+    font-size: 13px !important;
+    color: #191919 !important;
+    span {
+      font-style: italic !important;
+      text-decoration: underline;
+    }
+  }
+  &__code_deck {
+    opacity: 1 !important;
+    span {
+      color: #a5a5a5 !important;
+    }
+  }
+}
 @media screen and (max-width: 990px) {
   .login__modal {
     width: 95%;

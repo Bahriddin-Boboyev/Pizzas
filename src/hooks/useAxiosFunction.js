@@ -11,6 +11,13 @@ const useAxiosFunction = () => {
   const navigate = useNavigate();
 
   const axiosFetch = async (configObj) => {
+    if (configObj === "clear") {
+      setResponse([]);
+      setError();
+      setLoading(false);
+      return;
+    }
+
     const { axiosInstance, method, url, requestConfig = {} } = configObj;
     try {
       setLoading(true);

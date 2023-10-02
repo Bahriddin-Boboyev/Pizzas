@@ -4,5 +4,14 @@ import Loading from "./loading/loading";
 import { ToastCustomContainer } from "./toast-custom-container";
 import { Items } from "./main/items";
 import { MainSkeleton } from "./skeleton/main-skeleton";
+import { SmsModal } from "./sms-modal";
 
-export { Navbar, Footer, ToastCustomContainer, Loading, Items, MainSkeleton };
+export {
+  Navbar,
+  Footer,
+  ToastCustomContainer,
+  Loading,
+  Items,
+  MainSkeleton,
+  SmsModal,
+};

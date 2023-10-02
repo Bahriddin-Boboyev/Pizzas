@@ -1,9 +1,10 @@
 import "./style.scss";
 import { ThreeDots } from "react-loader-spinner";
 
-const Loading = ({ visible }) => {
+const Loading = ({ visible, global }) => {
+  console.log(global);
   return (
-    <div className="loading__visible">
+    <div className={`loading__visible ${global ? "global-loading" : ""}`}>
       <ThreeDots
         height="150"
         width="150"

@@ -4,9 +4,9 @@ import {
   API_PARAMS,
   GET_PRODUCTS,
   GET_STORE_ITEM,
+  GET_TYPES,
   SHOW_BASKET,
-  SHOW_LOGIN,
-  REQUIRED_iNPUTS,
+  SHOW_MODAL,
   SUBMIT_INPUTS_VALUES,
 } from "./actions";
 
@@ -22,9 +22,9 @@ const DataProvider = ({ children }) => {
       payload: basket,
     });
   };
-  const showLogin = ({ hidden, type }) => {
+  const showModal = ({ hidden, type }) => {
     dispatch({
-      type: SHOW_LOGIN,
+      type: SHOW_MODAL,
       payload: { hidden, type },
     });
   };
@@ -55,16 +55,24 @@ const DataProvider = ({ children }) => {
     });
   };
 
+  const getSendTypes = (payload) => {
+    dispatch({
+      type: GET_TYPES,
+      payload,
+    });
+  };
+
   return (
     <DataContext.Provider
       value={{
         context: state,
         showBasket,
-        showLogin,
+        showModal,
         apiParams,
         getProducts,
         getStoreItems,
         getSubmitInputValues,
+        getSendTypes,
       }}
     >
       {children}

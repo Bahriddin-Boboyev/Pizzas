@@ -19,6 +19,7 @@ import {
 } from "../helpers";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { SmsModal } from "../components";
 
 const inputs = {
   name: "",
@@ -37,13 +38,19 @@ const inputs = {
 const Basket = () => {
   let prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState([]);
-  const { context, getStoreItems, getSubmitInputValues } =
-    useContext(DataContext);
   // eslint-disable-next-line
   const [data, error, loading, axiosFetch] = useAxiosFunction();
   const [data2, error2, loading2, axiosFetch2] = useAxiosFunction();
   const { value, change } = useInputValue(inputs);
+  const [tempData, setTempData] = useState({});
   const navigate = useNavigate();
+  const {
+    context,
+    getStoreItems,
+    getSubmitInputValues,
+    showModal,
+    getSendTypes,
+  } = useContext(DataContext);
 
   useEffect(() => {
     getProducts(axiosFetch);
@@ -71,7 +78,7 @@ const Basket = () => {
       return toast.error(
         "Products tasdiqlash uchun iltimos ro'yxatdan o'ting!",
       );
-    toast.loading("Loading...", { toastId: 3 });
+    // toast.loading("Loading...", { toastId: 3 });
     getSubmitInputValues();
     let values = {};
     for (const i in value) {
@@ -88,7 +95,8 @@ const Basket = () => {
     if (context?.values?.comment) {
       data.comment = context?.values.comment;
     }
-    postOrder(axiosFetch2, data);
+    setTempData(data);
+    getSendTypes({ smsMailModal: true });
   };
 
   useEffect(() => {
@@ -103,8 +111,22 @@ const Basket = () => {
     }
   }, [data2, error2]);
 
+  useEffect(() => {
+    if (context?.types?.smsCode === "success") {
+      console.log(context.types);
+      postOrder(axiosFetch2, tempData);
+      getSendTypes({ smsCode: null });
+    }
+  }, [context]);
+  console.log(data2, error2);
+
   return (
     <div className="basket">
+      <SmsModal
+        context={context}
+        showModal={showModal}
+        getSendTypes={getSendTypes}
+      />
       {error ? (
         <h2 className="error_msg">{JSON.stringify(error)}</h2>
       ) : (

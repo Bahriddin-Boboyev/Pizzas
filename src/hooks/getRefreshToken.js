@@ -14,7 +14,7 @@ export const getRefreshToken = async () => {
     if (data?.data?.token) {
       const token = data.data.token;
       localStorage.setItem("token", JSON.stringify(token));
-      window.location.replace("/error");
+      // window.location.replace("/error");
     }
   } catch (error) {
     toast.error(error?.response?.data.error);

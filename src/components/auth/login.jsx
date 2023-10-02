@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { postLogin } from "../../hooks";
 import useAxiosFunction from "../../hooks/useAxiosFunction";
 
-const Login = ({ context, showLogin }) => {
+const Login = ({ context, showModal }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ const Login = ({ context, showLogin }) => {
     // set token
     if (response?.data) {
       localStorage.setItem("token", JSON.stringify(response?.data));
-      showLogin({ hidden: false });
+      showModal({ hidden: false });
     }
     // eslint-disable-next-line
   }, [response?.data]);
@@ -39,7 +39,7 @@ const Login = ({ context, showLogin }) => {
   return (
     <div
       className={`${
-        context?.login?.hidden && context?.login?.type === "login"
+        context?.modal?.hidden && context?.modal?.type === "login"
           ? "login__modal login__modal--sign"
           : "none"
       }`}
@@ -71,14 +71,14 @@ const Login = ({ context, showLogin }) => {
         </p>
         <p className="login-modal__est-acc">
           Нужен аккаунт?{" "}
-          <span onClick={() => showLogin({ hidden: true, type: "register" })}>
+          <span onClick={() => showModal({ hidden: true, type: "register" })}>
             Зарегистрироваться
           </span>
         </p>
       </form>
       <button
         className="btn__login-modal"
-        onClick={() => showLogin({ hidden: false })}
+        onClick={() => showModal({ hidden: false })}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,10 +1,11 @@
 import {
-  SHOW_LOGIN,
+  SHOW_MODAL,
   SHOW_BASKET,
   API_PARAMS,
   GET_PRODUCTS,
   GET_STORE_ITEM,
   SUBMIT_INPUTS_VALUES,
+  GET_TYPES,
 } from "./actions";
 
 const items = localStorage.getItem("cart");
@@ -12,8 +13,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case SHOW_BASKET:
       return { ...state, basket: action.payload };
-    case SHOW_LOGIN:
-      return { ...state, login: action.payload };
+    case SHOW_MODAL:
+      return { ...state, modal: action.payload };
     case API_PARAMS:
       return { ...state, params: action.payload };
     case GET_PRODUCTS:
@@ -37,6 +38,14 @@ const reducer = (state, action) => {
           pay: "cash",
           lease: "noLease",
           ...state.values,
+          ...action.payload,
+        },
+      };
+    case GET_TYPES:
+      return {
+        ...state,
+        types: {
+          ...state.types,
           ...action.payload,
         },
       };
