@@ -110,14 +110,6 @@ const Basket = () => {
       navigate("/order");
     }
   }, [data2, error2]);
-
-  useEffect(() => {
-    if (context?.types?.smsCode === "success") {
-      console.log(context.types);
-      postOrder(axiosFetch2, tempData);
-      getSendTypes({ smsCode: null });
-    }
-  }, [context]);
   console.log(data2, error2);
 
   return (

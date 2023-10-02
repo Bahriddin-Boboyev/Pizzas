@@ -9,6 +9,7 @@ import { postOrder } from "./postOrder";
 import { getRefreshToken } from "./getRefreshToken";
 import { getSendMailer } from "./getSendMailer";
 import { postCode } from "./postCode";
+import { getMe } from "./getMe";
 
 export {
   useAxiosFunction,
@@ -22,4 +23,5 @@ export {
   getRefreshToken,
   getSendMailer,
   postCode,
+  getMe,
 };

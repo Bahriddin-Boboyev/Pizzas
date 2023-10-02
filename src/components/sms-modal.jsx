@@ -1,12 +1,13 @@
 import "./auth/style.scss";
 import { useState, useEffect } from "react";
-import { Timer } from "../helpers";
-import { getSendMailer, postCode, useAxiosFunction } from "../hooks";
+import { getMe, getSendMailer, postCode, useAxiosFunction } from "../hooks";
 import { toast } from "react-toastify";
 import { useRef } from "react";
+import { TimerComponent } from "./time";
 
 export const SmsModal = ({ context, showModal, getSendTypes }) => {
   const [response, error, loading, axiosFetch] = useAxiosFunction();
+  const [response2, error2, loading2, axiosFetch2] = useAxiosFunction();
   const [code, setCode] = useState("");
   const ref = useRef(true);
   const submitRef = useRef(true);
@@ -38,13 +39,13 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
 
     if (context?.types?.smsMail === "pending" && response?.data) {
       getSendTypes({ smsMail: "success" });
-      console.log(response);
       toast.success(response.data);
     }
 
     if (context?.types?.smsMail === "pending" && error) {
       getSendTypes({ smsMail: "reject" });
       toast.error(error);
+      showModal({ hidden: false, type: "smsModal" });
       console.log(response, error);
     }
 
@@ -56,17 +57,18 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
     }
 
     if (error && !submitRef.current) {
-      toast.success(response.data);
+      toast.error(error);
       getSendTypes({ smsCode: "reject" });
       submitRef.current = true;
     }
   }, [context, response, error, submitRef]);
 
-  console.log(response, error, loading);
+  useEffect(() => {
+    getMe(axiosFetch2);
+  }, []);
 
-  // const seconds = Timer(1);
-  // const minutes = Math.floor(seconds / 60);
-  // const remainingSeconds = seconds % 60;
+  console.log(response, error, loading);
+  console.log(submitRef.current);
 
   return (
     <div
@@ -79,7 +81,7 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
       <h2>Код из смс</h2>
       <p className="login__modal__deck">
         На электронная почта <br />
-        <span>bahriddinboboyev@gmail.com</span>
+        <span>{response2?.data?.email}</span>
       </p>
       <form
         className="login__modal-box"
@@ -94,7 +96,15 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
         />
         <button type="submit">Войти</button>
         <p className="login__modal__code_deck">
-          Отправить код ещё раз через: <span>59 секунд</span>
+          Отправить код ещё раз через:{" "}
+          <span>
+            {context?.types?.smsMail === "success" ? (
+              <TimerComponent time={1} repeat={false} />
+            ) : (
+              "00"
+            )}{" "}
+            секунд
+          </span>
         </p>
       </form>
       <button

@@ -10,13 +10,9 @@ import login from "../../img/login.svg";
 import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
-import {
-  useScrollFixed,
-  storeTotalCost,
-  storeTotalCount,
-  Timer,
-} from "../../helpers";
+import { useScrollFixed, storeTotalCost, storeTotalCount } from "../../helpers";
 import useLocalStorageState from "use-local-storage-state";
+import { TimerComponent } from "../";
 
 const Navbar = () => {
   const { context, showBasket, showModal } = useContext(DataContext);
@@ -32,10 +28,6 @@ const Navbar = () => {
       document.body.style.overflow = "unset";
     }
   }, [toggle]);
-
-  const seconds = Timer(35);
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
 
   return (
     <nav className="navbar navbar-1">
@@ -68,9 +60,7 @@ const Navbar = () => {
           <div className="navbar__item">
             <Link to={"#"}>
               Среднее время доставки*:{" "}
-              <span>{`${minutes}:${
-                remainingSeconds < 10 ? "0" : ""
-              }${remainingSeconds}`}</span>
+              <TimerComponent time={35} repeat={true} />
             </Link>
           </div>
         </div>
