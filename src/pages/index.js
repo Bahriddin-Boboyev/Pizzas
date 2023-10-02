@@ -10,6 +10,7 @@ import Basket from "./Basket";
 import Stock from "./Stock";
 import { Order } from "./orders/Order";
 import { PageNotFound } from "./404";
+import { MyAccountSettings } from "./me/my-account-settings";
 
 export {
   Home,
@@ -24,4 +25,5 @@ export {
   Stock,
   Order,
   PageNotFound,
+  MyAccountSettings,
 };

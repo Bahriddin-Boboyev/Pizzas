@@ -59,6 +59,16 @@ select {
   }
 }
 
+.user-navbar {
+  cursor: pointer;
+  display: flex;
+  column-gap: 5px;
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 .navbar__item {
   a {
     color: var(--black, #191919);

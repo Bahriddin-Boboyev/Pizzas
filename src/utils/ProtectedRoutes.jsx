@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Footer, Loading, Navbar } from "../components";
+import { IsLoggedInUser } from "../helpers";
 import { getPing, useAxiosFunction } from "../hooks";
 import { SomethingWrong } from "./SomethingWrong";
 
@@ -10,6 +11,9 @@ export const ProtectedRoutes = () => {
   useEffect(() => {
     getPing(axiosFetch);
   }, []);
+
+  // check login user
+  IsLoggedInUser();
 
   if (loading || error) {
     return loading ? <Loading visible={true} /> : <SomethingWrong />;

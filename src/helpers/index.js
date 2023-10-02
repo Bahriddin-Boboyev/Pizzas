@@ -7,6 +7,7 @@ import { toastNotification } from "./toast-notification";
 import { storeTotalCount } from "./store-total-count";
 import { prodsItemsIsArray } from "./prods-items-is-array";
 import { useTimer } from "./useTimer";
+import { IsLoggedInUser } from "./is-logged-in-user";
 
 //
 export {
@@ -19,4 +20,5 @@ export {
   toastNotification,
   prodsItemsIsArray,
   useTimer,
+  IsLoggedInUser,
 };

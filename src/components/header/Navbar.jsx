@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./header.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import locationIcon from "../../img/location.svg";
 import pizza from "../../img/navbar-pizza.svg";
 import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 import korzinka2 from "../../img/korzinka-2.svg";
 import login from "../../img/login.svg";
+import user from "../../img/user-regular.svg";
 import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
@@ -18,6 +19,7 @@ const Navbar = () => {
   const { context, showBasket, showModal } = useContext(DataContext);
   const [toggle, setToggle] = useState(false);
   const [cart] = useLocalStorageState("cart", []);
+  const navigate = useNavigate();
 
   const fixed = useScrollFixed(50);
 
@@ -69,11 +71,21 @@ const Navbar = () => {
             <p>Время работы: с 11:00 до 23:00</p>
           </div>
           <div className="navbar__section-2-login">
-            <button
-              onClick={() => showModal({ hidden: true, type: "register" })}
-            >
-              Войти в аккаунт
-            </button>
+            {context?.types?.isLoggedIn ? (
+              <div
+                className="user-navbar"
+                onClick={() => navigate("/settings")}
+              >
+                <img src={user} alt="user" />
+                <span>{context?.types.meInfo?.name}</span>
+              </div>
+            ) : (
+              <button
+                onClick={() => showModal({ hidden: true, type: "register" })}
+              >
+                Войти в аккаунт
+              </button>
+            )}
           </div>
         </div>
       </div>

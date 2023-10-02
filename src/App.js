@@ -19,6 +19,7 @@ import {
   Basket,
   Order,
   PageNotFound,
+  MyAccountSettings,
 } from "./pages";
 
 const App = () => {
@@ -70,6 +71,7 @@ const App = () => {
             <Route path="menu/fire" element={<Stock />} />
             <Route path="basket" element={<Basket />} />
             <Route path="order" element={<Order />} />
+            <Route path="settings" element={<MyAccountSettings />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/network-error" element={<NetworkErrorRoutes />} />
