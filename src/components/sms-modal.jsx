@@ -54,6 +54,7 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
       getSendTypes({ smsCode: "success" });
       showModal({ hidden: false, type: "smsModal" });
       submitRef.current = true;
+      toast.loading("Loading...", { toastId: 3 });
     }
 
     if (error && !submitRef.current) {

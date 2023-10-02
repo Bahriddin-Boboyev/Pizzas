@@ -78,7 +78,6 @@ const Basket = () => {
       return toast.error(
         "Products tasdiqlash uchun iltimos ro'yxatdan o'ting!",
       );
-    // toast.loading("Loading...", { toastId: 3 });
     getSubmitInputValues();
     let values = {};
     for (const i in value) {
@@ -100,17 +99,24 @@ const Basket = () => {
   };
 
   useEffect(() => {
+    if (context?.types?.smsCode === "success") {
+      postOrder(axiosFetch2, tempData);
+    }
+  }, [context]);
+
+  useEffect(() => {
     if (error2) {
       // toast error
       toastNotification(3, "error", error2);
+      getSendTypes({ smsCode: "error" });
     } else if (data2?.data) {
       // toast success
       localStorage.removeItem("cart");
       toastNotification(3, "success", data2?.data);
+      getSendTypes({ smsCode: "done" });
       navigate("/order");
     }
   }, [data2, error2]);
-  console.log(data2, error2);
 
   return (
     <div className="basket">
