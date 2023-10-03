@@ -10,7 +10,7 @@ export const TimerComponent = ({ time, repeat }) => {
   if (!repeat && !ref.current) {
     setTimeout(() => {
       getSendTypes({ msZero: true });
-    }, 60000);
+    }, time * 60000);
     ref.current = true;
   }
 
