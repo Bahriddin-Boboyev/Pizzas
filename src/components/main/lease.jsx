@@ -48,6 +48,7 @@ const Lease = () => {
                 onChange={(event) =>
                   getSubmitInputValues({ lease: event.target.value })
                 }
+                min="0"
               />
               <span>₽</span>
             </div>
