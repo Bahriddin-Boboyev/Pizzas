@@ -47,6 +47,20 @@
       opacity: 1 !important;
     }
   }
+  #send-btn {
+    cursor: pointer;
+    display: inline-block !important;
+    color: var(--Primary, #ff7010) !important;
+    font-family: SF Pro Text !important;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0 !important;
+    opacity: 1 !important;
+    max-width: 100% !important;
+    text-align: unset !important;
+  }
 
   /* register */
   .login__modal-box {

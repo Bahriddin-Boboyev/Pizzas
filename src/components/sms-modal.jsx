@@ -68,6 +68,11 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
     getMe(axiosFetch2);
   }, []);
 
+  const handleResendCode = () => {
+    getSendTypes({ smsMailModal: true, msZero: false });
+    ref.current = true;
+  };
+
   console.log(response, error, loading);
   console.log(submitRef.current);
 
@@ -98,14 +103,20 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
         <button type="submit">Войти</button>
         <p className="login__modal__code_deck">
           Отправить код ещё раз через:{" "}
-          <span>
-            {context?.types?.smsMail === "success" ? (
-              <TimerComponent time={1} repeat={false} />
-            ) : (
-              "00"
-            )}{" "}
-            секунд
-          </span>
+          {context?.types?.msZero ? (
+            <span id="send-btn" onClick={handleResendCode}>
+              Отправить
+            </span>
+          ) : (
+            <span>
+              {context?.types?.smsMail === "success" ? (
+                <TimerComponent time={1} repeat={false} />
+              ) : (
+                "00"
+              )}{" "}
+              секунд
+            </span>
+          )}
         </p>
       </form>
       <button
