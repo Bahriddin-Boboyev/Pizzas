@@ -74,10 +74,7 @@ const Basket = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!isToken)
-      return toast.error(
-        "Products tasdiqlash uchun iltimos ro'yxatdan o'ting!",
-      );
+    if (!isToken) return (toast.error("Please login to confirm products!"), showModal({ hidden: true, type: "register" }))
     getSubmitInputValues();
     let values = {};
     for (const i in value) {

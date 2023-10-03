@@ -5,6 +5,7 @@ import { getProducts, useAxiosFunction } from "../../hooks";
 // import { Loading } from "../../components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { MainSkeleton } from "../";
+import { toast } from "react-toastify";
 
 const MainPizzaCart = () => {
   const { context, getStoreItems } = useContext(DataContext);
@@ -22,6 +23,11 @@ const MainPizzaCart = () => {
   }, [data]);
 
   const categories = [...new Set(products?.map((item) => item.category.name))];
+
+  const handleClick = (product) => {
+    getStoreItems(product);
+    toast.info("The product has been added to the basket.");
+  };
 
   return (
     <div className="mainPizza">
@@ -62,7 +68,7 @@ const MainPizzaCart = () => {
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
                       <div className="mainPizza__down-block">
-                        <button onClick={() => getStoreItems(product)}>
+                        <button onClick={() => handleClick(product)}>
                           Выбрать
                         </button>
                         <span>от {product.price} ₽</span>

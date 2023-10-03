@@ -35,11 +35,7 @@ const useAxiosFunction = () => {
         setResponse(res.data);
       }
       // toast success
-      toastNotification(
-        2,
-        "success",
-        "Siz muavviqiyatli ro'yxatdan o'tdingiz!",
-      );
+      toastNotification(2, "success", "You have successfully registered!");
 
       setError(null);
     } catch (error) {

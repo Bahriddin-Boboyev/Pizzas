@@ -7,13 +7,15 @@ import logo from "../../img/navbar-logo.svg";
 import korzinka from "../../img/navbar-korzinka.svg";
 import korzinka2 from "../../img/korzinka-2.svg";
 import login from "../../img/login.svg";
-import user from "../../img/user-regular.svg";
+import userAccount from "../../img/user-account.svg";
+import userAvatar from "../../img/user-avatar.svg";
 import { DataContext } from "../../context";
 import Register from "../auth/register";
 import Login from "../auth/login";
 import { useScrollFixed, storeTotalCost, storeTotalCount } from "../../helpers";
 import useLocalStorageState from "use-local-storage-state";
 import { TimerComponent } from "../";
+import { ReactSVG } from "react-svg";
 
 const Navbar = () => {
   const { context, showBasket, showModal } = useContext(DataContext);
@@ -76,13 +78,27 @@ const Navbar = () => {
                 className="user-navbar"
                 onClick={() => navigate("/settings")}
               >
-                <img src={user} alt="user" />
+                <ReactSVG
+                  className="user-avatar"
+                  src={userAvatar}
+                  beforeInjection={(svg) => {
+                    svg.setAttribute("style", "width: 30px");
+                  }}
+                />
                 <span>{context?.types.meInfo?.name}</span>
               </div>
             ) : (
               <button
+                style={{ display: "flex", alignItems: "center" }}
                 onClick={() => showModal({ hidden: true, type: "register" })}
               >
+                <ReactSVG
+                  style={{ marginTop: "-5px", marginRight: "5px" }}
+                  src={userAccount}
+                  beforeInjection={(svg) => {
+                    svg.setAttribute("style", "width: 15px");
+                  }}
+                />
                 Войти в аккаунт
               </button>
             )}

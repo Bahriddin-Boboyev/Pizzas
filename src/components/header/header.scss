@@ -92,7 +92,14 @@ select {
     }
   }
 }
+.user-avatar {
+  width: 25px;
+  height: 25px;
 
+  svg {
+    border-radius: 50% !important;
+  }
+}
 .navbar__section-2 {
   width: 35%;
   display: flex;
