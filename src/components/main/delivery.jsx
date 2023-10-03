@@ -1,9 +1,10 @@
+import { ErrorMessage } from "@hookform/error-message";
 import React from "react";
 import Comment from "./comment";
 import Lease from "./lease";
 import Payment from "./payment";
 
-const Delivery = ({ value, change }) => {
+const Delivery = ({ value, change, register, errors }) => {
   return (
     <div className="delivery">
       <div className="delivery__hero">
@@ -33,18 +34,35 @@ const Delivery = ({ value, change }) => {
         </div>
       </div>
       <div className="delivery__box">
-        <label htmlFor="street">Улица*</label>
-        <input
-          type="text"
-          className="delivery__input delivery__input--home"
-          placeholder="Пушкина"
-          id="street"
-          name="street"
-          value={value.street}
-          required
-          autoComplete="off"
-          onChange={change}
-        />
+        <div className="delivery__input--home">
+          <label htmlFor="street">Улица*</label>
+          <input
+            {...register("street", {
+              required: "This input is required.",
+            })}
+            type="text"
+            className="delivery__input"
+            placeholder="Пушкина"
+            id="street"
+            name="street"
+            value={value.street}
+            autoComplete="off"
+            onChange={change}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="street"
+            render={({ messages }) => {
+              return messages
+                ? Object.entries(messages).map(([type, message]) => (
+                    <p className="error-message" key={type}>
+                      {message}
+                    </p>
+                  ))
+                : null;
+            }}
+          />
+        </div>
         <div className="delivery__home-box">
           <div>
             <label htmlFor="home">Дом</label>

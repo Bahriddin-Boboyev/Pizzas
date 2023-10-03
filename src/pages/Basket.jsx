@@ -3,13 +3,17 @@ import { useEffect, useState, useContext } from "react";
 import BasketOrder from "../components/main/basket-order";
 import About from "../components/main/about";
 import Delivery from "../components/main/delivery";
+import { DataContext } from "../context";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { SmsModal } from "../components";
+import { useForm } from "react-hook-form";
 import {
   getProducts,
   postOrder,
   useAxiosFunction,
   useInputValue,
-} from "../hooks/";
-import { DataContext } from "../context";
+} from "../hooks";
 import {
   clickStoreProduct,
   prodsItemsIsArray,
@@ -17,9 +21,6 @@ import {
   storeTotalCost,
   toastNotification,
 } from "../helpers";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { SmsModal } from "../components";
 
 const inputs = {
   name: "",
@@ -52,6 +53,12 @@ const Basket = () => {
     getSendTypes,
   } = useContext(DataContext);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ criteriaMode: "all" });
+
   useEffect(() => {
     getProducts(axiosFetch);
   }, []);
@@ -72,9 +79,13 @@ const Basket = () => {
   );
   const isToken = localStorage.getItem("token");
 
-  const handleSubmit = (event) => {
+  const handleSubmitProduct = (event) => {
     event.preventDefault();
-    if (!isToken) return (toast.error("Please login to confirm products!"), showModal({ hidden: true, type: "register" }))
+    if (!isToken)
+      return (
+        toast.error("Please login to confirm products!"),
+        showModal({ hidden: true, type: "register" })
+      );
     getSubmitInputValues();
     let values = {};
     for (const i in value) {
@@ -207,9 +218,22 @@ const Basket = () => {
                 category={"Соусы"}
                 getStoreItems={getStoreItems}
               />
-              <form className="basket__form" onSubmit={handleSubmit}>
-                <About value={value} change={change} />
-                <Delivery value={value} change={change} />
+              <form
+                className="basket__form"
+                onSubmit={handleSubmit(handleSubmitProduct)}
+              >
+                <About
+                  value={value}
+                  change={change}
+                  register={register}
+                  errors={errors}
+                />
+                <Delivery
+                  value={value}
+                  change={change}
+                  register={register}
+                  errors={errors}
+                />
                 <div className="delivery__checkout">
                   <h3>Итого: {totalProdsCost} ₽</h3>
                   <button type="submit" className="btn">

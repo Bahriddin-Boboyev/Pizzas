@@ -533,9 +533,11 @@
     outline: none;
   }
   &__input--home {
-    max-width: 850px;
-    width: 100%;
-    flex-shrink: 0;
+    input {
+      max-width: 850px;
+      width: 100%;
+      flex-shrink: 0;
+    }
     margin-bottom: 16px;
   }
   &__home-box {
