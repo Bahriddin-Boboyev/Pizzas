@@ -41,12 +41,12 @@ const About = ({ value, change, register, errors }) => {
             {...register("number", {
               required: "This input is required.",
               minLength: {
-                value: 12,
-                message: "This entry must not be less than 12 characters",
+                value: 11,
+                message: "This entry must not be less than 11 characters",
               },
               maxLength: {
-                value: 13,
-                message: "This entry should not exceed 13 characters",
+                value: 12,
+                message: "This entry should not exceed 12 characters",
               },
               pattern: {
                 value: /^[0-9]+$/,
