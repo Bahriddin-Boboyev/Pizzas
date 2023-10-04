@@ -79,8 +79,7 @@ const Basket = () => {
   );
   const isToken = localStorage.getItem("token");
 
-  const handleSubmitProduct = (event) => {
-    event.preventDefault();
+  const handleSubmitProduct = () => {
     if (!isToken)
       return (
         toast.error("Please login to confirm products!"),
