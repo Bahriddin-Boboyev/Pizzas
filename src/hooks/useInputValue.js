@@ -5,6 +5,9 @@ export const useInputValue = (inputValue) => {
 
   return {
     value,
-    change: (e) => setValue({ ...value, [e.target.name]: e.target.value }),
+    change: (e) =>
+      e === "clear"
+        ? setValue("")
+        : setValue({ ...value, [e.target.name]: e.target.value }),
   };
 };

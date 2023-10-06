@@ -1,4 +1,5 @@
 import useAxiosFunction from "./useAxiosFunction";
+import { usePasswordToggle } from "./usePasswordToggle";
 import { getProducts } from "./getProducts";
 import { getCategory } from "./getCategory";
 import { getPing } from "./getPing";
@@ -10,9 +11,11 @@ import { getRefreshToken } from "./getRefreshToken";
 import { getSendMailer } from "./getSendMailer";
 import { postCode } from "./postCode";
 import { getMe } from "./getMe";
+import { postEditMe } from "./postEditMe";
 
 export {
   useAxiosFunction,
+  usePasswordToggle,
   getProducts,
   getCategory,
   getPing,
@@ -24,4 +27,5 @@ export {
   getSendMailer,
   postCode,
   getMe,
+  postEditMe,
 };

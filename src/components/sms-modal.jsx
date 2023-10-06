@@ -32,7 +32,7 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
     }
 
     if (context?.types?.smsMailModal && !loading && (error || response.data)) {
-      console.log(response, error, loading);
+      // console.log(response, error, loading);
       showModal({ hidden: true, type: "smsModal" });
       getSendTypes({ loading: false, smsMailModal: false, smsMail: "pending" });
     }
