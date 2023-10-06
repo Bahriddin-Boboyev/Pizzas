@@ -31,8 +31,9 @@ export const MyAccountSettings = () => {
   const [isShowPassword, setIsShowPassword] = useState(true);
   const { value, change } = useInputValue(inputs);
   const [data, error, loading, axiosFetch] = useAxiosFunction();
-  const [toggleIcon, visible, passwordType, setVisibility] =
-    usePasswordToggle();
+  const [toggleIcon1, passwordType1, setVisibility1] = usePasswordToggle(false);
+  const [toggleIcon2, passwordType2, setVisibility2] = usePasswordToggle(false);
+  const [toggleIcon3, passwordType3, setVisibility3] = usePasswordToggle(false);
   const isSubmit = useRef(false);
 
   const {
@@ -194,46 +195,65 @@ export const MyAccountSettings = () => {
         {!isShowPassword && (
           <form onSubmit={handleSubmitPassword}>
             <ul className="me-settings__body-list--edit">
-              {meInfoPassword?.map((item) => (
-                <li key={item.labelName}>
-                  <label
-                    htmlFor={`edit-input-password-${item.name}`}
-                    className="me-settings__name-item--edit"
-                  >
-                    {item.labelName}
-                  </label>
-                  <input
-                    required
-                    name={item.name}
-                    type={passwordType}
-                    className="me-settings__value-item--edit"
-                    id={`edit-input-password-${item.name}`}
-                    placeholder={item.placeholder}
-                    value={value[`${item.name}`]}
-                    onChange={change}
-                  />
-                  <span
-                    onClick={() =>
-                      setVisibility((prev) => ({
-                        itemName: item.name,
-                        show: !prev.show,
-                      }))
-                    }
-                    className="login__icon"
-                  >
-                    <img src={toggleIcon} alt="icon" />
-                  </span>
-                  {value.newPassword !== value.rePassword ? (
-                    item.name === "rePassword" ? (
-                      <span className="error-message">Parollar mos emas!</span>
+              {meInfoPassword?.map((item, index) => {
+                let toggleIcon, passwordType, setVisibility;
+                switch (index) {
+                  case 0:
+                    toggleIcon = toggleIcon1;
+                    passwordType = passwordType1;
+                    setVisibility = setVisibility1;
+                    break;
+                  case 1:
+                    toggleIcon = toggleIcon2;
+                    passwordType = passwordType2;
+                    setVisibility = setVisibility2;
+                    break;
+                  case 2:
+                    toggleIcon = toggleIcon3;
+                    passwordType = passwordType3;
+                    setVisibility = setVisibility3;
+                    break;
+                  default:
+                    break;
+                }
+                return (
+                  <li key={item.labelName}>
+                    <label
+                      htmlFor={`edit-input-password-${item.name}`}
+                      className="me-settings__name-item--edit"
+                    >
+                      {item.labelName}
+                    </label>
+                    <input
+                      required
+                      name={item.name}
+                      type={passwordType}
+                      className="me-settings__value-item--edit"
+                      id={`edit-input-password-${item.name}`}
+                      placeholder={item.placeholder}
+                      value={value[`${item.name}`]}
+                      onChange={change}
+                    />
+                    <span
+                      onClick={() => setVisibility((prev) => !prev)}
+                      className="login__icon"
+                    >
+                      <img src={toggleIcon} alt="icon" />
+                    </span>
+                    {value.newPassword !== value.rePassword ? (
+                      item.name === "rePassword" ? (
+                        <span className="error-message">
+                          Parollar mos emas!
+                        </span>
+                      ) : (
+                        <span className="error-message-span"></span>
+                      )
                     ) : (
-                      ""
-                    )
-                  ) : (
-                    <span className="error-message-span"></span>
-                  )}
-                </li>
-              ))}
+                      <span className="error-message-span"></span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
             <button
               className={`btn edit-me-btn ${disabled ? "disabled" : ""}`}
