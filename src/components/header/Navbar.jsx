@@ -1,21 +1,22 @@
-import React, { useContext, useState, useEffect } from "react";
 import "./header.scss";
+import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import locationIcon from "../../img/location.svg";
-import pizza from "../../img/navbar-pizza.svg";
-import logo from "../../img/navbar-logo.svg";
-import korzinka from "../../img/navbar-korzinka.svg";
-import korzinka2 from "../../img/korzinka-2.svg";
-import login from "../../img/login.svg";
-import userAccount from "../../img/user-account.svg";
-import userAvatar from "../../img/user-avatar.svg";
 import { DataContext } from "../../context";
-import Register from "../auth/register";
-import Login from "../auth/login";
+import { Login, Register, TimerComponent } from "../";
 import { useScrollFixed, storeTotalCost, storeTotalCount } from "../../helpers";
 import useLocalStorageState from "use-local-storage-state";
-import { TimerComponent } from "../";
 import { ReactSVG } from "react-svg";
+// svg
+import {
+  korzinka,
+  korzinka2,
+  locationIcon,
+  login,
+  logo,
+  pizza,
+  userAccount,
+  userAvatar,
+} from "../../img";
 
 const Navbar = () => {
   const { context, showBasket, showModal } = useContext(DataContext);
@@ -159,7 +160,10 @@ const Navbar = () => {
         <div
           className={`login__block hover`}
           onClick={() => (
-            showModal({ hidden: true, type: "register" }), setToggle(false)
+            setToggle(false),
+            context?.types?.isLoggedIn
+              ? navigate("/settings")
+              : showModal({ hidden: true, type: "register" })
           )}
         >
           <div
@@ -168,9 +172,23 @@ const Navbar = () => {
             }`}
           >
             <div>
-              <img src={login} alt="img" />
+              {context?.types?.isLoggedIn ? (
+                <ReactSVG
+                  className="user-avatar"
+                  src={userAvatar}
+                  beforeInjection={(svg) => {
+                    svg.setAttribute("style", "width: 30px");
+                  }}
+                />
+              ) : (
+                <img src={login} alt="login svg" />
+              )}
             </div>
-            <h4>Войти в аккаунт</h4>
+            <h4>
+              {context?.types?.isLoggedIn
+                ? context?.types?.meInfo?.name
+                : "Войти в аккаунт"}
+            </h4>
           </div>
         </div>
         <div className="line"></div>

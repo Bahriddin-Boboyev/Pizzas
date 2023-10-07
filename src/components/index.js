@@ -6,6 +6,8 @@ import { Items } from "./main/items";
 import { MainSkeleton } from "./skeleton/main-skeleton";
 import { SmsModal } from "./sms-modal";
 import { TimerComponent } from "./time";
+import Register from "./auth/register";
+import Login from "./auth/login";
 
 export {
   Navbar,
@@ -16,4 +18,6 @@ export {
   MainSkeleton,
   SmsModal,
   TimerComponent,
+  Register,
+  Login,
 };
