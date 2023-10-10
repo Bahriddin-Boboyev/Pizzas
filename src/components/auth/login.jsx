@@ -33,11 +33,6 @@ const Login = ({ context, showModal }) => {
       localStorage.setItem("token", JSON.stringify(response?.data));
       showModal({ hidden: false });
     }
-
-    // else if (error) {
-    //   showModal({ hidden: false }); // todo bu yerni to'g'irlash kerak
-    // }
-    // eslint-disable-next-line
   }, [response?.data]);
 
   return (

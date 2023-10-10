@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { postRegister } from "../../hooks";
 
-const Register = ({ context, showModal }) => {
+const Register = ({ context, showModal, getSendTypes }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [name, setName] = useState("");
