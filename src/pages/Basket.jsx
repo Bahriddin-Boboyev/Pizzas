@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { SmsModal } from "../components";
 import { useForm } from "react-hook-form";
+import { useRef } from "react";
 import {
   getProducts,
   postOrder,
@@ -45,6 +46,7 @@ const Basket = () => {
   const { value, change } = useInputValue(inputs);
   const [tempData, setTempData] = useState({});
   const navigate = useNavigate();
+  const getProductRef = useRef([]);
   const {
     context,
     getStoreItems,
@@ -63,14 +65,23 @@ const Basket = () => {
     getProducts(axiosFetch);
   }, []);
 
+  const uniqueProducts = Array.from(
+    new Set(prods?.map((prod) => prod._id)),
+  ).map((id) => prods?.find((prod) => prod._id === id));
+  getProductRef.current = uniqueProducts;
+
   // unique product
   useEffect(() => {
-    const uniqueProducts = Array.from(
-      new Set(prods?.map((prod) => prod._id)),
-    ).map((id) => prods?.find((prod) => prod._id === id));
-    setProducts(uniqueProducts);
+    const compareArrays = (a, b) => {
+      const cloneA = a;
+      const cloneB = b;
+      return JSON.stringify(cloneA) !== JSON.stringify(cloneB);
+    };
+    if (compareArrays(products, getProductRef.current)) {
+      setProducts(getProductRef.current);
+    }
     // eslint-disable-next-line
-  }, [context]);
+  }, [context, prods]);
 
   // short url
   const items = data?.data?.products;
@@ -209,14 +220,8 @@ const Basket = () => {
                 data={items}
                 title="Добавить к заказу?"
                 category={"Закуски"}
-                getStoreItems={getStoreItems}
               />
-              <BasketOrder
-                data={items}
-                title="Соусы"
-                category={"Соусы"}
-                getStoreItems={getStoreItems}
-              />
+              <BasketOrder data={items} title="Соусы" category={"Соусы"} />
               <form
                 className="basket__form"
                 onSubmit={handleSubmit(handleSubmitProduct)}

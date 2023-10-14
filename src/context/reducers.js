@@ -23,7 +23,7 @@ const reducer = (state, action) => {
       if (action?.payload?.second) {
         return { ...state, store: action.payload.second };
       } else if (state?.store) {
-        return { ...state, store: [...state?.store, action.payload] };
+        return { ...state, store: [...state.store, action.payload] };
       } else if (JSON.parse(items)?.length) {
         return {
           ...state,

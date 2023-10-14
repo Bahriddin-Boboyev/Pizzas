@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import { Loading } from "../";
+import { DataContext } from "../../context";
 
-const BasketOrder = ({ data, title, category, getStoreItems }) => {
+const BasketOrder = ({ data, title, category }) => {
+  const { getStoreItems } = useContext(DataContext);
   const product = data?.filter((item) => item.category.name === category);
 
   return (
