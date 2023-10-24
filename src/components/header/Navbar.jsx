@@ -119,14 +119,30 @@ const Navbar = () => {
             <img src={logo} alt="logo" />
           </Link>
           <div className={`navbar__down__category  ${!fixed ? "none" : ""}`}>
-            <Link to="/menu/fire">Акции</Link>
-            <Link to="/menu/pizzas">Пицца</Link>
-            <Link to="/menu/sushi">Суши</Link>
-            <Link to="/menu/drink">Напитки</Link>
-            <Link to="/menu/snacks">Закуски</Link>
-            <Link to="/menu/combo">Комбо</Link>
-            <Link to="/menu/desserts">Десерты</Link>
-            <Link to="/menu/sauce">Соусы</Link>
+            <Link className="hover__text" to="/menu/fire">
+              Акции
+            </Link>
+            <Link className="hover__text" to="/menu/pizzas">
+              Пицца
+            </Link>
+            <Link className="hover__text" to="/menu/sushi">
+              Суши
+            </Link>
+            <Link className="hover__text" to="/menu/drink">
+              Напитки
+            </Link>
+            <Link className="hover__text" to="/menu/snacks">
+              Закуски
+            </Link>
+            <Link className="hover__text" to="/menu/combo">
+              Комбо
+            </Link>
+            <Link className="hover__text" to="/menu/desserts">
+              Десерты
+            </Link>
+            <Link className="hover__text" to="/menu/sauce">
+              Соусы
+            </Link>
           </div>
           <div className="navbar__down-korzinka-block">
             <button onClick={() => showBasket(true)}>

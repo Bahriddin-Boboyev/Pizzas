@@ -293,6 +293,14 @@ input[type="radio"]:checked {
 .hover:hover {
   transform: scale(1.05) !important;
 }
+
+.hover__text {
+  transition: ease 0.3s;
+}
+
+.hover__text:hover {
+  color: #ff7010;
+}
 .btn {
   display: inline-flex;
   padding: 13px 40px;

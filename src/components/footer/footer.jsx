@@ -1,15 +1,16 @@
 import React from "react";
 import "./footer.scss";
+import { useNavigate } from "react-router-dom";
 import logo1 from "../../img/navbar-pizza.svg";
 import logo2 from "../../img/navbar-logo.svg";
-// import logo3 from "../../img/navbar-logo.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate()
   return (
     <div className="footer">
       <div className="footer__box container">
-        <div className="footer__box-logo">
+        <div className="footer__box-logo" onClick={()=> navigate('/')}>
           <img src={logo1} alt="logo" />
           <img src={logo2} alt="logo" />
         </div>
@@ -18,13 +19,19 @@ const Footer = () => {
             <h2>Куда пицца</h2>
             <ul className="footer__inner-list">
               <li className="footer__inner-item">
-                <Link to={"#"}>О компании</Link>
+                <Link to={"#"} className="hover__text">
+                  О компании
+                </Link>
               </li>
               <li className="footer__inner-item">
-                <Link to={"#"}>Пользовательское соглашение</Link>
+                <Link to={"#"} className="hover__text">
+                  Пользовательское соглашение
+                </Link>
               </li>
               <li className="footer__inner-item">
-                <Link to={"#"}>Условия гарантии</Link>
+                <Link to={"#"} className="hover__text">
+                  Условия гарантии
+                </Link>
               </li>
             </ul>
           </li>
@@ -32,19 +39,29 @@ const Footer = () => {
             <h2>Куда пицца</h2>
             <ul className="footer__inner-list">
               <li className="footer__inner-item">
-                <Link to={"#"}>Помощь</Link>
+                <Link to={"#"} className="hover__text">
+                  Помощь
+                </Link>
               </li>
               <li className="footer__inner-item">
-                <Link to={"#"}>Ресторан</Link>
+                <Link to={"#"} className="hover__text">
+                  Ресторан
+                </Link>
               </li>
               <li className="footer__inner-item">
-                <Link to={"#"}>Контакты</Link>
+                <Link to={"#"} className="hover__text">
+                  Контакты
+                </Link>
               </li>
               <li className="footer__inner-item">
-                <Link to={"#"}>Поддержка</Link>
+                <Link to={"#"} className="hover__text">
+                  Поддержка
+                </Link>
               </li>
               <li className="footer__inner-item">
-                <Link to={"#"}>Отследить заказ</Link>
+                <Link to={"#"} className="hover__text">
+                  Отследить заказ
+                </Link>
               </li>
             </ul>
           </li>
@@ -52,13 +69,16 @@ const Footer = () => {
             <h2>Контакты</h2>
             <ul className="footer__inner-list">
               <li className="footer__inner-item">
-                <Link className="footer__phone" to={"tel:+79262231011"}>
+                <Link
+                  className="footer__phone hover__text"
+                  to={"tel:+79262231011"}
+                >
                   +7 (926) 223-10-11
                 </Link>
               </li>
               <li className="footer__inner-item">
                 <Link
-                  className="footer__location"
+                  className="footer__location hover__text"
                   target={"_blank"}
                   to={"https://goo.gl/maps/Ch9Ebbks4FVrYnFWA"}
                 >
@@ -67,10 +87,18 @@ const Footer = () => {
               </li>
               <li className="footer__inner-item ">
                 <div className="footer__social_media">
-                  <Link target={"_blank"} to={"https://www.facebook.com/"}>
+                  <Link
+                    className="hover__text"
+                    target={"_blank"}
+                    to={"https://www.facebook.com/"}
+                  >
                     Facebok
                   </Link>
-                  <Link target={"_blank"} to={"https://www.instagram.com/"}>
+                  <Link
+                    className="hover__text"
+                    target={"_blank"}
+                    to={"https://www.instagram.com/"}
+                  >
                     Instagram
                   </Link>
                 </div>
