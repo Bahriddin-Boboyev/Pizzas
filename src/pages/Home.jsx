@@ -4,7 +4,7 @@ import CartDown from "../components/header/cart-down";
 import CartUp from "../components/header/cart-up";
 import MainPizzaCart from "../components/main/main-pizza-cart";
 
-const Home = () => {
+export const Home = () => {
   const [descShow, setDescShow] = useState(true);
 
   return (
@@ -60,5 +60,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;

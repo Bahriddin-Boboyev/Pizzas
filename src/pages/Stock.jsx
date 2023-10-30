@@ -2,7 +2,7 @@ import { useAxiosFunction } from "../hooks";
 import { useScrollFixed } from "../helpers";
 import { Loading } from "../components";
 
-const Stock = () => {
+export const Stock = () => {
   const [_, error, loading] = useAxiosFunction();
 
   const fixed = useScrollFixed(60);
@@ -27,5 +27,3 @@ const Stock = () => {
     </div>
   );
 };
-
-export default Stock;

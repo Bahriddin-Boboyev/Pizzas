@@ -34,7 +34,7 @@ const inputs = {
   delivery_type: "delivery",
 };
 
-const Basket = () => {
+export const Basket = () => {
   let prods = JSON.parse(localStorage.getItem("cart"));
   const [products, setProducts] = useState([]);
   // eslint-disable-next-line
@@ -249,5 +249,3 @@ const Basket = () => {
     </div>
   );
 };
-
-export default Basket;

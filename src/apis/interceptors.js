@@ -4,7 +4,7 @@ let token = localStorage.getItem("token");
 
 if (token) token = JSON.parse(token);
 
-export const axiosFunc = (params, withCredentials) => {
+const axiosFunc = (params, withCredentials) => {
   return axios.create({
     baseURL: BASE_URL,
     headers: {
@@ -16,3 +16,5 @@ export const axiosFunc = (params, withCredentials) => {
     withCredentials: withCredentials && true,
   });
 };
+
+export default axiosFunc;

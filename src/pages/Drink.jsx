@@ -4,7 +4,7 @@ import { useScrollFixed, getCategory, getProducts } from "../helpers";
 import { DataContext } from "../context";
 import { Items, MainSkeleton } from "../components";
 
-const Drink = () => {
+export const Drink = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
   const [data2, error2, loading2, axiosFetch2] = useAxiosFunction();
   const { getStoreItems } = useContext(DataContext);
@@ -61,5 +61,3 @@ const Drink = () => {
     </div>
   );
 };
-
-export default Drink;
