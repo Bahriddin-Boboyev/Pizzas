@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import useAxiosFunction from "../hooks/useAxiosFunction";
-import { useScrollFixed } from "../helpers";
-import { getCategory, getProducts } from "../hooks";
+import { useAxiosFunction } from "../hooks";
+import { useScrollFixed, getCategory, getProducts } from "../helpers";
 import { DataContext } from "../context";
 import { Items, MainSkeleton } from "../components";
 

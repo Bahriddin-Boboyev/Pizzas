@@ -1,5 +1,3 @@
-import NetworkErrorRoutes from "./NetworkErrorRoutes";
-import { ProtectedRoutes } from "./ProtectedRoutes";
-import { SomethingWrong } from "./SomethingWrong";
-
-export { NetworkErrorRoutes, ProtectedRoutes, SomethingWrong };
+export * from "./NetworkErrorRoutes";
+export * from "./ProtectedRoutes";
+export * from "./SomethingWrong";

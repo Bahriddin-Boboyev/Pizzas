@@ -1,11 +1,11 @@
 import "./main.scss";
 import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../context";
-import { getProducts, useAxiosFunction } from "../../hooks";
-// import { Loading } from "../../components";
+import { useAxiosFunction } from "../../hooks";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { MainSkeleton } from "../";
 import { toast } from "react-toastify";
+import { getProducts } from "../../helpers";
 
 const MainPizzaCart = () => {
   const { context, getStoreItems } = useContext(DataContext);

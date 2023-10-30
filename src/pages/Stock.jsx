@@ -1,9 +1,9 @@
-import useAxiosFunction from "../hooks/useAxiosFunction";
+import { useAxiosFunction } from "../hooks";
 import { useScrollFixed } from "../helpers";
 import { Loading } from "../components";
 
 const Stock = () => {
-  const [data, error, loading, axiosFetch] = useAxiosFunction();
+  const [_, error, loading] = useAxiosFunction();
 
   const fixed = useScrollFixed(60);
 

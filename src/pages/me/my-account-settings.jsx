@@ -1,20 +1,19 @@
 import "./style.scss";
 import { useContext, useState, useEffect, useRef } from "react";
-import {
-  postEditMe,
-  useAxiosFunction,
-  useInputValue,
-  usePasswordToggle,
-} from "../../hooks";
 import editMeImg from "../../img/edit-me.svg";
 import closeImg from "../../img/close.svg";
 import { DataContext } from "../../context";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
-import { toastNotification } from "../../helpers";
+import { toastNotification, postEditMe } from "../../helpers";
 import { inputValue, inputValuePassword } from "../../constants";
 import { ReactSVG } from "react-svg";
+import {
+  useAxiosFunction,
+  useInputValue,
+  usePasswordToggle,
+} from "../../hooks";
 
 const inputs = {
   name: "",

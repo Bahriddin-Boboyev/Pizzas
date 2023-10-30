@@ -1,3 +1,1 @@
-import axios from "./interceptors";
-
-export { axios };
+export * from "./interceptors";

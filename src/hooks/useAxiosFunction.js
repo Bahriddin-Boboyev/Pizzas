@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { toastNotification } from "../helpers";
+import { toastNotification, getRefreshToken } from "../helpers";
 import { useNavigate } from "react-router-dom";
-import { getRefreshToken } from "./";
 
 const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);

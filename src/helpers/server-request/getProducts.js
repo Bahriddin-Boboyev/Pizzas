@@ -1,4 +1,4 @@
-import { axios } from "../apis";
+import { axios } from "../../apis";
 
 export const getProducts = (axiosFetch, category) => {
   axiosFetch({

@@ -1,10 +1,10 @@
-import { axios } from "../apis";
+import { axios } from "../../apis";
 
-export const postCode = (axiosFetch, data) => {
+export const postOrder = (axiosFetch, data) => {
   axiosFetch({
     axiosInstance: axios(),
     method: "POST",
-    url: "/check-code",
+    url: "/order",
     requestConfig: {
       data,
     },

@@ -1,9 +1,8 @@
 import { useEffect, useState, useContext } from "react";
-import useAxiosFunction from "../hooks/useAxiosFunction";
-import { useScrollFixed } from "../helpers";
+import { useAxiosFunction } from "../hooks";
+import { useScrollFixed, getCategory, getProducts } from "../helpers";
 import { DataContext } from "../context";
-import { getCategory, getProducts } from "../hooks";
-import { Items,  MainSkeleton } from "../components";
+import { Items, MainSkeleton } from "../components";
 
 const Snacks = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
@@ -38,16 +37,16 @@ const Snacks = () => {
       ) : (
         <>
           {loading ? (
-                <ul className="mainPizza__list--loading">
-                {new Array(4).fill(0).map((item, index) => (
-                  <li
-                    key={`${index}${Date.now()}`}
-                    className="mainPizza__list--loading"
-                  >
-                    <MainSkeleton />
-                  </li>
-                ))}
-              </ul>
+            <ul className="mainPizza__list--loading">
+              {new Array(4).fill(0).map((item, index) => (
+                <li
+                  key={`${index}${Date.now()}`}
+                  className="mainPizza__list--loading"
+                >
+                  <MainSkeleton />
+                </li>
+              ))}
+            </ul>
           ) : (
             <>
               <Items

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Footer, Loading, Navbar } from "../components";
-import { IsLoggedInUser } from "../helpers";
-import { getPing, useAxiosFunction } from "../hooks";
+import { IsLoggedInUser, getPing } from "../helpers";
+import { useAxiosFunction } from "../hooks";
 import { SomethingWrong } from "./SomethingWrong";
 
 export const ProtectedRoutes = () => {

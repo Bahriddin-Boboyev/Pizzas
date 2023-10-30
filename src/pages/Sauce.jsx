@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from "react";
-import useAxiosFunction from "../hooks/useAxiosFunction";
-import { useScrollFixed } from "../helpers";
+import { useAxiosFunction } from "../hooks";
+import { useScrollFixed, getCategory, getProducts } from "../helpers";
 import { DataContext } from "../context";
-import { getCategory, getProducts } from "../hooks";
 import { Items, MainSkeleton } from "../components";
 
 const Sauce = () => {

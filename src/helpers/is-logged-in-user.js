@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context";
-import { getMe, useAxiosFunction } from "../hooks";
+import { useAxiosFunction } from "../hooks";
+import { getMe } from "./";
 
 export const IsLoggedInUser = () => {
   const { getSendTypes } = useContext(DataContext);

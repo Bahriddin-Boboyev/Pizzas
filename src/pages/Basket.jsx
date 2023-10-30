@@ -9,18 +9,15 @@ import { useNavigate } from "react-router-dom";
 import { SmsModal } from "../components";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
-import {
-  getProducts,
-  postOrder,
-  useAxiosFunction,
-  useInputValue,
-} from "../hooks";
+import { useAxiosFunction, useInputValue } from "../hooks";
 import {
   clickStoreProduct,
   prodsItemsIsArray,
   storeItemsCount,
   storeTotalCost,
   toastNotification,
+  getProducts,
+  postOrder,
 } from "../helpers";
 
 const inputs = {

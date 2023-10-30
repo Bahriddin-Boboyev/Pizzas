@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./style.scss";
-import useAxiosFunction from "../../hooks/useAxiosFunction";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-import { postRegister } from "../../hooks";
+import { useAxiosFunction } from "../../hooks";
+import { postRegister } from "../../helpers";
 
 const Register = ({ context, showModal, getSendTypes }) => {
   // eslint-disable-next-line
