@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { toastNotification, getRefreshToken } from "../helpers";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../context";
 
 export const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
+  const { showModal } = useContext(DataContext);
   const navigate = useNavigate();
 
   const axiosFetch = async (configObj) => {
@@ -41,9 +44,8 @@ export const useAxiosFunction = () => {
       const error_msg = error?.response?.data?.error;
       setError(error_msg ? error_msg : error.message);
 
-      console.log(error);
-
       if (error?.code === "ERR_NETWORK") {
+        showModal({ hidden: false });
         navigate("/network-error");
       }
       // get refresh token
