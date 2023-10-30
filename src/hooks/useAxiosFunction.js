@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toastNotification, getRefreshToken } from "../helpers";
 import { useNavigate } from "react-router-dom";
 
-const useAxiosFunction = () => {
+export const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
@@ -60,5 +60,3 @@ const useAxiosFunction = () => {
 
   return [response, error, loading, axiosFetch];
 };
-
-export default useAxiosFunction;
