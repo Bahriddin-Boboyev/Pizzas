@@ -18,7 +18,7 @@ import {
   userAvatar,
 } from "../../img";
 
-const Navbar = () => {
+export const Navbar = () => {
   const { context, showBasket, showModal } = useContext(DataContext);
   const [toggle, setToggle] = useState(false);
   const [cart] = useLocalStorageState("cart", []);
@@ -270,5 +270,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;

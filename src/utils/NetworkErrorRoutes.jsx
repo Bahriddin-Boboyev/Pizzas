@@ -1,7 +1,7 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 
-const NetworkErrorRoutes = () => {
+export const NetworkErrorRoutes = () => {
   const navigate = useNavigate();
 
   return (
@@ -29,5 +29,3 @@ const NetworkErrorRoutes = () => {
     </div>
   );
 };
-
-export default NetworkErrorRoutes;

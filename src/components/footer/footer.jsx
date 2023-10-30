@@ -5,12 +5,12 @@ import logo1 from "../../img/navbar-pizza.svg";
 import logo2 from "../../img/navbar-logo.svg";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
-  const navigate = useNavigate()
+export const Footer = () => {
+  const navigate = useNavigate();
   return (
     <div className="footer">
       <div className="footer__box container">
-        <div className="footer__box-logo" onClick={()=> navigate('/')}>
+        <div className="footer__box-logo" onClick={() => navigate("/")}>
           <img src={logo1} alt="logo" />
           <img src={logo2} alt="logo" />
         </div>
@@ -113,5 +113,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;

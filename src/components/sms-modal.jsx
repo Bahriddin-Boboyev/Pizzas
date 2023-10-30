@@ -1,9 +1,10 @@
 import "./auth/style.scss";
 import { useState, useEffect } from "react";
-import { getMe, getSendMailer, postCode, useAxiosFunction } from "../hooks";
+import { useAxiosFunction } from "../hooks";
 import { toast } from "react-toastify";
 import { useRef } from "react";
 import { TimerComponent } from "./time";
+import { getMe, getSendMailer, postCode } from "../helpers";
 
 export const SmsModal = ({ context, showModal, getSendTypes }) => {
   const [response, error, loading, axiosFetch] = useAxiosFunction();

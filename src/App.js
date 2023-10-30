@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { DataContext } from "./context/context";
 import BasketRight from "./components/main/basket-right";
-import useAxiosFunction from "./hooks/useAxiosFunction";
+import { useAxiosFunction } from "./hooks";
 import useLocalStorageState from "use-local-storage-state";
 import { NetworkErrorRoutes, ProtectedRoutes, SomethingWrong } from "./utils";
 import { Loading, ToastCustomContainer } from "./components";

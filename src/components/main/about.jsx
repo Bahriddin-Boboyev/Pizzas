@@ -1,6 +1,5 @@
 import { ErrorMessage } from "@hookform/error-message";
 import React from "react";
-// import { useState } from "react";
 
 const About = ({ value, change, register, errors }) => {
   return (

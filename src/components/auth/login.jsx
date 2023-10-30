@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import {} from "../../hooks";
+import { useAxiosFunction } from "../../hooks";
 import { postLogin } from "../../helpers";
 
-const Login = ({ context, showModal }) => {
+export const Login = ({ context, showModal }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [email, setEmail] = useState("");
@@ -104,5 +104,3 @@ const Login = ({ context, showModal }) => {
     </div>
   );
 };
-
-export default Login;

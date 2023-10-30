@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useAxiosFunction } from "../../hooks";
 import { postRegister } from "../../helpers";
 
-const Register = ({ context, showModal, getSendTypes }) => {
+export const Register = ({ context, showModal, getSendTypes }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [name, setName] = useState("");
@@ -124,5 +124,3 @@ const Register = ({ context, showModal, getSendTypes }) => {
     </div>
   );
 };
-
-export default Register;

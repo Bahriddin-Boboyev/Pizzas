@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useScrollFixed = (scroll) => {
+export const useScrollFixed = (scroll) => {
   const [fixed, setFixed] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -14,5 +14,3 @@ const useScrollFixed = (scroll) => {
 
   return fixed;
 };
-
-export default useScrollFixed;

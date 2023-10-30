@@ -1,1 +1,1 @@
-export * from "./interceptors";
+export { axiosFunc as axios } from "./interceptors";
