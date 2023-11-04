@@ -36,13 +36,8 @@ export const Footer = () => {
             </ul>
           </li>
           <li className="footer__item">
-            <h2>Куда пицца</h2>
+            <h2>Помощь</h2>
             <ul className="footer__inner-list">
-              <li className="footer__inner-item">
-                <Link to={"#"} className="hover__text">
-                  Помощь
-                </Link>
-              </li>
               <li className="footer__inner-item">
                 <Link to={"#"} className="hover__text">
                   Ресторан
