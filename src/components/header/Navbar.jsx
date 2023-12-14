@@ -200,11 +200,11 @@ export const Navbar = () => {
                 <img src={login} alt="login svg" />
               )}
             </div>
-            <h4>
+            <h3>
               {context?.types?.isLoggedIn
                 ? context?.types?.meInfo?.name
                 : "Войти в аккаунт"}
-            </h4>
+            </h3>
           </div>
         </div>
         <div className="line"></div>

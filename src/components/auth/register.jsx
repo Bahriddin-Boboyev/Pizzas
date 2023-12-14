@@ -49,7 +49,7 @@ export const Register = ({ context, showModal, getSendTypes }) => {
           : "none"
       }`}
     >
-      <h2>Зарегистрировать аккаунт</h2>
+      <h1>Зарегистрировать аккаунт</h1>
       <p>Сможете быстро оформлять заказы, использовать бонусы </p>
       <form
         className="login__modal-box"

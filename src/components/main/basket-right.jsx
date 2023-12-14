@@ -61,7 +61,7 @@ const BasketRight = () => {
                   <li className="basket-right__item" key={prod._id}>
                     <img src={prod.image} alt={prod.name} />
                     <div className="basket-right__info">
-                      <h6>{prod.description}</h6>
+                      <h4>{prod.description}</h4>
                       <p>{prod.description}</p>
                       <div className="basket-right__btn-box">
                         <button
