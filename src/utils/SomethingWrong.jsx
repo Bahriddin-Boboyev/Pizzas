@@ -13,6 +13,7 @@ export const SomethingWrong = () => {
         <h1>Oops, Something went wrong...</h1>
         <button
           className="btn"
+          // eslint-disable-next-line no-sequences
           onClick={() => (setReload(!reload), navigate("/"))}
         >
           <i
