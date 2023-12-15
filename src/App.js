@@ -23,7 +23,7 @@ import {
 } from "./pages";
 
 const App = () => {
-  const { context, showBasket, getProducts, getSendTypes } =
+  const { context, showBasket, getProducts, } =
     useContext(DataContext);
   const [data, error, loading, axiosFetch] = useAxiosFunction();
   const [cart, setCart] = useLocalStorageState("cart", []);
