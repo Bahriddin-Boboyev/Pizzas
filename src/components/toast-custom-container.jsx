@@ -1,11 +1,11 @@
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
 
 export const ToastCustomContainer = () => {
   return (
     <ToastContainer
       position="top-right"
       autoClose={5000}
-      hideProgressBar={false}
+      hideProgressBar={true}
       newestOnTop
       closeOnClick
       rtl={false}
@@ -13,6 +13,8 @@ export const ToastCustomContainer = () => {
       draggable
       pauseOnHover
       theme="light"
+      stacked
+      limit={5}
     />
   );
 };
