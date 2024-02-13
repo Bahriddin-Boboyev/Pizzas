@@ -1,19 +1,19 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { useAxiosFunction } from "../../hooks";
-import { postLogin } from "../../helpers";
+import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { useAxiosFunction } from '@/hooks';
+import { postLogin } from '@/helpers';
 
 export const Login = ({ context, showModal }) => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // post login
   const fetchLogin = (data) => {
-    toast.loading("Loading...", { toastId: 2 });
+    toast.loading('Loading...', { toastId: 2 });
     postLogin(axiosFetch, data);
   };
 
@@ -22,15 +22,15 @@ export const Login = ({ context, showModal }) => {
     event.preventDefault();
     if (email && password) {
       fetchLogin({ email, password });
-      setEmail("");
-      setPassword("");
+      setEmail('');
+      setPassword('');
     }
   };
 
   useEffect(() => {
     // set token
     if (response?.data) {
-      localStorage.setItem("token", JSON.stringify(response?.data));
+      localStorage.setItem('token', JSON.stringify(response?.data));
       showModal({ hidden: false });
     }
   }, [response?.data]);
@@ -38,17 +38,12 @@ export const Login = ({ context, showModal }) => {
   return (
     <div
       className={`${
-        context?.modal?.hidden && context?.modal?.type === "login"
-          ? "login__modal login__modal--sign"
-          : "none"
+        context?.modal?.hidden && context?.modal?.type === 'login' ? 'login__modal login__modal--sign' : 'none'
       }`}
     >
       <h2>Вход в аккаунт</h2>
       <p>Сможете быстро оформлять заказы, использовать бонусы </p>
-      <form
-        className="login__modal-box"
-        onSubmit={(event) => handlerLogin(event)}
-      >
+      <form className="login__modal-box" onSubmit={(event) => handlerLogin(event)}>
         <input
           value={email}
           required
@@ -64,28 +59,13 @@ export const Login = ({ context, showModal }) => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <button>Войти</button>
-        <p>
-          Продолжая, вы соглашаетесь со сбором и обработкой персональных данных
-          и пользовательским соглашением
-        </p>
+        <p>Продолжая, вы соглашаетесь со сбором и обработкой персональных данных и пользовательским соглашением</p>
         <p className="login-modal__est-acc">
-          Нужен аккаунт?{" "}
-          <span onClick={() => showModal({ hidden: true, type: "register" })}>
-            Зарегистрироваться
-          </span>
+          Нужен аккаунт? <span onClick={() => showModal({ hidden: true, type: 'register' })}>Зарегистрироваться</span>
         </p>
       </form>
-      <button
-        className="btn__login-modal"
-        onClick={() => showModal({ hidden: false })}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-        >
+      <button className="btn__login-modal" onClick={() => showModal({ hidden: false })}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
           <g clipPath="url(#clip0_236_29161)">
             <path
               fillRule="evenodd"

@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
-import { Loading } from "../";
-import { DataContext } from "../../context";
+import React, { useContext } from 'react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
+import { Loading } from '../';
+import { DataContext } from '@/context';
 
 const BasketOrder = ({ data, title, category }) => {
   const { getStoreItems } = useContext(DataContext);
@@ -29,16 +29,16 @@ const BasketOrder = ({ data, title, category }) => {
             }}
             pagination={{ clickable: true }}
             style={{
-              "--swiper-pagination-color": "#FFBA08",
-              "--swiper-pagination-bullet-inactive-color": "#999999",
-              "--swiper-pagination-bullet-inactive-opacity": "1",
-              "--swiper-pagination-bullet-size": "16px",
-              "--swiper-pagination-bullet-horizontal-gap": "6px",
+              '--swiper-pagination-color': '#FFBA08',
+              '--swiper-pagination-bullet-inactive-color': '#999999',
+              '--swiper-pagination-bullet-inactive-opacity': '1',
+              '--swiper-pagination-bullet-size': '16px',
+              '--swiper-pagination-bullet-horizontal-gap': '6px',
             }}
             breakpoints={{
-              480: { slidesPerView: "2", spaceBetween: "8" },
-              680: { slidesPerView: "3", spaceBetween: "8" },
-              880: { slidesPerView: "4", spaceBetween: "10" },
+              480: { slidesPerView: '2', spaceBetween: '8' },
+              680: { slidesPerView: '3', spaceBetween: '8' },
+              880: { slidesPerView: '4', spaceBetween: '10' },
             }}
           >
             {product?.map((prod) => (
@@ -49,9 +49,7 @@ const BasketOrder = ({ data, title, category }) => {
                 <div className="basket-order__desc-box">
                   <h3>{prod.description}</h3>
                   <p>{prod.description}</p>
-                  <button onClick={() => getStoreItems(prod)}>
-                    {prod.price} ₽
-                  </button>
+                  <button onClick={() => getStoreItems(prod)}>{prod.price} ₽</button>
                 </div>
               </SwiperSlide>
             ))}

@@ -1,11 +1,11 @@
-import { Routes, Route } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { DataContext } from "./context/context";
-import BasketRight from "./components/main/basket-right";
-import { useAxiosFunction } from "./hooks";
-import useLocalStorageState from "use-local-storage-state";
-import { NetworkErrorRoutes, ProtectedRoutes, SomethingWrong } from "./utils";
-import { Loading, ToastCustomContainer } from "./components";
+import { Routes, Route } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { DataContext } from './context/context';
+import BasketRight from './components/main/basket-right';
+import { useAxiosFunction } from './hooks';
+import useLocalStorageState from 'use-local-storage-state';
+import { NetworkErrorRoutes, ProtectedRoutes, SomethingWrong } from './utils';
+import { Loading, ToastCustomContainer } from './components';
 import {
   Combo,
   Desserts,
@@ -20,22 +20,21 @@ import {
   Order,
   PageNotFound,
   MyAccountSettings,
-} from "./pages";
+} from './pages';
 
 const App = () => {
-  const { context, showBasket, getProducts, } =
-    useContext(DataContext);
-  const [data, error, loading, axiosFetch] = useAxiosFunction();
-  const [cart, setCart] = useLocalStorageState("cart", []);
+  const { context, showBasket, getProducts } = useContext(DataContext);
+  const [data, error, loading] = useAxiosFunction();
+  const [_, setCart] = useLocalStorageState('cart', []);
 
   //
   const exists = context?.basket || context?.modal?.hidden;
   const globalLoading = context?.types?.loading;
   useEffect(() => {
     if (exists || globalLoading) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "visible ";
+      document.body.style.overflow = 'visible ';
     }
   }, [exists, globalLoading]);
 
@@ -78,10 +77,7 @@ const App = () => {
           <Route path="/error" element={<SomethingWrong />} />
         </Routes>
       </div>
-      <div
-        onClick={() => showBasket(false)}
-        className={`${exists || globalLoading ? "blur-bg" : "none"}`}
-      ></div>
+      <div onClick={() => showBasket(false)} className={`${exists || globalLoading ? 'blur-bg' : 'none'}`}></div>
       {globalLoading && <Loading visible={true} global={true} />}
       <BasketRight />
       <ToastCustomContainer />

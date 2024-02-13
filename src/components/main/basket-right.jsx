@@ -1,45 +1,35 @@
-import { useState, useEffect, useContext } from "react";
-import "./main.scss";
-import { Link } from "react-router-dom";
-import {
-  storeTotalCost,
-  clickStoreProduct,
-  storeItemsCount,
-} from "../../helpers";
-import { DataContext } from "../../context";
-import { useAxiosFunction } from "../../hooks";
-import basketClose from "../../img/basket-close.svg";
+import { useState, useEffect, useContext } from 'react';
+import './main.scss';
+import { Link } from 'react-router-dom';
+import { storeTotalCost, clickStoreProduct, storeItemsCount } from '@/helpers';
+import { DataContext } from '@/context';
+import { useAxiosFunction } from '@/hooks';
+import basketClose from '../../img/basket-close.svg';
 
 const BasketRight = () => {
   const { context, showBasket, getStoreItems } = useContext(DataContext);
+  // eslint-disable-next-line
   const [data, error, loading, axiosFetch] = useAxiosFunction();
-  let prods = JSON.parse(localStorage.getItem("cart"));
+  let prods = JSON.parse(localStorage.getItem('cart'));
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const uniqueProducts = Array.from(
-      new Set(prods?.map((prod) => prod._id)),
-    ).map((id) => prods?.find((prod) => prod._id === id));
+    const uniqueProducts = Array.from(new Set(prods?.map((prod) => prod._id))).map((id) =>
+      prods?.find((prod) => prod._id === id),
+    );
     setProducts(uniqueProducts);
     // eslint-disable-next-line
   }, [context]);
 
   return (
-    <div className={`basket-right ${context?.basket ? "flex" : ""}`}>
+    <div className={`basket-right ${context?.basket ? 'flex' : ''}`}>
       {error ? (
-        <h2 className="error_msg basket__right--error">
-          {JSON.stringify(error)}
-        </h2>
+        <h2 className="error_msg basket__right--error">{JSON.stringify(error)}</h2>
       ) : (
         <>
           <div className="basket-right__box">
             <h3>Ваш заказ</h3>
-            <img
-              src={basketClose}
-              alt=" basket"
-              className="basket-right__svg"
-              onClick={() => showBasket(false)}
-            />
+            <img src={basketClose} alt=" basket" className="basket-right__svg" onClick={() => showBasket(false)} />
           </div>
           <ul className="basket-right__content">
             {!prods?.length ? (
@@ -49,8 +39,8 @@ const BasketRight = () => {
                 background="transparent"
                 speed="1"
                 style={{
-                  marginTop: "50%",
-                  width: "100%",
+                  marginTop: '50%',
+                  width: '100%',
                 }}
                 loop
                 autoplay
@@ -65,27 +55,13 @@ const BasketRight = () => {
                       <p>{prod.description}</p>
                       <div className="basket-right__btn-box">
                         <button
-                          onClick={() =>
-                            clickStoreProduct(
-                              { item: prod, type: "decrement" },
-                              prods,
-                              getStoreItems,
-                            )
-                          }
+                          onClick={() => clickStoreProduct({ item: prod, type: 'decrement' }, prods, getStoreItems)}
                         >
                           -
                         </button>
-                        <span className="basket-right__input">
-                          {storeItemsCount(prod._id, prods)}
-                        </span>
+                        <span className="basket-right__input">{storeItemsCount(prod._id, prods)}</span>
                         <button
-                          onClick={() =>
-                            clickStoreProduct(
-                              { item: prod, type: "increment" },
-                              prods,
-                              getStoreItems,
-                            )
-                          }
+                          onClick={() => clickStoreProduct({ item: prod, type: 'increment' }, prods, getStoreItems)}
                         >
                           +
                         </button>
@@ -94,18 +70,14 @@ const BasketRight = () => {
                     </div>
                   </li>
                 ) : (
-                  ""
+                  ''
                 ),
               )
             )}
           </ul>
           <div className="basket-right__footer">
             <span>Итого: {storeTotalCost(prods)} ₽</span>
-            <Link
-              className="on"
-              to={"/basket"}
-              onClick={() => showBasket(false)}
-            >
+            <Link className="on" to={'/basket'} onClick={() => showBasket(false)}>
               Оформить заказ
             </Link>
           </div>

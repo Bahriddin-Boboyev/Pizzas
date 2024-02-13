@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { DataContext } from "../../context";
+import { useContext } from 'react';
+import { DataContext } from '@/context';
 
 const Comment = () => {
   const { getSubmitInputValues } = useContext(DataContext);
@@ -10,9 +10,7 @@ const Comment = () => {
         <textarea
           name="comment"
           placeholder="Есть уточнения?"
-          onChange={(event) =>
-            getSubmitInputValues({ comment: event.target.value })
-          }
+          onChange={(event) => getSubmitInputValues({ comment: event.target.value })}
         ></textarea>
       </div>
     </div>

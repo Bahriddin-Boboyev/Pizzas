@@ -1,15 +1,17 @@
-import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
-import { Footer, Loading, Navbar } from "../components";
-import { IsLoggedInUser, getPing } from "../helpers";
-import { useAxiosFunction } from "../hooks";
-import { SomethingWrong } from "./SomethingWrong";
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Footer, Loading, Navbar } from '@/components';
+import { IsLoggedInUser, getPing } from '@/helpers';
+import { useAxiosFunction } from '@/hooks';
+import { SomethingWrong } from './SomethingWrong';
 
 export const ProtectedRoutes = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
 
   useEffect(() => {
     getPing(axiosFetch);
+
+    // eslint-disable-next-line
   }, []);
 
   // check login user
@@ -19,7 +21,7 @@ export const ProtectedRoutes = () => {
     return loading ? <Loading visible={true} /> : <SomethingWrong />;
   }
 
-  if (data?.data === "Pong!") {
+  if (data?.data === 'Pong!') {
     return (
       <div>
         <Navbar />

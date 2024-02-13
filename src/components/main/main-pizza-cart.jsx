@@ -1,11 +1,11 @@
-import "./main.scss";
-import { useContext, useState, useEffect } from "react";
-import { DataContext } from "../../context";
-import { useAxiosFunction } from "../../hooks";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { MainSkeleton } from "../";
-import { toast } from "react-toastify";
-import { getProducts } from "../../helpers";
+import './main.scss';
+import { useContext, useState, useEffect } from 'react';
+import { DataContext } from '@/context';
+import { useAxiosFunction } from '@/hooks';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { MainSkeleton } from '../';
+import { toast } from 'react-toastify';
+import { getProducts } from '@/helpers';
 
 const MainPizzaCart = () => {
   const { context, getStoreItems } = useContext(DataContext);
@@ -14,7 +14,7 @@ const MainPizzaCart = () => {
   const maxItemsPerCategory = 8;
 
   useEffect(() => {
-    getProducts(axiosFetch, "all");
+    getProducts(axiosFetch, 'all');
   }, []);
 
   const prod = data?.data?.products;
@@ -26,7 +26,7 @@ const MainPizzaCart = () => {
 
   const handleClick = (product) => {
     getStoreItems(product);
-    toast.info("The product has been added to the basket.");
+    toast.info('The product has been added to the basket.');
   };
 
   return (
@@ -35,10 +35,7 @@ const MainPizzaCart = () => {
       {loading ? (
         <ul className="mainPizza__list--loading">
           {new Array(4).fill(0).map((item, index) => (
-            <li
-              key={`${index}${Date.now()}`}
-              className="mainPizza__list--loading"
-            >
+            <li key={`${index}${Date.now()}`} className="mainPizza__list--loading">
               <MainSkeleton />
             </li>
           ))}
@@ -49,8 +46,7 @@ const MainPizzaCart = () => {
             <div key={category} className="mainPizza__top_box">
               <div className="mainPizza_head">
                 <h2>{category}</h2>
-                <button className="none">Фильтры</button>{" "}
-                {/* xozircha mavjud emas qo'shishim kerak */}
+                <button className="none">Фильтры</button> {/* xozircha mavjud emas qo'shishim kerak */}
               </div>
               <ul className="mainPizza__list">
                 {products
@@ -59,18 +55,12 @@ const MainPizzaCart = () => {
                   .map((product) => (
                     <li key={product._id} className="mainPizza__item">
                       <div className="mainPizza__img-box">
-                        <LazyLoadImage
-                          src={product.image}
-                          alt={product.name}
-                          effect="blur"
-                        />
+                        <LazyLoadImage src={product.image} alt={product.name} effect="blur" />
                       </div>
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
                       <div className="mainPizza__down-block">
-                        <button onClick={() => handleClick(product)}>
-                          Выбрать
-                        </button>
+                        <button onClick={() => handleClick(product)}>Выбрать</button>
                         <span>от {product.price} ₽</span>
                       </div>
                     </li>

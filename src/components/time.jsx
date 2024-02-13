@@ -1,6 +1,6 @@
-import { useContext, useRef } from "react";
-import { DataContext } from "../context";
-import { useTimer } from "../helpers";
+import { useContext, useRef } from 'react';
+import { DataContext } from '@/context';
+import { useTimer } from '@/helpers';
 
 export const TimerComponent = ({ time, repeat }) => {
   const { getSendTypes } = useContext(DataContext);
@@ -16,9 +16,7 @@ export const TimerComponent = ({ time, repeat }) => {
 
   return (
     <>
-      <span>{`${minutes}:${
-        remainingSeconds < 10 ? "0" : ""
-      }${remainingSeconds}`}</span>{" "}
+      <span>{`${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`}</span>{' '}
     </>
   );
 };

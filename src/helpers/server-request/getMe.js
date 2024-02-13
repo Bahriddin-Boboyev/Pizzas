@@ -1,9 +1,9 @@
-import { axios } from "../../apis";
+import { axios } from '@/apis';
 
 export const getMe = (axiosFetch) => {
   axiosFetch({
     axiosInstance: axios(),
-    method: "GET",
-    url: "/users/me",
+    method: 'GET',
+    url: '/users/me',
   });
 };

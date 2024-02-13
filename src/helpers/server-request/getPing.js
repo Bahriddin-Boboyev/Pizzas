@@ -1,9 +1,9 @@
-import { axios } from "../../apis";
+import { axios } from '@/apis';
 
 export const getPing = (axiosFetch) => {
   axiosFetch({
     axiosInstance: axios(),
-    method: "GET",
-    url: "/ping",
+    method: 'GET',
+    url: '/ping',
   });
 };

@@ -1,4 +1,4 @@
-import { axios } from "../../apis";
+import { axios } from '@/apis';
 
 export const getProducts = (axiosFetch, category) => {
   axiosFetch({
@@ -6,7 +6,7 @@ export const getProducts = (axiosFetch, category) => {
       page: { limit: 100, offset: 0 },
       filters: { category },
     }),
-    method: "GET",
-    url: "/product",
+    method: 'GET',
+    url: '/product',
   });
 };
