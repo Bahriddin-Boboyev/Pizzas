@@ -70,7 +70,7 @@ const App = () => {
             <Route path="menu/fire" element={<Stock />} />
             <Route path="basket" element={<Basket />} />
             <Route path="order" element={<Order />} />
-            <Route path="settings" element={<MyAccountSettings />} />
+            {context?.types?.isLoggedIn ? <Route path="settings" element={<MyAccountSettings />} /> : null}
           </Route>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/network-error" element={<NetworkErrorRoutes />} />
