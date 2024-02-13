@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { DataContext } from "../../context";
+import { useContext } from 'react';
+import { DataContext } from '@/context';
 
 const Payment = () => {
   const { getSubmitInputValues } = useContext(DataContext);
@@ -17,7 +17,7 @@ const Payment = () => {
               name="pay"
               value="cash"
               defaultChecked
-              onChange={() => getSubmitInputValues({ pay: "cash" })}
+              onChange={() => getSubmitInputValues({ pay: 'cash' })}
             />
             <label htmlFor="cash">Наличными</label>
           </div>
@@ -28,7 +28,7 @@ const Payment = () => {
               id="card"
               name="pay"
               value="card"
-              onChange={() => getSubmitInputValues({ pay: "card" })}
+              onChange={() => getSubmitInputValues({ pay: 'card' })}
             />
             <label htmlFor="card">Картой</label>
           </div>
@@ -39,7 +39,7 @@ const Payment = () => {
               id="applePay"
               name="pay"
               value="applePay"
-              onChange={() => getSubmitInputValues({ pay: "applePay" })}
+              onChange={() => getSubmitInputValues({ pay: 'applePay' })}
             />
             <label htmlFor="applePay">Apple Pay</label>
           </div>

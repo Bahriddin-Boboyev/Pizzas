@@ -1,15 +1,15 @@
-import "./auth/style.scss";
-import { useState, useEffect } from "react";
-import { useAxiosFunction } from "../hooks";
-import { toast } from "react-toastify";
-import { useRef } from "react";
-import { TimerComponent } from "./time";
-import { getMe, getSendMailer, postCode } from "../helpers";
+import './auth/style.scss';
+import { useState, useEffect } from 'react';
+import { useAxiosFunction } from '@/hooks';
+import { toast } from 'react-toastify';
+import { useRef } from 'react';
+import { TimerComponent } from './time';
+import { getMe, getSendMailer, postCode } from '@/helpers';
 
 export const SmsModal = ({ context, showModal, getSendTypes }) => {
   const [response, error, loading, axiosFetch] = useAxiosFunction();
   const [response2, error2, loading2, axiosFetch2] = useAxiosFunction();
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState('');
   const ref = useRef(true);
   const submitRef = useRef(true);
 
@@ -17,16 +17,16 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
   const handlerSubmit = (event) => {
     event.preventDefault();
     if (code && submitRef.current) {
-      axiosFetch("clear");
+      axiosFetch('clear');
       postCode(axiosFetch, { code: code });
-      setCode("");
+      setCode('');
       submitRef.current = false;
     }
   };
 
   useEffect(() => {
     if (context?.types?.smsMailModal && ref.current) {
-      axiosFetch("clear");
+      axiosFetch('clear');
       getSendMailer(axiosFetch);
       getSendTypes({ loading: true });
       ref.current = false;
@@ -34,33 +34,33 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
 
     if (context?.types?.smsMailModal && !loading && (error || response.data)) {
       // console.log(response, error, loading);
-      showModal({ hidden: true, type: "smsModal" });
-      getSendTypes({ loading: false, smsMailModal: false, smsMail: "pending" });
+      showModal({ hidden: true, type: 'smsModal' });
+      getSendTypes({ loading: false, smsMailModal: false, smsMail: 'pending' });
     }
 
-    if (context?.types?.smsMail === "pending" && response?.data) {
-      getSendTypes({ smsMail: "success" });
+    if (context?.types?.smsMail === 'pending' && response?.data) {
+      getSendTypes({ smsMail: 'success' });
       toast.success(response.data);
     }
 
-    if (context?.types?.smsMail === "pending" && error) {
-      getSendTypes({ smsMail: "reject" });
+    if (context?.types?.smsMail === 'pending' && error) {
+      getSendTypes({ smsMail: 'reject' });
       toast.error(error);
-      showModal({ hidden: false, type: "smsModal" });
+      showModal({ hidden: false, type: 'smsModal' });
       console.log(response, error);
     }
 
     if (response.data === "Kod to'g'ri kiritildi" && !submitRef.current) {
       toast.success(response.data);
-      getSendTypes({ smsCode: "success" });
-      showModal({ hidden: false, type: "smsModal" });
+      getSendTypes({ smsCode: 'success' });
+      showModal({ hidden: false, type: 'smsModal' });
       submitRef.current = true;
-      toast.loading("Loading...", { toastId: 3 });
+      toast.loading('Loading...', { toastId: 3 });
     }
 
     if (error && !submitRef.current) {
       toast.error(error);
-      getSendTypes({ smsCode: "reject" });
+      getSendTypes({ smsCode: 'reject' });
       submitRef.current = true;
     }
   }, [context, response, error, submitRef]);
@@ -80,9 +80,7 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
   return (
     <div
       className={`${
-        context?.modal?.hidden && context?.modal?.type === "smsModal"
-          ? "login__modal login__modal--sms"
-          : "none"
+        context?.modal?.hidden && context?.modal?.type === 'smsModal' ? 'login__modal login__modal--sms' : 'none'
       }`}
     >
       <h2>Код из смс</h2>
@@ -90,10 +88,7 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
         На электронная почта <br />
         <span>{response2?.data?.email}</span>
       </p>
-      <form
-        className="login__modal-box"
-        onSubmit={(event) => handlerSubmit(event)}
-      >
+      <form className="login__modal-box" onSubmit={(event) => handlerSubmit(event)}>
         <input
           value={code}
           required
@@ -103,34 +98,20 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
         />
         <button type="submit">Войти</button>
         <p className="login__modal__code_deck">
-          Отправить код ещё раз через:{" "}
+          Отправить код ещё раз через:{' '}
           {context?.types?.msZero ? (
             <span id="send-btn" onClick={handleResendCode}>
               Отправить
             </span>
           ) : (
             <span>
-              {context?.types?.smsMail === "success" ? (
-                <TimerComponent time={1} repeat={false} />
-              ) : (
-                "00"
-              )}{" "}
-              секунд
+              {context?.types?.smsMail === 'success' ? <TimerComponent time={1} repeat={false} /> : '00'} секунд
             </span>
           )}
         </p>
       </form>
-      <button
-        className="btn__login-modal"
-        onClick={() => showModal({ hidden: false })}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-        >
+      <button className="btn__login-modal" onClick={() => showModal({ hidden: false })}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
           <g clipPath="url(#clip0_236_29161)">
             <path
               fillRule="evenodd"

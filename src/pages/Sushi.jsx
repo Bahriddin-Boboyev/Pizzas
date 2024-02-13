@@ -1,8 +1,8 @@
-import { useEffect, useState, useContext } from "react";
-import { useAxiosFunction } from "../hooks";
-import { useScrollFixed, getCategory, getProducts } from "../helpers";
-import { DataContext } from "../context";
-import { Items, MainSkeleton } from "../components";
+import { useEffect, useState, useContext } from 'react';
+import { useAxiosFunction } from '@/hooks';
+import { useScrollFixed, getCategory, getProducts } from '@/helpers';
+import { DataContext } from '@/context';
+import { Items, MainSkeleton } from '@/components';
 
 export const Sushi = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
@@ -12,13 +12,12 @@ export const Sushi = () => {
 
   useEffect(() => {
     getCategory(axiosFetch2);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (!error2 && !loading && data2?.data) {
-      const result = data2?.data.categories.find(
-        (item) => item.name === "Суши",
-      );
+      const result = data2?.data.categories.find((item) => item.name === 'Суши');
       getProducts(axiosFetch, result._id);
     }
     // eslint-disable-next-line
@@ -31,7 +30,7 @@ export const Sushi = () => {
   const fixed = useScrollFixed(60);
 
   return (
-    <div className={`pizzas ${fixed ? "pizzas-fixed" : ""}`}>
+    <div className={`pizzas ${fixed ? 'pizzas-fixed' : ''}`}>
       {error ? (
         <h2 className="error_msg">{JSON.stringify(error)}</h2>
       ) : (
@@ -39,21 +38,14 @@ export const Sushi = () => {
           {loading ? (
             <ul className="mainPizza__list--loading">
               {new Array(4).fill(0).map((item, index) => (
-                <li
-                  key={`${index}${Date.now()}`}
-                  className="mainPizza__list--loading"
-                >
+                <li key={`${index}${Date.now()}`} className="mainPizza__list--loading">
                   <MainSkeleton />
                 </li>
               ))}
             </ul>
           ) : (
             <>
-              <Items
-                getStoreItems={getStoreItems}
-                products={products}
-                title="Суши"
-              />
+              <Items getStoreItems={getStoreItems} products={products} title="Суши" />
             </>
           )}
         </>

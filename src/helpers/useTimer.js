@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useTimer = (time, repeat) => {
+  // eslint-disable-next-line
   const [seconds, setSeconds] = useState(time * 60);
   const [minutes, setMinutes] = useState(0);
   const [remainingSeconds, setRemainingSeconds] = useState(0);

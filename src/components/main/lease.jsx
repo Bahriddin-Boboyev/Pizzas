@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
-import { DataContext } from "../../context";
+import { useState, useContext } from 'react';
+import { DataContext } from '@/context';
 
 const Lease = () => {
   const [isChecked, setIsChecked] = useState(true);
   const { getSubmitInputValues } = useContext(DataContext);
 
   const handleRadioChange = (event) => {
-    setIsChecked(event.target.value === "noLease");
+    setIsChecked(event.target.value === 'noLease');
   };
 
   return (
@@ -21,9 +21,7 @@ const Lease = () => {
               id="noLease"
               name="lease"
               value="noLease"
-              onChange={(e) => (
-                handleRadioChange(e), getSubmitInputValues({ lease: "noLease" })
-              )}
+              onChange={(e) => (handleRadioChange(e), getSubmitInputValues({ lease: 'noLease' }))}
               defaultChecked
             />
             <label htmlFor="noLease">Без сдачи</label>
@@ -45,9 +43,7 @@ const Lease = () => {
                 placeholder="0"
                 disabled={isChecked}
                 required
-                onChange={(event) =>
-                  getSubmitInputValues({ lease: event.target.value })
-                }
+                onChange={(event) => getSubmitInputValues({ lease: event.target.value })}
                 min="0"
               />
               <span>₽</span>

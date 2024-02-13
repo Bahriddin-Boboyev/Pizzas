@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { toastNotification, getRefreshToken } from "../helpers";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { DataContext } from "../context";
+import { useState } from 'react';
+import { toastNotification, getRefreshToken } from '@/helpers';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { DataContext } from '@/context';
 
 export const useAxiosFunction = () => {
   const [response, setResponse] = useState([]);
@@ -13,7 +13,7 @@ export const useAxiosFunction = () => {
   const navigate = useNavigate();
 
   const axiosFetch = async (configObj) => {
-    if (configObj === "clear") {
+    if (configObj === 'clear') {
       setResponse([]);
       setError();
       setLoading(false);
@@ -24,11 +24,7 @@ export const useAxiosFunction = () => {
     try {
       setLoading(true);
       if (requestConfig?.data) {
-        const res = await axiosInstance[method.toLowerCase()](
-          url,
-          { ...requestConfig?.data },
-          { ...requestConfig },
-        );
+        const res = await axiosInstance[method.toLowerCase()](url, { ...requestConfig?.data }, { ...requestConfig });
         setResponse(res.data);
       } else {
         const res = await axiosInstance[method.toLowerCase()](url, {
@@ -37,24 +33,24 @@ export const useAxiosFunction = () => {
         setResponse(res.data);
       }
       // toast success
-      toastNotification(2, "success", "You have successfully registered!");
+      toastNotification(2, 'success', 'You have successfully registered!');
 
       setError(null);
     } catch (error) {
       const error_msg = error?.response?.data?.error;
       setError(error_msg ? error_msg : error.message);
 
-      if (error?.code === "ERR_NETWORK") {
+      if (error?.code === 'ERR_NETWORK') {
         showModal({ hidden: false });
-        navigate("/network-error");
+        navigate('/network-error');
       }
       // get refresh token
-      if (error?.response?.data?.error === "jwt expired") {
+      if (error?.response?.data?.error === 'jwt expired') {
         await getRefreshToken();
       }
 
       // toast error
-      toastNotification(2, "error", `error: ${error_msg}`);
+      toastNotification(2, 'error', `error: ${error_msg}`);
     } finally {
       setLoading(false);
     }

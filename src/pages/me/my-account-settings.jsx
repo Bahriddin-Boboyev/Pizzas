@@ -1,27 +1,23 @@
-import "./style.scss";
-import { useContext, useState, useEffect, useRef } from "react";
-import editMeImg from "../../img/edit-me.svg";
-import closeImg from "../../img/close.svg";
-import { DataContext } from "../../context";
-import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "react-toastify";
-import { toastNotification, postEditMe } from "../../helpers";
-import { inputValue, inputValuePassword } from "../../constants";
-import { ReactSVG } from "react-svg";
-import {
-  useAxiosFunction,
-  useInputValue,
-  usePasswordToggle,
-} from "../../hooks";
+import './style.scss';
+import { useContext, useState, useEffect, useRef } from 'react';
+import editMeImg from '../../img/edit-me.svg';
+import closeImg from '../../img/close.svg';
+import { DataContext } from '@/context';
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import { toast } from 'react-toastify';
+import { toastNotification, postEditMe } from '@/helpers';
+import { inputValue, inputValuePassword } from '@/constants';
+import { ReactSVG } from 'react-svg';
+import { useAxiosFunction, useInputValue, usePasswordToggle } from '@/hooks';
 
 const inputs = {
-  name: "",
-  phone: "",
-  email: "",
-  oldPassword: "",
-  newPassword: "",
-  rePassword: "",
+  name: '',
+  phone: '',
+  email: '',
+  oldPassword: '',
+  newPassword: '',
+  rePassword: '',
 };
 
 export const MyAccountSettings = () => {
@@ -39,7 +35,7 @@ export const MyAccountSettings = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ criteriaMode: "all" });
+  } = useForm({ criteriaMode: 'all' });
 
   const handleSubmitValue = () => {
     const values = {};
@@ -47,18 +43,18 @@ export const MyAccountSettings = () => {
     if (value.phone) values.phone = value.phone;
     if (value.email) values.email = value.email;
 
-    axiosFetch("clear");
+    axiosFetch('clear');
     postEditMe(axiosFetch, values);
-    toast.loading("Loading...", { toastId: 4 });
+    toast.loading('Loading...', { toastId: 4 });
     isSubmit.current = false;
   };
 
   const handleSubmitPassword = (event) => {
     event.preventDefault();
     if (value?.newPassword !== value?.rePassword) return;
-    axiosFetch("clear");
+    axiosFetch('clear');
     postEditMe(axiosFetch, value.password);
-    toast.loading("Loading...", { toastId: 5 });
+    toast.loading('Loading...', { toastId: 5 });
     isSubmit.current = false;
   };
 
@@ -68,26 +64,27 @@ export const MyAccountSettings = () => {
   useEffect(() => {
     if (!loading && !isSubmit.current && (data?.data || error)) {
       if (data) {
-        toastNotification(4, "success", "User updated successfully!");
-        toastNotification(5, "success", "User password update successfully!");
+        toastNotification(4, 'success', 'User updated successfully!');
+        toastNotification(5, 'success', 'User password update successfully!');
         getSendTypes({ meInfo: data?.data });
         setIsShow(true);
         setIsShowPassword(true);
-        change("clear");
+        change('clear');
       }
       if (error) {
-        toastNotification(4, "error", error);
-        toastNotification(5, "error", error);
+        toastNotification(4, 'error', error);
+        toastNotification(5, 'error', error);
       }
       isSubmit.current = true;
     }
+      // eslint-disable-next-line
   }, [data, error]);
 
   const disabled =
     value?.newPassword !== value?.rePassword ||
-    value.oldPassword === "" ||
-    value.newPassword === "" ||
-    value.rePassword === "";
+    value.oldPassword === '' ||
+    value.newPassword === '' ||
+    value.rePassword === '';
 
   return (
     <section className="me-settings">
@@ -105,9 +102,7 @@ export const MyAccountSettings = () => {
             <ul className="me-settings__body-list">
               {meInfo?.map((item) => (
                 <li key={item?.name}>
-                  <span className="me-settings__name-item">
-                    {item.labelName}
-                  </span>
+                  <span className="me-settings__name-item">{item.labelName}</span>
                   <span className="me-settings__value-item">{item.value}</span>
                 </li>
               ))}
@@ -125,23 +120,14 @@ export const MyAccountSettings = () => {
               <ul className="me-settings__body-list--edit">
                 {meInfo?.map((item) => (
                   <li key={item?.name}>
-                    <label
-                      htmlFor="edit-input"
-                      className="me-settings__name-item--edit"
-                    >
+                    <label htmlFor="edit-input" className="me-settings__name-item--edit">
                       {item.labelName}
                     </label>
                     <input
                       {...register(`${item.name}`, {
-                        required: "This input is required.",
+                        required: 'This input is required.',
                       })}
-                      type={
-                        item.name === "email"
-                          ? "email"
-                          : item.name === "phone"
-                          ? "number"
-                          : "text"
-                      }
+                      type={item.name === 'email' ? 'email' : item.name === 'phone' ? 'number' : 'text'}
                       name={item.name}
                       onChange={change}
                       id="edit-input"
@@ -217,10 +203,7 @@ export const MyAccountSettings = () => {
                 }
                 return (
                   <li key={item.labelName}>
-                    <label
-                      htmlFor={`edit-input-password-${item.name}`}
-                      className="me-settings__name-item--edit"
-                    >
+                    <label htmlFor={`edit-input-password-${item.name}`} className="me-settings__name-item--edit">
                       {item.labelName}
                     </label>
                     <input
@@ -233,17 +216,12 @@ export const MyAccountSettings = () => {
                       value={value[`${item.name}`]}
                       onChange={change}
                     />
-                    <span
-                      onClick={() => setVisibility((prev) => !prev)}
-                      className="login__icon"
-                    >
+                    <span onClick={() => setVisibility((prev) => !prev)} className="login__icon">
                       <img src={toggleIcon} alt="icon" />
                     </span>
                     {value.newPassword !== value.rePassword ? (
-                      item.name === "rePassword" ? (
-                        <span className="error-message">
-                          Parollar mos emas!
-                        </span>
+                      item.name === 'rePassword' ? (
+                        <span className="error-message">Parollar mos emas!</span>
                       ) : (
                         <span className="error-message-span"></span>
                       )
@@ -254,11 +232,7 @@ export const MyAccountSettings = () => {
                 );
               })}
             </ul>
-            <button
-              className={`btn edit-me-btn ${disabled ? "disabled" : ""}`}
-              type="submit"
-              disabled={disabled}
-            >
+            <button className={`btn edit-me-btn ${disabled ? 'disabled' : ''}`} type="submit" disabled={disabled}>
               Сохранить изменения
             </button>
           </form>
@@ -267,16 +241,9 @@ export const MyAccountSettings = () => {
       <div className="me-settings__cards cards_3">
         <h4>Подписки</h4>
         <div className="input-block">
-          <input
-            type="checkbox"
-            id="settings-checkbox"
-            defaultChecked
-            className="settings-checkbox"
-          />
+          <input type="checkbox" id="settings-checkbox" defaultChecked className="settings-checkbox" />
           <span></span>
-          <label htmlFor="settings-checkbox">
-            Получать предложения и акции
-          </label>
+          <label htmlFor="settings-checkbox">Получать предложения и акции</label>
         </div>
       </div>
     </section>
