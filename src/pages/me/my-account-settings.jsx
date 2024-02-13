@@ -1,7 +1,5 @@
 import './style.scss';
 import { useContext, useState, useEffect, useRef } from 'react';
-import editMeImg from '../../img/edit-me.svg';
-import closeImg from '../../img/close.svg';
 import { DataContext } from '@/context';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
@@ -9,6 +7,7 @@ import { toast } from 'react-toastify';
 import { toastNotification, postEditMe } from '@/helpers';
 import { inputValue, inputValuePassword } from '@/constants';
 import { ReactSVG } from 'react-svg';
+import { Icons } from '@/img';
 import { useAxiosFunction, useInputValue, usePasswordToggle } from '@/hooks';
 
 const inputs = {
@@ -77,7 +76,7 @@ export const MyAccountSettings = () => {
       }
       isSubmit.current = true;
     }
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [data, error]);
 
   const disabled =
@@ -95,7 +94,7 @@ export const MyAccountSettings = () => {
             <div className="me-settings__headers">
               <h4>Личные данные</h4>
               <button onClick={() => setIsShow(false)}>
-                <img src={editMeImg} alt="edit" />
+                <img src={Icons.editMeIcon} alt="edit" />
                 <span>Изменить</span>
               </button>
             </div>
@@ -113,7 +112,7 @@ export const MyAccountSettings = () => {
             <div className="me-settings__headers">
               <h4>Изменение личных данных</h4>
               <button onClick={() => setIsShow(true)}>
-                <ReactSVG className="close-img" src={closeImg} />
+                <ReactSVG className="close-img" src={Icons.close} />
               </button>
             </div>
             <form onSubmit={handleSubmit(handleSubmitValue)}>
@@ -164,7 +163,7 @@ export const MyAccountSettings = () => {
             <>
               <h4>Пароль</h4>
               <button onClick={() => setIsShowPassword(false)}>
-                <img src={editMeImg} alt="edit" />
+                <img src={Icons.editMeIcon} alt="edit" />
                 <span>Изменить</span>
               </button>
             </>
@@ -172,7 +171,7 @@ export const MyAccountSettings = () => {
             <>
               <h4>Изменить пароль</h4>
               <button onClick={() => setIsShowPassword(true)}>
-                <ReactSVG className="close-img" src={closeImg} />
+                <ReactSVG className="close-img" src={Icons.close} />
               </button>
             </>
           )}

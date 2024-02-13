@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { storeTotalCost, clickStoreProduct, storeItemsCount } from '@/helpers';
 import { DataContext } from '@/context';
 import { useAxiosFunction } from '@/hooks';
-import basketClose from '../../img/basket-close.svg';
+import { Icons } from '@/img';
 
 const BasketRight = () => {
   const { context, showBasket, getStoreItems } = useContext(DataContext);
@@ -29,7 +29,12 @@ const BasketRight = () => {
         <>
           <div className="basket-right__box">
             <h3>Ваш заказ</h3>
-            <img src={basketClose} alt=" basket" className="basket-right__svg" onClick={() => showBasket(false)} />
+            <img
+              src={Icons.basketClose}
+              alt=" basket"
+              className="basket-right__svg"
+              onClick={() => showBasket(false)}
+            />
           </div>
           <ul className="basket-right__content">
             {!prods?.length ? (

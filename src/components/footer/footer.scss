@@ -24,17 +24,6 @@
   cursor: pointer;
   gap: 14px;
   height: 45px;
-  :nth-child(1) {
-    width: 39.943px;
-    height: 40px;
-    flex-shrink: 0;
-  }
-  :nth-child(2) {
-    width: 121.078px;
-    height: 20px;
-    flex-shrink: 0;
-    fill: var(--black, #191919);
-  }
 }
 .footer__item {
   h2 {
@@ -65,20 +54,20 @@
 
 .footer__phone::before {
   display: inline-block;
-  content: "";
+  content: '';
   width: 20px;
   height: 20px;
-  background-image: url("../../img/phone.svg");
+  background-image: url('../../img/icons/phone.svg');
   background-repeat: no-repeat;
   vertical-align: middle;
   margin-right: 12px;
 }
 .footer__location::before {
   display: inline-block;
-  content: "";
+  content: '';
   width: 20px;
   height: 20px;
-  background-image: url("../../img/location.svg");
+  background-image: url('../../img/icons/location.svg');
   background-repeat: no-repeat;
   vertical-align: middle;
   margin-right: 12px;
@@ -90,7 +79,7 @@
   justify-content: space-between;
   a::before {
     display: inline-block;
-    content: "";
+    content: '';
     width: 20px;
     height: 20px;
     background-repeat: no-repeat;
@@ -98,10 +87,10 @@
     margin-right: 12px;
   }
   :nth-child(1)::before {
-    background-image: url("../../img/facebook.svg");
+    background-image: url('../../img/icons/facebook.svg');
   }
   :nth-child(2)::before {
-    background-image: url("../../img/instagram.svg");
+    background-image: url('../../img/icons/instagram.svg');
   }
 }
 

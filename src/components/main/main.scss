@@ -30,11 +30,11 @@
       background: #fff;
     }
     button::before {
-      content: "";
+      content: '';
       display: inline-block;
       width: 16px;
       height: 16px;
-      background-image: url("../../img/filter.svg");
+      background-image: url('../../img/icons/filter.svg');
       vertical-align: middle;
     }
   }
@@ -396,24 +396,24 @@
   }
 }
 .swiper-button-prev::after {
-  content: "" !important;
+  content: '' !important;
   width: 80px;
   height: 80px;
   background-repeat: no-repeat;
   display: inline-block;
-  background-image: url("../../img/left-prev.svg") !important;
+  background-image: url('../../img/icons/left-prev.svg') !important;
   border-radius: 41px;
   background-size: contain;
   // left: -10px;
 }
 
 .swiper-button-next::after {
-  content: "" !important;
+  content: '' !important;
   width: 80px;
   height: 80px;
   background-repeat: no-repeat;
   display: inline-block;
-  background-image: url("../../img/right-prev.svg") !important;
+  background-image: url('../../img/icons/right-prev.svg') !important;
   border-radius: 41px;
   background-size: contain;
 }

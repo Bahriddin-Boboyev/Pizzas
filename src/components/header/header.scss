@@ -16,8 +16,8 @@
   justify-content: space-between;
 }
 .navbar__img_block {
-  width: 13px;
-  height: 20px;
+  width: 14px;
+  height: 22px;
   flex-shrink: 0;
 }
 .navbar__section_1_block {
@@ -42,7 +42,7 @@ select {
   -moz-appearance: none;
   appearance: none;
   background-repeat: no-repeat;
-  background-image: url('../../img/arrow-down.svg');
+  background-image: url('../../img/icons/arrow-down.svg');
   background-position-x: 100%;
   background-position-y: 8px;
   padding: 0 5px;
@@ -136,7 +136,7 @@ select {
     height: 20px;
     flex-shrink: 0;
     display: inline-block;
-    background-image: url('../../img/login_user.svg');
+    background-image: url('../../img/icons/login_user.svg');
     vertical-align: middle;
     margin-right: 8px;
   }
@@ -181,14 +181,6 @@ select {
   align-items: center;
   column-gap: 20px;
   flex-shrink: 0;
-  :nth-child(1) {
-    width: 30px;
-    height: 30px;
-  }
-  :nth-child(2) {
-    width: 97px;
-    height: 16px;
-  }
 }
 .navbar__down-korzinka-block {
   cursor: pointer;
@@ -331,9 +323,6 @@ select {
 }
 .cartDown__item-2 {
   background-color: #e23535;
-  img {
-    margin-top: 76px;
-  }
 }
 
 .navbar__basket-shop--box {
@@ -670,7 +659,7 @@ input::-webkit-inner-spin-button {
     }
     select {
       font-size: 13px;
-      background-image: url('../../img/arrow-down.svg');
+      background-image: url('../../img/icons/arrow-down.svg');
       background-position-x: 85%;
       background-position-y: 6px;
       background-size: 10px;
