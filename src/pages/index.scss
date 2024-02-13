@@ -34,8 +34,8 @@
       outline: none;
       padding-left: 40px;
     }
-    input[type="text"] {
-      background-image: url("../img/location.svg");
+    input[type='text'] {
+      background-image: url('../img/icons/location.svg');
       background-repeat: no-repeat;
       background-position-y: center;
       background-position-x: 15px;
@@ -115,11 +115,7 @@
   bottom: 0;
   height: 200px;
   width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(249, 249, 249, 1) 100%
-  );
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(249, 249, 249, 1) 100%);
   overflow: hidden;
 }
 .overflowHidden {
@@ -395,14 +391,14 @@
     button {
       border: none;
       cursor: pointer;
-      content: "";
+      content: '';
       width: 48px;
       height: 46px;
       flex-shrink: 0;
       display: inline-block;
       border-radius: 6px;
       background: var(--primary, #ff7010);
-      background-image: url("../img/send.svg");
+      background-image: url('../img/icons/send.svg');
       background-size: 46px;
       vertical-align: middle;
       margin-left: -13%;

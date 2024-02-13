@@ -1,10 +1,9 @@
-import { useState } from "react";
-import eyeFill from "../img/eye-fill.svg";
-import eyeSlashFill from "../img/eye-slash-fill.svg";
+import { useState } from 'react';
+import { Icons } from '@/img';
 
 export const usePasswordToggle = (initialVisibility) => {
   const [visible, setVisibility] = useState(initialVisibility);
-  const icon = visible ? eyeSlashFill : eyeFill;
-  const inputType = visible ? "text" : "password";
+  const icon = visible ? Icons.eyeSlashFill : Icons.eyeFill;
+  const inputType = visible ? 'text' : 'password';
   return [icon, inputType, setVisibility];
 };

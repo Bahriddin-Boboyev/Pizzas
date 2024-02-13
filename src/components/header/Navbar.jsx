@@ -1,13 +1,12 @@
 import './header.scss';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DataContext } from '@/context';
 import { Login, Register, TimerComponent } from '../';
 import { useScrollFixed, storeTotalCost, storeTotalCount } from '@/helpers';
 import useLocalStorageState from 'use-local-storage-state';
 import { ReactSVG } from 'react-svg';
-// svg
-import { korzinka, korzinka2, locationIcon, login, logo, pizza, userAccount, userAvatar } from '../../img';
+import { Icons } from '@/img';
 
 export const Navbar = () => {
   const { context, showBasket, showModal } = useContext(DataContext);
@@ -31,7 +30,7 @@ export const Navbar = () => {
         <div className="navbar__section-1">
           <div className="navbar__section_1_block">
             <div className="navbar__img_block">
-              <img src={locationIcon} alt="location" />
+              <img src={Icons.locationIcon} alt="location" />
             </div>
             <select name="city" id="city">
               <option className="options" value="moscow" defaultValue={'moscow'}>
@@ -64,12 +63,12 @@ export const Navbar = () => {
               <div className="user-navbar" onClick={() => navigate('/settings')}>
                 <ReactSVG
                   className="user-avatar"
-                  src={userAvatar}
+                  src={Icons.userAvatar}
                   beforeInjection={(svg) => {
                     svg.setAttribute('style', 'width: 30px');
                   }}
                 />
-                <span>{context?.types.meInfo?.name}</span>
+                <span>{context?.types?.meInfo?.name}</span>
               </div>
             ) : (
               <button
@@ -78,7 +77,7 @@ export const Navbar = () => {
               >
                 <ReactSVG
                   style={{ marginTop: '-5px', marginRight: '5px' }}
-                  src={userAccount}
+                  src={Icons.userAccount}
                   beforeInjection={(svg) => {
                     svg.setAttribute('style', 'width: 15px');
                   }}
@@ -94,8 +93,8 @@ export const Navbar = () => {
       <div className={`navbar__down ${fixed ? 'fixed' : ''}`}>
         <div className="navbar__wrapper">
           <Link to={'/'} className="navbar__down-img-block" onClick={() => setToggle(false)}>
-            <img src={pizza} alt="pizza" />
-            <img src={logo} alt="logo" />
+            <ReactSVG src={Icons.logoText} />
+            <ReactSVG src={Icons.logo} />
           </Link>
           <div className={`navbar__down__category  ${!fixed ? 'none' : ''}`}>
             <Link className="hover__text" to="/menu/fire">
@@ -125,7 +124,7 @@ export const Navbar = () => {
           </div>
           <div className="navbar__down-korzinka-block">
             <button onClick={() => showBasket(true)}>
-              <img src={korzinka} alt="korzinka" />
+              <img src={Icons.korzinka} alt="korzinka" />
               <span>{storeTotalCost(cart)} ₽</span>
             </button>
           </div>
@@ -140,30 +139,30 @@ export const Navbar = () => {
       <div className="navbar__basket-shop--box hover">
         <span className="animate-ping"></span>
         <button onClick={() => showBasket(true)}>
-          <img src={korzinka2} alt="korzinka 2" />
+          <img src={Icons.korzinka2} alt="korzinka 2" />
           <span>{storeTotalCount(cart)}</span>
         </button>
       </div>
       <div className={`mobile__menu container ${toggle ? 'transform' : ''} ${fixed ? 'nav__scroll-top' : ''}`}>
         <div
           className={`login__block hover`}
-          onClick={() => (
-            setToggle(false),
-            context?.types?.isLoggedIn ? navigate('/settings') : showModal({ hidden: true, type: 'register' })
-          )}
+          onClick={() => {
+            setToggle(false);
+            context?.types?.isLoggedIn ? navigate('/settings') : showModal({ hidden: true, type: 'register' });
+          }}
         >
           <div className={`login__inner-block ${toggle ? 'transform-important' : ''}`}>
             <div>
               {context?.types?.isLoggedIn ? (
                 <ReactSVG
                   className="user-avatar"
-                  src={userAvatar}
+                  src={Icons.userAvatar}
                   beforeInjection={(svg) => {
                     svg.setAttribute('style', 'width: 30px');
                   }}
                 />
               ) : (
-                <img src={login} alt="login svg" />
+                <ReactSVG src={Icons.login} alt="login svg" />
               )}
             </div>
             <h3>{context?.types?.isLoggedIn ? context?.types?.meInfo?.name : 'Войти в аккаунт'}</h3>
