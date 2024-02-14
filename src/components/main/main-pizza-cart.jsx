@@ -75,37 +75,3 @@ const MainPizzaCart = () => {
 };
 
 export default MainPizzaCart;
-/* {products?.loading || !products?.prod ? <p>Loading....</p> : ""} */
-
-/* <div className="mainPizza__top_box">
-            <h2>
-             
-            </h2>
-            <button>Фильтры</button>
-          </div>
-          <ul className="mainPizza__list">
-            {products.map((product) => (
-              <li key={product._id} className="mainPizza__item">
-                <div className="mainPizza__img-box">
-                  <img src={product.image} alt="img" />
-                </div>
-                <h3>
-                 
-                  {product.name.length > 15
-                    ? `${product.name.slice(0, 15)}...`
-                    : product.name}
-                </h3>
-                <p>
-                  {product.description.length > 15
-                    ? `${product.description.slice(0, 30)}...`
-                    : product.description}
-                </p>
-                <div className="mainPizza__down-block">
-                  <button>Выбрать</button>
-                  <span>от {product.price} ₽</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </>
-      )} */

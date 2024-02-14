@@ -1,15 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useAxiosFunction } from '@/hooks';
 import { postLogin } from '@/helpers';
 import { Icons } from '@/img';
 import { ReactSVG } from 'react-svg';
+import { DataContext } from '@/context';
 
-export const Login = ({ context, showModal }) => {
+export const Login = () => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
+  const { context, showModal } = useContext(DataContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
