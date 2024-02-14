@@ -1,5 +1,5 @@
 import './header.scss';
-import { useContext, useState, useEffect, useMemo } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DataContext } from '@/context';
 import { Login, Register, TimerComponent } from '../';
@@ -134,8 +134,8 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-      <Register context={context} showModal={showModal} />
-      <Login context={context} showModal={showModal} />
+      <Register />
+      <Login />
       <div className="navbar__basket-shop--box hover">
         <span className="animate-ping"></span>
         <button onClick={() => showBasket(true)}>

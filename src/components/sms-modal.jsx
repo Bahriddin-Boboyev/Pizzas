@@ -74,9 +74,6 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
     ref.current = true;
   };
 
-  // console.log(response, error, loading);
-  // console.log(submitRef.current);
-
   return (
     <div
       className={`${

@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
 import './style.scss';
+import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
 import { useAxiosFunction } from '@/hooks';
 import { postRegister } from '@/helpers';
 import { Icons } from '@/img';
 import { ReactSVG } from 'react-svg';
+import { DataContext } from '@/context';
 
-export const Register = ({ context, showModal }) => {
+export const Register = () => {
   // eslint-disable-next-line
   const [response, error, loading, axiosFetch] = useAxiosFunction();
+  const { context, showModal } = useContext(DataContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
