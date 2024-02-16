@@ -33,7 +33,6 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
     }
 
     if (context?.types?.smsMailModal && !loading && (error || response.data)) {
-      // console.log(response, error, loading);
       showModal({ hidden: true, type: 'smsModal' });
       getSendTypes({ loading: false, smsMailModal: false, smsMail: 'pending' });
     }
@@ -63,6 +62,7 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
       getSendTypes({ smsCode: 'reject' });
       submitRef.current = true;
     }
+    // eslint-disable-next-line
   }, [context, response, error, submitRef]);
 
   useEffect(() => {
@@ -93,7 +93,13 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
           placeholder="1234"
           onChange={(event) => setCode(event.target.value)}
         />
-        <button type="submit">Войти</button>
+        <button
+          type="submit"
+          disabled={context?.types?.msZero}
+          className={context?.types?.msZero ? 'btn-disabled' : ''}
+        >
+          Войти
+        </button>
         <p className="login__modal__code_deck">
           Отправить код ещё раз через:{' '}
           {context?.types?.msZero ? (
@@ -105,6 +111,10 @@ export const SmsModal = ({ context, showModal, getSendTypes }) => {
               {context?.types?.smsMail === 'success' ? <TimerComponent time={1} repeat={false} /> : '00'} секунд
             </span>
           )}
+        </p>
+
+        <p className="check__spam-text">
+          Если вы не видите код, Зайдите в электронную почту и проверьте папку со спамом.
         </p>
       </form>
       <button className="btn__login-modal" onClick={() => showModal({ hidden: false })}>
