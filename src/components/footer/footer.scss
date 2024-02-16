@@ -108,17 +108,6 @@
     justify-content: start;
     gap: 14px;
     height: 45px;
-    :nth-child(1) {
-      width: 39.943px;
-      height: 40px;
-      flex-shrink: 0;
-    }
-    :nth-child(2) {
-      width: 121.078px;
-      height: 20px;
-      flex-shrink: 0;
-      fill: var(--black, #191919);
-    }
   }
 }
 
@@ -149,15 +138,6 @@
 @media screen and (max-width: 500px) {
   .footer {
     margin-bottom: 40px;
-    .footer__box-logo {
-      :nth-child(1) {
-        width: 30px;
-        height: 30px;
-      }
-      :nth-child(2) {
-        width: 90px;
-      }
-    }
     .footer__item {
       h2 {
         font-size: 17px;
