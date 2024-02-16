@@ -85,6 +85,12 @@ export const MyAccountSettings = () => {
     value.newPassword === '' ||
     value.rePassword === '';
 
+  const handleLogOut = () => {
+    localStorage.removeItem('token');
+    toast.success('You are logged out');
+    window.location.href = '/';
+  };
+
   return (
     <section className="me-settings">
       <h1>Мой аккаунт</h1>
@@ -238,12 +244,17 @@ export const MyAccountSettings = () => {
         )}
       </div>
       <div className="me-settings__cards cards_3">
-        <h4>Подписки</h4>
-        <div className="input-block">
-          <input type="checkbox" id="settings-checkbox" defaultChecked className="settings-checkbox" />
-          <span></span>
-          <label htmlFor="settings-checkbox">Получать предложения и акции</label>
+        <div>
+          <h4>Подписки</h4>
+          <div className="input-block">
+            <input type="checkbox" id="settings-checkbox" defaultChecked className="settings-checkbox" />
+            <span></span>
+            <label htmlFor="settings-checkbox">Получать предложения и акции</label>
+          </div>
         </div>
+        <button className="btn btn-logout" onClick={handleLogOut}>
+          Log Out
+        </button>
       </div>
     </section>
   );
