@@ -85,6 +85,9 @@
     margin-bottom: 16px;
   }
   .cards_3 {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
     h4 {
       color: var(--Black, #191919);
 
@@ -97,6 +100,14 @@
     }
     .input-block input {
       appearance: none;
+    }
+
+    .btn-logout {
+      background: #dc3545;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      color: #fff;
     }
 
     /* Style the artificial checkbox */
@@ -112,8 +123,8 @@
     }
 
     /* Style its checked state...with a ticked icon */
-    [type="checkbox"]:checked + span:before {
-      content: "\2714";
+    [type='checkbox']:checked + span:before {
+      content: '\2714';
       color: #fff;
       position: absolute;
       top: -4px;
@@ -254,8 +265,8 @@
     border-radius: 1px;
     margin-bottom: -2px;
   }
-  [type="checkbox"]:checked + span:before {
-    content: "\2714";
+  [type='checkbox']:checked + span:before {
+    content: '\2714';
     top: 0px;
     left: 2px;
     font-size: 13px;
