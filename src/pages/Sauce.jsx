@@ -3,6 +3,7 @@ import { useAxiosFunction } from '@/hooks';
 import { useScrollFixed, getCategory, getProducts } from '@/helpers';
 import { DataContext } from '@/context';
 import { Items, MainSkeleton } from '@/components';
+import { Helmet } from 'react-helmet-async';
 
 export const Sauce = () => {
   const [data, error, loading, axiosFetch] = useAxiosFunction();
@@ -31,6 +32,9 @@ export const Sauce = () => {
 
   return (
     <div className={`pizzas ${fixed ? 'pizzas-fixed' : ''}`}>
+      <Helmet>
+        <title>Куда пицца | Соусы</title>
+      </Helmet>
       {error ? (
         <h2 className="error_msg">{JSON.stringify(error)}</h2>
       ) : (

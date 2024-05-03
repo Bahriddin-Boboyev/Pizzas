@@ -9,6 +9,7 @@ import { inputValue, inputValuePassword } from '@/constants';
 import { ReactSVG } from 'react-svg';
 import { Icons } from '@/img';
 import { useAxiosFunction, useInputValue, usePasswordToggle } from '@/hooks';
+import { Helmet } from 'react-helmet-async';
 
 const inputs = {
   name: '',
@@ -93,6 +94,9 @@ export const MyAccountSettings = () => {
 
   return (
     <section className="me-settings">
+       <Helmet>
+        <title>Куда пицца | Мой аккаунт</title>
+      </Helmet>
       <h1>Мой аккаунт</h1>
       <div className="me-settings__cards me-settings__cards--edit">
         {isShow ? (
