@@ -9,13 +9,13 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import { BrowserRouter } from 'react-router-dom'
 import { DataProvider } from './context'
 import { HelmetProvider } from 'react-helmet-async'
-import TagManager from 'react-gtm-module'
+// import TagManager from 'react-gtm-module'
 
-const tagManagerArgs = {
-  gtmId: 'GTM-TJNXKDWD',
-}
+// const tagManagerArgs = {
+//   gtmId: 'GTM-TJNXKDWD',
+// }
 
-TagManager.initialize(tagManagerArgs)
+// TagManager.initialize(tagManagerArgs)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 const helmetContext = {
